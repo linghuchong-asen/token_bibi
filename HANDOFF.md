@@ -38,6 +38,22 @@
 - **实测证据**：kimi-k3 在 OpenRouter 当日连续降价两次（1.7208 → 1.1592 → 1.0944）；
   `qwen3-8-max` 已在源站下架（幽灵核验案例，已降级为待核验）。
 
+## 2026-10-27 清晨功能与营销轮新增
+
+- **RSS 订阅**：`/feed.xml`（价格变动 RSS 2.0，布局自动发现 + 页脚入口）
+- **价格走势图**：`npm run history:prices` 生成 `data/price-history.json`，
+  模型详情页渲染 SVG 折线（只画真实变动过的价格）；已接入每日管线
+- **模型对比页**：`/compare?models=a,b,c`（已核验最低价/上下文/能力/平台覆盖，
+  链接可分享）；比价列表新增"近日降价"绿色徽章
+- **降价动态页**：`/price-drops`（RSS 落地页 + "AI 降价"搜索长尾承接）
+- **SEO/传播**：模型页 generateMetadata + OG 图（分享卡 PNG）+ JSON-LD
+  Product/AggregateOffer（仅已核验）；`/faq` + FAQPage JSON-LD
+- **API 增强**：`GET /api/prices?format=csv`（Sheets IMPORTDATA / Excel 直连）
+- **营销资产**：`marketing/community-posts.md` 新增"实测故事"系列
+  （kimi-k3 单日三次调价）；`launch-plan.md` 全量刷新到新资产
+- **生产 bug 修复**（见 changelog 10-17 条）：表单成功误报失败
+  （React currentTarget 异步陷阱）、限流器内存泄漏、分发面硬编码状态
+
 ## 盈利入口（2026-10-26 上线，全部可见可用）
 
 - `/advertise`：广告位自助投放销售页（刊例价在 `data/ad-products.json`，
