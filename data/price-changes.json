@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-26T20:31:06.376Z",
-  "baseline": "2026-10-26T15-27-50",
+  "generatedAt": "2026-10-26T23:41:07.169Z",
+  "baseline": "2026-10-26T20-31-07",
   "comparedFields": [
     "inputPricePerMTokens",
     "outputPricePerMTokens",
@@ -8,20 +8,8 @@
     "billingMode",
     "dataStatus"
   ],
-  "changedCount": 4,
+  "changedCount": 2,
   "changes": [
-    {
-      "priceId": "openrouter-glm-5-3-flash-credit",
-      "providerId": "openrouter",
-      "modelId": "glm-5-3-flash",
-      "changes": [
-        {
-          "field": "dataStatus",
-          "from": "pending_review",
-          "to": "verified"
-        }
-      ]
-    },
     {
       "priceId": "openrouter-kimi-k3-credit",
       "providerId": "openrouter",
@@ -29,18 +17,13 @@
       "changes": [
         {
           "field": "inputPricePerMTokens",
-          "from": 1.1592,
-          "to": 1.1448
+          "from": 1.1448,
+          "to": 1.2168
         },
         {
           "field": "cacheReadPricePerMTokens",
-          "from": 1.0872,
-          "to": 1.0728
-        },
-        {
-          "field": "dataStatus",
-          "from": "pending_review",
-          "to": "verified"
+          "from": 1.0728,
+          "to": 1.1448
         }
       ]
     },
@@ -51,35 +34,18 @@
       "changes": [
         {
           "field": "inputPricePerMTokens",
-          "from": 0.144,
-          "to": 0.34344
+          "from": 0.34344,
+          "to": 0.310723
         },
         {
           "field": "outputPricePerMTokens",
-          "from": 7.2,
-          "to": 1.37376
+          "from": 1.37376,
+          "to": 0.072
         },
         {
           "field": "cacheReadPricePerMTokens",
-          "from": 0.108,
-          "to": 0.006869
-        },
-        {
-          "field": "dataStatus",
-          "from": "pending_review",
-          "to": "verified"
-        }
-      ]
-    },
-    {
-      "priceId": "openrouter-qwen3-8-max-credit",
-      "providerId": "openrouter",
-      "modelId": "qwen3-8-max",
-      "changes": [
-        {
-          "field": "dataStatus",
-          "from": "verified",
-          "to": "pending_review"
+          "from": 0.006869,
+          "to": 0.244814
         }
       ]
     }

@@ -55,9 +55,10 @@ describe("data status page", () => {
   it("lists the latest detected price changes", () => {
     render(<DataStatusPage />);
     expect(screen.getByText("最近价格变动")).toBeTruthy();
-    // 变动计数指标与检测时间必须出现；具体条目随数据演化，断言不写死模型名
+    // 变动计数指标与检测时间必须出现；具体条目随数据演化，断言不写死模型名。
+    // 计数文本（如 "2"）可能与页内其他数字撞车，用 getAllByText 做存在性断言。
     expect(screen.getByText("本次基线对比发现的变动")).toBeTruthy();
-    expect(screen.getByText(String(priceChanges.changedCount))).toBeTruthy();
+    expect(screen.getAllByText(String(priceChanges.changedCount)).length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText(/检测时间：/)).toBeTruthy();
     if (priceChanges.changes.length > 0) {
       const entries = screen.getAllByText(/ \/ /);
