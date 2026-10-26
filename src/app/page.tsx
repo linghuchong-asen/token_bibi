@@ -1,7 +1,8 @@
 // 文件用途：首页（所属模块：src/app，静态生成）
-// 结构：数据新鲜度横幅 → 三个核心数字 → 精选比价表 → 赞助位 → 方法说明与分享入口。
+// 结构：数据新鲜度横幅 → 三个核心数字 → 最新价格动态 → 精选比价表 → 赞助位 → 方法说明与分享入口。
 // 首页只展示已核验价格（verifiedFeatured），核验不足时才回退到全量并如实标注。
-import { models, plans, prices, providers } from "@/data";
+// "最新价格动态"来自每日管线的变动记录——让首屏就有"数据在动"的活证据。
+import { getModelById, models, plans, priceChanges, prices, providers } from "@/data";
 import { enrichPrices } from "@/lib/enrich";
 import { formatCny, formatTokens } from "@/lib/format";
 import { estimateSubscriptionPlan } from "@/lib/pricing";
@@ -10,6 +11,15 @@ import { PriceTable } from "@/components/PriceTable";
 import { SponsorSlot } from "@/components/SponsorSlot";
 import { FreshnessBanner } from "@/components/FreshnessBanner";
 import { getSponsorForPlacement } from "@/data";
+
+// 变动字段的人话标签（与 /data-status、RSS 保持同一套口径）
+const FIELD_LABELS: Record<string, string> = {
+  inputPricePerMTokens: "输入价",
+  outputPricePerMTokens: "输出价",
+  cacheReadPricePerMTokens: "缓存价",
+  billingMode: "计费方式",
+  dataStatus: "核验状态",
+};
 
 const paths = [
   { title: "按量计费", note: "输入、输出、缓存按 token 扣费" },
@@ -26,6 +36,8 @@ export default function HomePage() {
   const samplePlan = plans[1];
   const samplePlanEstimate = estimateSubscriptionPlan(samplePlan, cheapest?.effectiveInputPrice);
   const verifiedPriceCount = prices.filter((price) => price.dataStatus === "verified").length;
+  // 首页只展示最近 3 条变动：证明数据在动，完整列表交给 /data-status 和 /price-drops
+  const latestChanges = priceChanges.changes.slice(0, 3);
 
   return (
     <main className="page-shell">
@@ -82,6 +94,34 @@ export default function HomePage() {
             <div className="metric-label">订阅破局点</div>
             <div className="metric-value">{samplePlanEstimate.breakEvenTokens ? formatTokens(samplePlanEstimate.breakEvenTokens) : "—"}</div>
             <div className="metric-note">按样例套餐估算；低于该用量时按量可能更划算</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="section-heading">
+          <div>
+            <h2>最新价格动态</h2>
+            <p>每日与公开来源逐字段核对，价格动一动这里就有记录。</p>
+          </div>
+          <a href="/price-drops" className="button button-small">查看降价动态</a>
+        </div>
+        <div className="card card-pad stack">
+          {latestChanges.map((change) => {
+            const model = getModelById(change.modelId);
+            const detail = change.changes
+              .map((diff) => `${FIELD_LABELS[diff.field] ?? diff.field} ${String(diff.from)} → ${String(diff.to)}`)
+              .join("；");
+            return (
+              <div key={change.priceId} className="small">
+                <a href={model ? `/models/${model.slug}` : "/data-status"} className="strong">{model?.name ?? change.modelId}</a>
+                <span className="muted"> · {detail}</span>
+              </div>
+            );
+          })}
+          {latestChanges.length === 0 && <div className="small muted">最近一轮对比未发现变动。</div>}
+          <div className="small muted">
+            想第一时间收到降价通知？<a href="/feed.xml" className="strong">订阅 RSS</a>，或直接调用<a href="/data-api" className="strong">免费数据 API</a>。
           </div>
         </div>
       </section>

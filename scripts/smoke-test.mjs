@@ -108,6 +108,25 @@ const pricesBadOk = pricesBad.status === 400;
 console.log(`${pricesBadOk ? "PASS" : "FAIL"} GET /api/prices?status=bogus (${pricesBad.status})`);
 if (!pricesBadOk) failed += 1;
 
+// 历史序列 API：带 model 返回已变动序列；缺 model 参数应 400
+total += 1;
+const historyApi = await fetch(`${base}/api/price-history?model=kimi-k3`);
+const historyData = await historyApi.json();
+const historyOk =
+  historyApi.ok &&
+  historyData.ok === true &&
+  Array.isArray(historyData.data) &&
+  historyData.meta.snapshotPoints >= 2 &&
+  typeof historyData.meta.proHint === "string";
+console.log(`${historyOk ? "PASS" : "FAIL"} GET /api/price-history?model=kimi-k3 (${historyApi.status}, ${historyData.data?.length ?? 0} series)`);
+if (!historyOk) failed += 1;
+
+total += 1;
+const historyMissing = await fetch(`${base}/api/price-history`);
+const historyMissingOk = historyMissing.status === 400;
+console.log(`${historyMissingOk ? "PASS" : "FAIL"} GET /api/price-history without model (${historyMissing.status})`);
+if (!historyMissingOk) failed += 1;
+
 // 销售线索 API：非法请求应被校验拦截（不落盘）
 total += 1;
 const leadsBad = await fetch(`${base}/api/leads`, {

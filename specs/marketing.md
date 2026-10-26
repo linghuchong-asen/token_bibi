@@ -178,11 +178,11 @@
 ### Day 6：数据资产
 **目标：建立可持续内容来源。**
 
-- [ ] 建立 `模型 + 平台 + 计费方式` 长尾页模板
-- [ ] 建立每周价格变化报告
+- [x] 建立 `模型 + 平台 + 计费方式` 长尾页模板（模型/平台详情页 + /topics 专题，10-27 确认）
+- [x] 建立价格变化报告：每日管线自动生成，/data-status 公示 + /price-drops 降价专页（10-27）
 - [ ] 建立模型破局点数据集
-- [ ] 开放 JSON 数据接口
-- [ ] 提供 RSS / Sitemap
+- [x] 开放 JSON 数据接口：GET /api/prices（默认仅已核验）+ /api/price-history（时间序列），CSV 输出支持表格直连（10-27）
+- [x] 提供 RSS / Sitemap：/feed.xml（价格变动 RSS）+ /sitemap.xml（10-27）
 
 **示例页面**
 - `gpt / 订阅 / openrouter`

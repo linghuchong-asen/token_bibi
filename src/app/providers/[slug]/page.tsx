@@ -3,7 +3,7 @@
 // 经 commercial 助手处理：配置了 affiliateUrl 的平台自动切换推广链接并披露。
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCardKeyRule, getModelById, getPlansForProvider, getPricesForProvider, getProviderBySlug, getRechargeRule, providers } from "@/data";
+import { getCardKeyRule, getModelById, getPlansForProvider, getPricesForProvider, getProviderBySlug, getRechargeRule, priceChanges, providers } from "@/data";
 import { enrichPrices } from "@/lib/enrich";
 import { formatCny, formatDate } from "@/lib/format";
 import { estimateSubscriptionPlan } from "@/lib/pricing";
@@ -24,6 +24,17 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
   const cardKey = getCardKeyRule(provider.id);
   const providerPrices = enrichPrices(getPricesForProvider(provider.id));
   const providerPlans = getPlansForProvider(provider.id);
+  // 该平台最近有没有价格下调：有就在页面顶部亮出来（实时性可感知，且对买方有用）
+  const providerCuts = priceChanges.changes.filter((change) =>
+    change.providerId === provider.id &&
+    change.changes.some(
+      (diff) =>
+        (diff.field === "inputPricePerMTokens" || diff.field === "outputPricePerMTokens") &&
+        typeof diff.from === "number" &&
+        typeof diff.to === "number" &&
+        diff.to < diff.from,
+    ),
+  );
 
   return (
     <main className="page-shell">
@@ -32,6 +43,19 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
       </div>
 
       <section className="card card-pad">
+        {providerCuts.length > 0 && (
+          <div className="note" style={{ marginBottom: 12 }}>
+            <strong>近日降价：</strong>
+            {providerCuts.map((change) => {
+              const model = getModelById(change.modelId);
+              const cuts = change.changes
+                .filter((diff) => diff.field === "inputPricePerMTokens" || diff.field === "outputPricePerMTokens")
+                .map((diff) => `${diff.from} → ${diff.to}`);
+              return <span key={change.priceId} style={{ marginRight: 12 }}>{model?.name ?? change.modelId}（{cuts.join("、")}）</span>;
+            })}
+            —— 数据来自每日来源复核，详见<Link href="/data-status" className="strong">数据状态页</Link>。
+          </div>
+        )}
         <div className="badge-row">
           <ProviderTypeBadge type={provider.type} />
           <DataStatusBadge status={provider.dataStatus} />

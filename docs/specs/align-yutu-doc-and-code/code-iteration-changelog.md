@@ -334,3 +334,22 @@
   4. checklist AC-9 营销面扩充至 14 项。
 - **影响范围**：营销资产与回归覆盖；无产品行为变化。
 - **验证方式**：33 文件 / 112 测试全过；烟测 30 项；8 个 E2E 场景全过。
+
+### 22. 新增：首页最新动态 + 平台降价提示 + 历史序列 API + 长尾专题扩充
+
+- **类型**：新增（产品功能 + SEO 长尾）
+- **涉及文件**：
+  - `src/app/page.tsx`：首页新增"最新价格动态"区块（最近 3 条变动 + RSS/API 导流）
+  - `src/app/providers/[slug]/page.tsx`：平台详情页新增"近日降价"提示条（按平台过滤变动记录）
+  - `src/app/api/price-history/route.ts`（新增）：`GET /api/price-history?model=`
+    返回模型价格时间序列（只含已变动序列），与 /api/prices 共用限流，
+    meta 注明 Pro 层边界；`/data-api` 页面补该接口文档
+  - `src/app/topics/[slug]/page.tsx` + `src/app/topics/page.tsx`：新增两篇
+    事件策划专题——《Kimi K3 降价了：现在多少钱？》《qwen3.8-max 下架了？替代方案》
+  - `specs/marketing.md`：Day 6 数据资产清单 4 项勾选完成（长尾模板/变动报告/
+    JSON 接口/RSS）
+- **附带修复**：price-history API 初版误传模型 id 给 series 查询（应为价格 id
+  列表），烟测抓到 0 series 后修正。
+- **影响范围**：首页、平台详情页、新 API 路由、专题页。
+- **验证方式**：烟测 32 项（新增历史 API 200/400 两项）；112 单测 / 8 E2E 全过；
+  /price-drops Lighthouse performance 98 / a11y 100 / seo 100。

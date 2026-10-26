@@ -96,6 +96,13 @@ curl "https://tokenbibi.example.com/api/prices?provider=openrouter&status=all&li
         <div className="note">把价格表放进自己的报表、周报或价格监控表里，是我们最希望看到的用法——署名即可。</div>
       </section>
 
+      <section className="section card card-pad stack">
+        <h2 style={{ marginTop: 0 }}>价格历史序列（机器人 / 监控友好）</h2>
+        <div className="small muted">除快照列表外，还可以直接拉某个模型的价格时间序列——已过滤掉从未变动的价格：</div>
+        <pre className="kbd" style={{ padding: 14, whiteSpace: "pre-wrap" }}>{`curl "https://tokenbibi.example.com/api/price-history?model=kimi-k3"`}</pre>
+        <div className="small muted">返回该模型每条价格的 capturedAt / 输入 / 输出 / 缓存 / 状态序列，配合 RSS 可以实现自己的降价监控。免费层与 /api/prices 共用限流。</div>
+      </section>
+
       <section className="section">
         <LeadForm
           product="api_subscription"
