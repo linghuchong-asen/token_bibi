@@ -1,4 +1,5 @@
-
+// 文件用途：全站顶部导航（所属模块：src/components，所有页面共用）
+// "数据状态"入口常驻导航：数据可信度是本产品的卖点，必须让用户随时能查证。
 const links = [
   { href: "/models", label: "模型比价" },
   { href: "/providers", label: "平台比价" },
@@ -6,6 +7,7 @@ const links = [
   { href: "/credits", label: "积分 / 充值" },
   { href: "/card-keys", label: "卡密 / 兑换码" },
   { href: "/calculator", label: "计算器" },
+  { href: "/data-status", label: "数据状态" },
 ];
 
 export function SiteHeader() {

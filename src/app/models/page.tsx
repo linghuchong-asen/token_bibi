@@ -1,7 +1,10 @@
+// 文件用途：模型比价列表页（所属模块：src/app/models，静态生成 + 客户端筛选）
+// 顶部先声明数据新鲜度，再进入比价表格——比价结论的可信度取决于数据状态。
 import { getSponsorForPlacement, prices } from "@/data";
 import { enrichPrices } from "@/lib/enrich";
 import { ModelsExplorer } from "@/components/ModelsExplorer";
 import { SponsorSlot } from "@/components/SponsorSlot";
+import { FreshnessBanner } from "@/components/FreshnessBanner";
 
 export const metadata = { title: "模型比价" };
 
@@ -14,6 +17,10 @@ export default function ModelsPage() {
           <h1 style={{ margin: 0, fontSize: 34 }}>模型比价</h1>
           <p>同一模型在不同平台、不同计费方式下的真实成本。</p>
         </div>
+      </div>
+      <div style={{ marginBottom: 14 }}>
+        {/* 比价结果的可信度取决于数据新鲜度，先声明状态再给结论 */}
+        <FreshnessBanner prices={prices} />
       </div>
       <div style={{ marginBottom: 18 }}>
         <SponsorSlot sponsor={getSponsorForPlacement("models")} compact />

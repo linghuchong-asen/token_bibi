@@ -1,0 +1,35 @@
+[
+  {
+    "id": "home-hero",
+    "placement": "home",
+    "name": "首页推荐位",
+    "position": "首页 hero 下方卡片，进站第一屏",
+    "priceCnyPerMonth": 1680,
+    "launchPriceCnyPerMonth": 980,
+    "slots": 1,
+    "specs": ["标题 + 一句话描述 + 链接", "明确标注“广告”", "不接受自动跳转和诱导下载"],
+    "fitFor": "API 中转站、云服务器、开发者工具"
+  },
+  {
+    "id": "models-banner",
+    "placement": "models",
+    "name": "比价页横幅",
+    "position": "模型比价页顶部，用户比价决策时看到",
+    "priceCnyPerMonth": 980,
+    "launchPriceCnyPerMonth": 580,
+    "slots": 1,
+    "specs": ["单行横幅：标题 + 描述 + 链接", "明确标注“赞助”", "不影响比价表格排序"],
+    "fitFor": "API 网关、监测工具、支付/换汇服务"
+  },
+  {
+    "id": "footer-link",
+    "placement": "footer",
+    "name": "页脚文字链",
+    "position": "全站页脚，长尾流量入口",
+    "priceCnyPerMonth": 480,
+    "launchPriceCnyPerMonth": 280,
+    "slots": 2,
+    "specs": ["文字链 + 短描述", "明确标注“广告”", "rel=sponsored"],
+    "fitFor": "风控检测、账号工具、周边服务"
+  }
+]

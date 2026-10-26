@@ -1,3 +1,6 @@
+// 文件用途：全站静态数据入口（所属模块：src/data，被所有页面与 API 引用）
+// 把 data/*.json 统一收敛为类型化常量，并提供按 slug/id 的查找助手。
+// 页面在构建时读取这里的数据，数据更新后需要重新 build 才会生效（每日管线最后一步）。
 import modelsJson from "../../data/models.json";
 import providersJson from "../../data/providers.json";
 import pricesJson from "../../data/prices.json";
@@ -5,7 +8,9 @@ import plansJson from "../../data/plans.json";
 import rechargeRulesJson from "../../data/recharge-rules.json";
 import cardKeyRulesJson from "../../data/card-key-rules.json";
 import sponsorsJson from "../../data/sponsors.json";
-import type { CardKeyRule, Model, Price, Provider, RechargeRule, Sponsor, SubscriptionPlan } from "./types";
+import priceChangesJson from "../../data/price-changes.json";
+import adProductsJson from "../../data/ad-products.json";
+import type { AdProduct, CardKeyRule, Model, Price, PriceChangeReport, Provider, RechargeRule, Sponsor, SubscriptionPlan } from "./types";
 
 export const models = modelsJson as Model[];
 export const providers = providersJson as Provider[];
@@ -14,6 +19,8 @@ export const plans = plansJson as SubscriptionPlan[];
 export const rechargeRules = rechargeRulesJson as RechargeRule[];
 export const cardKeyRules = cardKeyRulesJson as CardKeyRule[];
 export const sponsors = sponsorsJson as Sponsor[];
+export const priceChanges = priceChangesJson as PriceChangeReport;
+export const adProducts = adProductsJson as AdProduct[];
 
 export function getModelBySlug(slug: string): Model | undefined {
   return models.find((model) => model.slug === slug || model.id === slug);

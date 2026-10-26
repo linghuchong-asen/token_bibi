@@ -1,0 +1,72 @@
+{
+  "generatedAt": "2026-10-26T15:38:07.574Z",
+  "baseline": "2026-10-26T15-27-50",
+  "comparedFields": [
+    "inputPricePerMTokens",
+    "outputPricePerMTokens",
+    "cacheReadPricePerMTokens",
+    "billingMode",
+    "dataStatus"
+  ],
+  "changedCount": 4,
+  "changes": [
+    {
+      "priceId": "openrouter-glm-5-3-flash-credit",
+      "providerId": "openrouter",
+      "modelId": "glm-5-3-flash",
+      "changes": [
+        {
+          "field": "dataStatus",
+          "from": "pending_review",
+          "to": "verified"
+        }
+      ]
+    },
+    {
+      "priceId": "openrouter-kimi-k3-credit",
+      "providerId": "openrouter",
+      "modelId": "kimi-k3",
+      "changes": [
+        {
+          "field": "inputPricePerMTokens",
+          "from": 1.1592,
+          "to": 1.0944
+        },
+        {
+          "field": "cacheReadPricePerMTokens",
+          "from": 1.0872,
+          "to": 1.0224
+        },
+        {
+          "field": "dataStatus",
+          "from": "pending_review",
+          "to": "verified"
+        }
+      ]
+    },
+    {
+      "priceId": "openrouter-deepseek-v4-1-flash-credit",
+      "providerId": "openrouter",
+      "modelId": "deepseek-v4-1-flash",
+      "changes": [
+        {
+          "field": "dataStatus",
+          "from": "pending_review",
+          "to": "verified"
+        }
+      ]
+    },
+    {
+      "priceId": "openrouter-qwen3-8-max-credit",
+      "providerId": "openrouter",
+      "modelId": "qwen3-8-max",
+      "changes": [
+        {
+          "field": "dataStatus",
+          "from": "verified",
+          "to": "pending_review"
+        }
+      ]
+    }
+  ]
+}

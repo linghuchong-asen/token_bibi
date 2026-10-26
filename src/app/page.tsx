@@ -1,3 +1,6 @@
+// 文件用途：首页（所属模块：src/app，静态生成）
+// 结构：数据新鲜度横幅 → 三个核心数字 → 精选比价表 → 赞助位 → 方法说明与分享入口。
+// 首页只展示已核验价格（verifiedFeatured），核验不足时才回退到全量并如实标注。
 import { models, plans, prices, providers } from "@/data";
 import { enrichPrices } from "@/lib/enrich";
 import { formatCny, formatTokens } from "@/lib/format";
@@ -5,6 +8,7 @@ import { estimateSubscriptionPlan } from "@/lib/pricing";
 import { priceStatusNote } from "@/lib/data-status";
 import { PriceTable } from "@/components/PriceTable";
 import { SponsorSlot } from "@/components/SponsorSlot";
+import { FreshnessBanner } from "@/components/FreshnessBanner";
 import { getSponsorForPlacement } from "@/data";
 
 const paths = [
@@ -49,6 +53,11 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="section">
+        {/* 数据新鲜度横幅：把"截至何时、核验了多少"放在首屏，真实性可被第一眼验证 */}
+        <FreshnessBanner prices={prices} />
       </section>
 
       <section className="section">

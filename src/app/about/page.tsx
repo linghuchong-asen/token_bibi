@@ -1,3 +1,6 @@
+// 文件用途：数据方法与商业边界页（所属模块：src/app/about，静态生成）
+// 回答两类问题：数据怎么来的（真实性），本站怎么赚钱（商业透明）。
+// 盈利方式全部列在明面上，与数据独立性互为背书。
 import Link from "next/link";
 
 export const metadata = { title: "数据方法与商业边界" };
@@ -36,6 +39,17 @@ export default function AboutPage() {
             <li>收录不等于推荐</li>
           </ul>
         </div>
+      </section>
+
+      <section className="section card card-pad">
+        <h2 style={{ marginTop: 0 }}>我们怎么赚钱</h2>
+        <p className="muted">盈利方式全部公开。数据侧与商业侧分离：收入来源无法改变任何一条价格、评分或排序。</p>
+        <div className="stack">
+          <div className="note"><strong>① 广告位：</strong>固定数量的位次（首页 / 比价页 / 页脚），明码标价、明确标注，售完即止。<Link href="/advertise" className="strong">查看刊例价 →</Link></div>
+          <div className="note"><strong>② 数据 API 订阅：</strong>免费层人人可用；Pro / 企业层提供更高配额、历史价格与变动推送。<Link href="/data-api" className="strong">查看 API →</Link></div>
+          <div className="note"><strong>③ 推广分成（AFF）：</strong>个别平台的“访问官网”按钮可能是推广链接，出现时页面会明确披露；没有披露的链接不带任何返佣。</div>
+        </div>
+        <div className="warning">以上收入都不会改变：已核验价格的判定标准、比价的默认排序、风险的披露口径。</div>
       </section>
 
       <section className="section card card-pad">

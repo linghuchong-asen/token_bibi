@@ -1,3 +1,7 @@
+// 文件用途：全站数据类型定义（所属模块：src/data）
+// 所有 data/*.json 的运行时形状都在这里声明；商业化字段（commercialRelation、
+// affiliateUrl、AdProduct 等）与数据可信度字段（dataStatus、verificationMethod）
+// 一并定义，保证"收入入口"与"数据可信度"在类型层就绑在一起。
 export type BillingMode = "pay_as_you_go" | "subscription" | "credit" | "fixed" | "per_request";
 export type ProviderType = "official_api" | "aggregator" | "relay" | "new_api_instance";
 export type DataStatus = "sample" | "pending_review" | "verified";
@@ -25,6 +29,9 @@ export type Provider = {
   name: string;
   type: ProviderType;
   websiteUrl: string;
+  // 推广分成链接：null 表示纯自然收录；非空时所有出站"访问官网"链接
+  // 都会用它并带 rel="sponsored"，页面同时展示"含推广链接"披露声明。
+  affiliateUrl: string | null;
   pricingUrl: string | null;
   monitorUrl: string | null;
   supportUrl: string | null;
@@ -126,4 +133,35 @@ export type Sponsor = {
   label: string;
   tone: SponsorTone;
   enabled: boolean;
+};
+
+// 价格变动记录：由 scripts/price-changelog.mjs 对比基线快照与当前数据生成，
+// 用于 /data-status 页面向用户证明"价格确实在实时跟踪"。
+export type PriceChangeEntry = {
+  priceId: string;
+  providerId: string;
+  modelId: string;
+  changes: { field: string; from: number | string | null; to: number | string | null }[];
+};
+
+export type PriceChangeReport = {
+  generatedAt: string;
+  baseline: string;
+  comparedFields: string[];
+  changedCount: number;
+  changes: PriceChangeEntry[];
+};
+
+// 广告位产品定义：/advertise 页的定价与规格说明（运营改价只动 JSON，不动代码）。
+// launchPrice 为首发期价格；priceCnyPerMonth 是长期刊例价。
+export type AdProduct = {
+  id: string;
+  placement: SponsorPlacement;
+  name: string;
+  position: string;
+  priceCnyPerMonth: number;
+  launchPriceCnyPerMonth: number;
+  slots: number;
+  specs: string[];
+  fitFor: string;
 };

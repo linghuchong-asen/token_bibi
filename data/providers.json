@@ -1,5 +1,6 @@
 [
   {
+    "affiliateUrl": null,
     "id": "openrouter",
     "slug": "openrouter",
     "name": "OpenRouter",
@@ -26,6 +27,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "siliconflow",
     "slug": "siliconflow",
     "name": "硅基流动 SiliconFlow",
@@ -52,6 +54,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "302ai",
     "slug": "302ai",
     "name": "302.AI",
@@ -77,6 +80,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "aihubmix",
     "slug": "aihubmix",
     "name": "AIHubMix",
@@ -103,6 +107,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "newapi-demo",
     "slug": "newapi-demo",
     "name": "New API 示例站",
@@ -129,6 +134,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "official-openai",
     "slug": "official-openai",
     "name": "OpenAI 官方",
@@ -152,6 +158,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "official-anthropic",
     "slug": "official-anthropic",
     "name": "Anthropic 官方",
@@ -175,6 +182,7 @@
     "updatedAt": "2026-10-21"
   },
   {
+    "affiliateUrl": null,
     "id": "official-zhipu",
     "slug": "official-zhipu",
     "name": "智谱 AI 官方",

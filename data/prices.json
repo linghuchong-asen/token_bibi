@@ -67,9 +67,9 @@
     "groupMultiplier": 1,
     "stabilityScore": 96,
     "sourceUrl": "https://openrouter.ai/api/v1/models",
-    "lastVerifiedAt": "2026-10-25T19:45:02.153Z",
-    "dataStatus": "pending_review",
-    "verificationMethod": null
+    "lastVerifiedAt": "2026-10-26T15:28:27.149Z",
+    "dataStatus": "verified",
+    "verificationMethod": "source_check"
   },
   {
     "id": "siliconflow-glm-5-3-flash-pay_as_you_go",
@@ -319,18 +319,18 @@
     "providerId": "openrouter",
     "modelId": "kimi-k3",
     "currency": "CNY",
-    "inputPricePerMTokens": 1.7208,
-    "outputPricePerMTokens": 77.76,
-    "cacheReadPricePerMTokens": 1.512,
+    "inputPricePerMTokens": 1.0944,
+    "outputPricePerMTokens": 144,
+    "cacheReadPricePerMTokens": 1.0224,
     "billingMode": "credit",
     "rechargeRatio": "1 CNY = 1.0 credits",
     "modelMultiplier": 1,
     "groupMultiplier": 1,
     "stabilityScore": 96,
     "sourceUrl": "https://openrouter.ai/api/v1/models",
-    "lastVerifiedAt": "2026-10-25T19:45:02.153Z",
-    "dataStatus": "pending_review",
-    "verificationMethod": null
+    "lastVerifiedAt": "2026-10-26T15:35:43.228Z",
+    "dataStatus": "verified",
+    "verificationMethod": "source_check"
   },
   {
     "id": "openrouter-deepseek-v4-1-flash-credit",
@@ -346,9 +346,9 @@
     "groupMultiplier": 1,
     "stabilityScore": 96,
     "sourceUrl": "https://openrouter.ai/api/v1/models",
-    "lastVerifiedAt": "2026-10-25T19:45:02.153Z",
-    "dataStatus": "pending_review",
-    "verificationMethod": null
+    "lastVerifiedAt": "2026-10-26T15:28:27.149Z",
+    "dataStatus": "verified",
+    "verificationMethod": "source_check"
   },
   {
     "id": "openrouter-qwen3-8-max-credit",
@@ -365,8 +365,8 @@
     "stabilityScore": 96,
     "sourceUrl": "https://openrouter.ai/api/v1/models",
     "lastVerifiedAt": "2026-10-22T16:24:44.825Z",
-    "dataStatus": "verified",
-    "verificationMethod": "source_check"
+    "dataStatus": "pending_review",
+    "verificationMethod": null
   },
   {
     "id": "openrouter-grok-4-7-credit",

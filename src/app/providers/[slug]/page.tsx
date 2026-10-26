@@ -1,9 +1,13 @@
+// 文件用途：平台详情页（所属模块：src/app/providers/[slug]，静态生成）
+// 展示平台的充值规则、风险与来源、模型价格与订阅套餐；出站"访问官网"链接
+// 经 commercial 助手处理：配置了 affiliateUrl 的平台自动切换推广链接并披露。
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCardKeyRule, getModelById, getPlansForProvider, getPricesForProvider, getProviderBySlug, getRechargeRule, providers } from "@/data";
 import { enrichPrices } from "@/lib/enrich";
 import { formatCny, formatDate } from "@/lib/format";
 import { estimateSubscriptionPlan } from "@/lib/pricing";
+import { hasAffiliateRelation, providerOutboundRel, providerOutboundUrl } from "@/lib/commercial";
 import { PriceTable } from "@/components/PriceTable";
 import { DataStatusBadge, ProviderTypeBadge } from "@/components/Badges";
 
@@ -36,10 +40,15 @@ export default async function ProviderDetailPage({ params }: { params: Promise<{
         <h1 style={{ margin: "14px 0 8px", fontSize: 38, letterSpacing: "-0.03em" }}>{provider.name}</h1>
         <p className="muted" style={{ marginTop: 0 }}>{provider.summary}</p>
         <div className="hero-actions">
-          <a href={provider.websiteUrl} target="_blank" rel="noreferrer" className="button button-primary">访问官网</a>
+          {/* 出站链接统一走 commercial 助手：配置了 affiliateUrl 的平台自动切换
+              推广链接并带 rel="sponsored"，同时下方出现披露声明 */}
+          <a href={providerOutboundUrl(provider)} target="_blank" rel={providerOutboundRel(provider)} className="button button-primary">访问官网</a>
           {provider.pricingUrl && <a href={provider.pricingUrl} target="_blank" rel="noreferrer" className="button">查看价格页</a>}
           {provider.monitorUrl && <a href={provider.monitorUrl} target="_blank" rel="noreferrer" className="button">监测页</a>}
         </div>
+        {hasAffiliateRelation(provider) && (
+          <p className="small muted" style={{ marginBottom: 0 }}>含推广链接：通过上面按钮注册或充值可能为本站带来返佣，不影响价格数据与排序。</p>
+        )}
       </section>
 
       <section className="section split">

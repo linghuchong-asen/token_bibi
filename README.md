@@ -47,12 +47,19 @@ npm run lighthouse
 - 设计原型：`/prototype.html`
 - 长尾专题：面向具体搜索意图
 - SEO：`/sitemap.xml`、`/robots.txt`
-- 数据方法 / 商业边界
-- 赞助位合作：`/advertise`
+- 数据方法 / 商业边界（含"我们怎么赚钱"）
+- 赞助位合作：`/advertise`（刊例价、余位、自助申请表单，线索落盘 `data/sponsor-leads.jsonl`）
+- 数据 API 订阅：`/data-api` 产品页 + 公开接口 `GET /api/prices`（免费层 60 次/分钟/IP，默认仅已核验价格）
+- 推广分成机制：`providers.json.affiliateUrl` 配置后出站链接自动带 `rel="sponsored"` 并披露
 - 数据纠错：`/feedback`
+- 销售线索：`/api/leads`（广告位申请与 API 订阅咨询统一入口）
+- 数据状态公开：`/data-status`（分平台核验统计、最近价格变动、核验方法说明）
+- 数据新鲜度：首页与比价页顶部横幅；价格表超 7 天未复核就地标红
+- 价格变动记录：`npm run changelog:prices` 对比基线快照生成 `data/price-changes.json`
 - 数据快照：`npm run snapshot`
-- 当前价格：24 条记录，其中 15 条已完成公开来源复核（OpenRouter 10 条、SiliconFlow 2 条、Anthropic 官方 2 条、智谱官方 1 条），9 条仍为样例数据
+- 当前价格：24 条记录，其中 14 条已完成公开来源复核（OpenRouter 9 条、SiliconFlow 2 条、Anthropic 官方 2 条、智谱官方 1 条）、1 条待核验（源站已下架，等待人工处理）、9 条仍为样例数据
 - 来源复核 CLI 会重新抓取 OpenRouter、SiliconFlow、Claude 官方和智谱官方定价源并逐字段比对；只有完全一致的价格才会标记为已核验
+- 幽灵核验防线：`npm run review:demote-stale` 把源站已不认可（改价/下架）的已核验价格自动降回待核验
 - 每日导入会保留价格未变化记录的已核验状态，避免采集任务把核验结果重置为待核验
 - 数据质量：`data/quality-report.json` 显示 0 个孤儿价格、0 个重复 ID
 - 价格导入：`npm run import:prices`
@@ -70,6 +77,7 @@ npm run lighthouse
 ## 营销发布工具包
 
 - `marketing/`：7 天冷启动、30 天内容日历、社区文案、合作模板和指标表
+- `specs/monetization.md`：盈利方案（三个收入入口、定价、单位经济与 90 天目标）
 
 ## 数据说明
 
