@@ -18,6 +18,8 @@ export function SiteFooter() {
         <div className="footer-links">
           <a href="/about">数据方法</a>
           <a href="/data-status">数据状态</a>
+          <a href="/faq">常见问题</a>
+          <a href="/feed.xml">RSS 订阅</a>
           <a href="/feedback">数据纠错</a>
           <a href="/about#disclaimer">免责声明</a>
           <a href="/models">模型比价</a>

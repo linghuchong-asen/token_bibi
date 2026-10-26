@@ -6,7 +6,7 @@ const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tokenbibi.example.c
 // 文件用途：站点 sitemap 生成（所属模块：src/app，构建时执行）
 // 静态页 + 模型/平台详情页全量收录；数据状态页承载"真实性承诺"，需要被搜索引擎看到。
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/models", "/providers", "/subscriptions", "/credits", "/card-keys", "/calculator", "/topics", "/about", "/share", "/data-status", "/data-api", "/advertise"].map((path) => ({
+  const staticRoutes = ["", "/models", "/providers", "/subscriptions", "/credits", "/card-keys", "/calculator", "/topics", "/about", "/share", "/data-status", "/data-api", "/advertise", "/faq"].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date("2026-10-22"),
     changeFrequency: path === "" ? "daily" as const : "weekly" as const,

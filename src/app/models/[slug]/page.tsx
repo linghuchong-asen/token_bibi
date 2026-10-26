@@ -1,3 +1,9 @@
+// 文件用途：模型详情页（所属模块：src/app/models/[slug]，静态生成）
+// 结构：概览（最低价/上下文）→ 平台比价表 → 价格走势（快照序列）→ 订阅套餐 → 数据说明。
+// SEO/传播面：generateMetadata 提供描述与 OG 图（复用分享卡 PNG，1200x630），
+// JSON-LD 输出 Product/AggregateOffer 结构化数据——只有已核验价格才进入 Offer，
+// 待核验与样例不进结构化数据，避免把未确认价格写进搜索引擎的理解。
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getModelBySlug, getPricesForModel, getProviderById, models, plans } from "@/data";
@@ -6,11 +12,37 @@ import { enrichPrices } from "@/lib/enrich";
 import { formatCny, formatDate, formatTokens } from "@/lib/format";
 import { commonVerificationMethod, priceStatusNote, summarizeDataStatus } from "@/lib/data-status";
 import { estimateSubscriptionPlan } from "@/lib/pricing";
+import { modelPriceSeries } from "@/lib/price-history";
 import { PriceTable } from "@/components/PriceTable";
+import { PriceTrend } from "@/components/PriceTrend";
 import { DataStatusBadge } from "@/components/Badges";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tokenbibi.example.com";
 
 export function generateStaticParams() {
   return models.map((model) => ({ slug: model.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const model = getModelBySlug(slug);
+  if (!model) return { title: "模型未找到" };
+  const modelPrices = enrichPrices(getPricesForModel(model.id));
+  const verified = modelPrices.filter((price) => price.dataStatus === "verified");
+  const cheapest = [...(verified.length > 0 ? verified : modelPrices)].sort((a, b) => a.effectiveInputPrice - b.effectiveInputPrice)[0];
+  const priceText = cheapest ? `低至 ¥${cheapest.effectiveInputPrice}/1M 输入（${cheapest.provider.name}）` : "多平台真实成本对比";
+  const statusText = verified.length > 0 ? "价格已与公开来源逐字段复核" : "价格标注核验状态";
+  return {
+    title: `${model.name} 价格对比`,
+    description: `${model.name}（${model.vendor}）在各平台的真实成本：${priceText}。${statusText}，按量/订阅/积分/卡密同一口径比较。`,
+    openGraph: {
+      title: `${model.name} 价格对比 · token比比`,
+      description: `${priceText} · ${statusText}`,
+      images: [`/api/share-card?model=${model.slug}`],
+    },
+    twitter: { card: "summary_large_image" },
+    alternates: { canonical: `${SITE_URL}/models/${model.slug}` },
+  };
 }
 
 export default async function ModelDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,9 +61,40 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
   const priceStatus = summarizeDataStatus(modelPrices);
   const verificationMethod = commonVerificationMethod(modelPrices);
   const relatedPlans = plans.filter((plan) => plan.modelScope.includes("*") || plan.modelScope.includes(model.id));
+  const priceSeriesList = modelPriceSeries(modelPrices.map((price) => price.id));
+  const changedSeries = priceSeriesList.filter((series) => series.changed);
+  const providerNameOf = (price: EnrichedPrice) => price.provider.name;
+
+  // JSON-LD：只输出已核验价格的 Offer。 AggregateOffer 的 lowPrice 取已核验最低有效输入价。
+  const jsonLd = verifiedModelPrices.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: model.name,
+        brand: { "@type": "Brand", name: model.vendor },
+        description: `${model.name} 在各平台的 API 真实成本对比（已核验价格）`,
+        offers: {
+          "@type": "AggregateOffer",
+          priceCurrency: "CNY",
+          lowPrice: Math.min(...verifiedModelPrices.map((price) => price.effectiveInputPrice)),
+          highPrice: Math.max(...verifiedModelPrices.map((price) => price.effectiveInputPrice)),
+          offerCount: verifiedModelPrices.length,
+          offers: verifiedModelPrices.map((price) => ({
+            "@type": "Offer",
+            price: price.effectiveInputPrice,
+            priceCurrency: "CNY",
+            seller: { "@type": "Organization", name: price.provider.name },
+            url: `${SITE_URL}/models/${model.slug}`,
+          })),
+        },
+      }
+    : null;
 
   return (
     <main className="page-shell">
+      {jsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      )}
       <div className="breadcrumbs">
         <Link href="/">首页</Link><span>/</span><Link href="/models">模型比价</Link><span>/</span><span>{model.name}</span>
       </div>
@@ -81,6 +144,29 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           <PriceTable rows={modelPrices} />
         </div>
       </section>
+
+      {changedSeries.length > 0 ? (
+        <section className="section">
+          <div className="section-heading">
+            <div>
+              <h2>价格走势</h2>
+              <p>来自每日自动快照，只显示真实变动过的价格；从未变动的不画线。</p>
+            </div>
+            <Link href="/data-status" className="button button-small">查看数据状态</Link>
+          </div>
+          <div className="grid-3">
+            {changedSeries.map((series) => {
+              const price = modelPrices.find((item) => item.id === series.priceId);
+              if (!price) return null;
+              return <PriceTrend key={series.priceId} series={series} providerName={providerNameOf(price)} />;
+            })}
+          </div>
+        </section>
+      ) : (
+        <section className="section">
+          <div className="note">该模型的价格还没有被快照捕捉到变化。每日自动采集会持续累积历史，出现调价时这里会出现走势图。</div>
+        </section>
+      )}
 
       <section className="section">
         <div className="section-heading">

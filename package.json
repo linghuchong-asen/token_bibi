@@ -25,6 +25,7 @@
     "review:verify-sources": "node scripts/review-prices.mjs --verify-matched",
     "review:demote-stale": "node scripts/review-prices.mjs --demote-stale",
     "changelog:prices": "node scripts/price-changelog.mjs",
+    "history:prices": "node scripts/price-history.mjs",
     "collect:official": "node scripts/collect-official-prices.mjs",
     "preview": "bash scripts/preview-prod.sh"
   },

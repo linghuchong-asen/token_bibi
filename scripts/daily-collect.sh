@@ -19,6 +19,7 @@ npm run import:prices -- --file data/imports/official-collected.csv
 npm run review:demote-stale
 
 npm run changelog:prices
+npm run history:prices
 npm run snapshot
 npm run quality:report
 

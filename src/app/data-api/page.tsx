@@ -81,6 +81,21 @@ curl "https://tokenbibi.example.com/api/prices?provider=openrouter&status=all&li
         </div>
       </section>
 
+      <section className="section card card-pad stack">
+        <h2 style={{ marginTop: 0 }}>电子表格直接接入（不用写代码）</h2>
+        <p className="muted" style={{ marginTop: 0 }}>
+          API 支持 CSV 输出（<code className="kbd">?format=csv</code>），Google Sheets 和 Excel 一条公式即可把最新已核验价格拉进表格，数据随每日采集自动更新。
+        </p>
+        <div className="stack small">
+          <div><strong>Google Sheets：</strong></div>
+          <pre className="kbd" style={{ padding: 12, whiteSpace: "pre-wrap" }}>{`=IMPORTDATA("https://tokenbibi.example.com/api/prices?format=csv")`}</pre>
+          <div><strong>Excel（365 / WEBSERVICE）：</strong></div>
+          <pre className="kbd" style={{ padding: 12, whiteSpace: "pre-wrap" }}>{`=WEBSERVICE("https://tokenbibi.example.com/api/prices?format=csv")`}</pre>
+          <div className="muted">按模型过滤：<code className="kbd">?format=csv&model=glm-5-3-flash</code>；需要样例/待核验数据加 <code className="kbd">&status=all</code>。免费层限流同样适用于表格拉取。</div>
+        </div>
+        <div className="note">把价格表放进自己的报表、周报或价格监控表里，是我们最希望看到的用法——署名即可。</div>
+      </section>
+
       <section className="section">
         <LeadForm
           product="api_subscription"

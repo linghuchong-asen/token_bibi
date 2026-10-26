@@ -54,11 +54,26 @@ function buildFixtureProject() {
       dataStatus: "pending_review",
     },
   ];
-  // 基线快照名按日期排序必须排在新快照之前（脚本取 dirs[0] 为最旧快照）
+  // 三个快照：基线取"上一个快照"（第二新的），语义是"本轮相对上一轮的变化"，
+  // 而不是相对最旧快照的无界累积。最旧快照与上一个快照同内容（用于确认
+  // 不会误选最旧的作为基线）。
   mkdirSync(path.join(root, "data", "snapshots", "2026-10-26T00-00-00"), { recursive: true });
   writeFileSync(path.join(root, "data", "snapshots", "2026-10-26T00-00-00", "prices.json"), JSON.stringify(baselinePrices));
+  // 上一个快照：内容为"调价前"的旧数据——基线应取它而不是更旧的 26 日快照
+  const previousPrices = [
+    {
+      ...baselinePrices[0],
+      inputPricePerMTokens: 1.2,
+      outputPricePerMTokens: 2.0,
+      dataStatus: "verified",
+    },
+    baselinePrices[1],
+  ];
   mkdirSync(path.join(root, "data", "snapshots", "2026-10-27T00-00-00"), { recursive: true });
-  writeFileSync(path.join(root, "data", "snapshots", "2026-10-27T00-00-00", "prices.json"), JSON.stringify(currentPrices));
+  writeFileSync(path.join(root, "data", "snapshots", "2026-10-27T00-00-00", "prices.json"), JSON.stringify(previousPrices));
+  // 最新快照：与当前 prices.json 相同的内容（本轮已留档）
+  mkdirSync(path.join(root, "data", "snapshots", "2026-10-27T06-00-00"), { recursive: true });
+  writeFileSync(path.join(root, "data", "snapshots", "2026-10-27T06-00-00", "prices.json"), JSON.stringify(currentPrices));
   writeFileSync(path.join(root, "data", "prices.json"), JSON.stringify(currentPrices));
   return root;
 }
@@ -77,7 +92,8 @@ describe("price changelog script", () => {
       expect(fields).toContain("inputPricePerMTokens");
       expect(fields).toContain("dataStatus");
       expect(report.changes[0].changes.find((change: { field: string }) => change.field === "inputPricePerMTokens").to).toBeCloseTo(1.5, 12);
-      expect(report.baseline).toBe("2026-10-26T00-00-00");
+      // 基线必须是"上一个快照"（27 日），而不是最旧的 26 日快照
+      expect(report.baseline).toBe("2026-10-27T00-00-00");
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

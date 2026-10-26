@@ -3,6 +3,8 @@
 // 直接消费我们的已核验价格数据，把 token比比 变成"AI 成本数据源"。
 // 免费层：60 次/分钟/IP，要求署名；Pro 层（付费）将提供更高配额、
 // 历史变动与 Webhook 推送——配额与套餐在 /data-api 页面公开。
+// 支持 format=json（默认）与 format=csv：CSV 是 Google Sheets IMPORTDATA /
+// Excel WEBSERVICE 的唯一通用格式，电子表格接入（最低门槛的采用路径）靠它。
 //
 // 为什么默认只返回已核验价格：对外输出的每一条数据都代表本站信誉，
 // 样例/待核验数据必须显式传 status 才能拿到。
@@ -14,6 +16,61 @@ import { checkRateLimit, RATE_LIMIT_FREE_PER_MINUTE, rateLimitStore } from "@/li
 export const runtime = "nodejs";
 
 const VALID_STATUSES = new Set(["verified", "pending_review", "sample"]);
+
+const CSV_HEADERS = [
+  "provider",
+  "model",
+  "currency",
+  "input_per_m",
+  "output_per_m",
+  "cache_per_m",
+  "billing_mode",
+  "data_status",
+  "verified_at",
+  "source_url",
+];
+
+function csvEscape(value: string): string {
+  return /[",\n\r]/.test(value) ? `"${value.replace(/"/g, '""')}"` : value;
+}
+
+function toCsv(rows: ReturnType<typeof toApiRows>): string {
+  const lines = [CSV_HEADERS.join(",")];
+  for (const row of rows) {
+    lines.push(CSV_HEADERS.map((header) => csvEscape(String(row[header as keyof typeof row] ?? ""))).join(","));
+  }
+  return `${lines.join("\n")}\n`;
+}
+
+type ApiRow = {
+  provider: string;
+  model: string;
+  currency: string;
+  inputPricePerMTokens: number;
+  outputPricePerMTokens: number;
+  cachePricePerMTokens: number | null;
+  billingMode: string;
+  dataStatus: string;
+  verificationMethod: string | null;
+  lastVerifiedAt: string;
+  sourceUrl: string;
+};
+
+function toApiRows(filtered: typeof prices, limit: number): ApiRow[] {
+  return filtered.slice(0, Math.min(Math.max(limit, 1), 500)).map((price) => ({
+    provider: price.providerId,
+    model: price.modelId,
+    currency: price.currency,
+    inputPricePerMTokens: price.inputPricePerMTokens,
+    outputPricePerMTokens: price.outputPricePerMTokens,
+    cachePricePerMTokens: price.cacheReadPricePerMTokens,
+    billingMode: price.billingMode,
+    dataStatus: price.dataStatus,
+    verificationMethod: price.verificationMethod ?? null,
+    lastVerifiedAt: price.lastVerifiedAt,
+    sourceUrl: price.sourceUrl,
+  }));
+}
 
 export async function GET(request: Request) {
   // 限流先行：以最左侧转发 IP 为准（本地部署无代理时直接用对端地址）
@@ -37,6 +94,7 @@ export async function GET(request: Request) {
   const providerParam = url.searchParams.get("provider");
   const statusParam = url.searchParams.get("status") ?? "verified";
   const limitParam = Number(url.searchParams.get("limit") ?? 200);
+  const format = url.searchParams.get("format") ?? "json";
 
   if (!VALID_STATUSES.has(statusParam)) {
     return NextResponse.json({ ok: false, error: "INVALID_STATUS", message: `status 仅支持 ${[...VALID_STATUSES, "all"].join(", ")}` }, { status: 400, headers });
@@ -60,26 +118,25 @@ export async function GET(request: Request) {
   });
 
   const summary = freshnessSummary(prices);
-  const data = filtered.slice(0, Math.min(Math.max(limitParam, 1), 500)).map((price) => ({
-    provider: price.providerId,
-    model: price.modelId,
-    currency: price.currency,
-    inputPricePerMTokens: price.inputPricePerMTokens,
-    outputPricePerMTokens: price.outputPricePerMTokens,
-    cacheReadPricePerMTokens: price.cacheReadPricePerMTokens,
-    billingMode: price.billingMode,
-    dataStatus: price.dataStatus,
-    verificationMethod: price.verificationMethod ?? null,
-    lastVerifiedAt: price.lastVerifiedAt,
-    sourceUrl: price.sourceUrl,
-  }));
+  const rows = toApiRows(filtered, limitParam);
+
+  // CSV 输出：电子表格（Sheets IMPORTDATA / Excel WEBSERVICE）的接入格式
+  if (format === "csv") {
+    return new Response(toCsv(rows), {
+      headers: {
+        "Content-Type": "text/csv; charset=utf-8",
+        "Content-Disposition": "inline; filename=tokenbibi-prices.csv",
+        ...headers,
+      },
+    });
+  }
 
   return NextResponse.json(
     {
       ok: true,
       meta: {
         generatedAt: new Date().toISOString(),
-        count: data.length,
+        count: rows.length,
         // 数据水位随响应一起给出，消费方可以自证引用的是多新的数据
         verifiedRatio: Number(summary.verifiedRatio.toFixed(4)),
         newestVerifiedAt: summary.newestVerifiedAt,
@@ -87,7 +144,7 @@ export async function GET(request: Request) {
         attribution: "数据来源：token比比 (tokenbibi.example.com)，转载需署名",
         pricing: "更高配额与历史变动数据见 /data-api",
       },
-      data,
+      data: rows,
     },
     { headers },
   );

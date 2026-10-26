@@ -251,3 +251,34 @@
 - **验证方式**：嵌入卡实测输出"数据截至 2026-10-23 · 已核验 · 来源复核"；
   新增 4 个断言（状态映射、日期格式、硬编码移除、已核验优先）；102 测试 /
   25 烟测 / 7 E2E 全过。
+
+---
+
+## 2026-10-27（清晨功能与营销轮）
+
+### 18. 新增：RSS 价格变动订阅 + 价格走势图 + 结构化数据（功能 × 营销）
+
+- **类型**：新增（产品功能 + SEO/传播）
+- **涉及文件**：
+  - `src/app/feed.xml/route.ts`（新增）：RSS 2.0 订阅，条目来自价格变动记录，
+    链接回模型详情页；布局声明 RSS 自动发现，页脚新增入口
+  - `scripts/price-history.mjs`（新增）+ `npm run history:prices`：遍历快照 +
+    当前数据生成 `data/price-history.json` 时间序列（内容未变的快照自动去重）；
+    接入每日管线（changelog → history → snapshot）
+  - `src/lib/price-history.ts`（新增）+ `src/components/PriceTrend.tsx`（新增）：
+    模型详情页"价格走势"区块，内联 SVG 折线（零客户端 JS），只画真实变动过
+    的价格，输入/输出各自归一化，百分比涨跌文字并列
+  - `src/app/models/[slug]/page.tsx`：新增 `generateMetadata`（描述 + OG 图
+    复用分享卡 PNG）与 JSON-LD Product/AggregateOffer（只含已核验价格的 Offer）
+  - `src/app/api/prices/route.ts`：新增 `format=csv` 输出——Google Sheets
+    IMPORTDATA / Excel WEBSERVICE 的接入格式
+- **变更说明**：把"实时性"从后台管线升级为用户可感知、可订阅、可引用的功能；
+  把 SEO 结构化数据与社交分享图补齐（此前模型页连 description 都没有）。
+  营销素材：`marketing/community-posts.md` 新增"实测故事"系列——
+  kimi-k3 单日三次调价（-33% / -6% / +5%）的真实记录就是最好的传播钩子。
+- **附带修正**：`price-changelog.mjs` 基线从"最旧快照"改为"上一个快照"，
+  "最近价格变动"从无界累积变为最近一轮差异。
+- **影响范围**：模型详情页、全站布局、API、每日管线、营销文案。
+- **验证方式**：104 → 109 个单测（price-history/feed/changelog 基线）；
+  烟测 28 项（新增 /faq、/feed.xml、CSV）；浏览器目检走势图渲染正确；
+  实测 RSS 输出 4 条真实变动条目。

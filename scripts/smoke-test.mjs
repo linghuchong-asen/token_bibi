@@ -16,6 +16,8 @@ const checks = [
   { path: "/advertise", expect: "广告位合作" },
   { path: "/data-api", expect: "价格数据 API" },
   { path: "/data-status", expect: "数据状态与新鲜度" },
+  { path: "/faq", expect: "常见问题" },
+  { path: "/feed.xml", expect: "<rss" },
   { path: "/feedback", expect: "数据纠错" },
   { path: "/admin/prices", expect: "价格核验" },
   { path: "/models/gpt-5-6-sol", expect: "GPT-5.6 Sol" },
@@ -88,6 +90,14 @@ const pricesOk =
   typeof pricesData.meta.newestVerifiedAt === "string";
 console.log(`${pricesOk ? "PASS" : "FAIL"} GET /api/prices (${pricesApi.status}, ${pricesData.data?.length ?? 0} rows)`);
 if (!pricesOk) failed += 1;
+
+// CSV 输出：电子表格接入（Sheets IMPORTDATA / Excel WEBSERVICE）依赖的格式
+total += 1;
+const pricesCsv = await fetch(`${base}/api/prices?format=csv`);
+const csvText = await pricesCsv.text();
+const csvOk = pricesCsv.ok && csvText.startsWith("provider,model,") && csvText.split("\n").length > 2;
+console.log(`${csvOk ? "PASS" : "FAIL"} GET /api/prices?format=csv (${pricesCsv.status}, ${csvText.split("\n").length - 2} rows)`);
+if (!csvOk) failed += 1;
 
 // 无效 status 参数应被拒绝
 total += 1;
