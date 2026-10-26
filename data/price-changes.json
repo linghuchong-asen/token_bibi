@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T15:38:07.574Z",
+  "generatedAt": "2026-10-26T20:31:06.376Z",
   "baseline": "2026-10-26T15-27-50",
   "comparedFields": [
     "inputPricePerMTokens",
@@ -30,12 +30,12 @@
         {
           "field": "inputPricePerMTokens",
           "from": 1.1592,
-          "to": 1.0944
+          "to": 1.1448
         },
         {
           "field": "cacheReadPricePerMTokens",
           "from": 1.0872,
-          "to": 1.0224
+          "to": 1.0728
         },
         {
           "field": "dataStatus",
@@ -49,6 +49,21 @@
       "providerId": "openrouter",
       "modelId": "deepseek-v4-1-flash",
       "changes": [
+        {
+          "field": "inputPricePerMTokens",
+          "from": 0.144,
+          "to": 0.34344
+        },
+        {
+          "field": "outputPricePerMTokens",
+          "from": 7.2,
+          "to": 1.37376
+        },
+        {
+          "field": "cacheReadPricePerMTokens",
+          "from": 0.108,
+          "to": 0.006869
+        },
         {
           "field": "dataStatus",
           "from": "pending_review",

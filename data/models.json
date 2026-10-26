@@ -191,5 +191,26 @@
     "aliases": [
       "claude-opus-5"
     ]
+  },
+  {
+    "id": "qwen3-8-max-0902",
+    "slug": "qwen3-8-max-0902",
+    "name": "Qwen3.8-Max 0902",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-02",
+    "aliases": [
+      "qwen3.8-max-0902",
+      "qwen3.8-max-20260902"
+    ]
   }
 ]

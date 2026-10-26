@@ -61,8 +61,10 @@
 
 ## 当前数据（2026-10-27 凌晨口径）
 
-- 模型：10；平台：8；价格：24 条
-- 已核验：14（OpenRouter 9、SiliconFlow 2、Anthropic 官方 2、智谱官方 1）
+- 模型：11；平台：8；价格：25 条
+- 已核验：15（OpenRouter 10、SiliconFlow 2、Anthropic 官方 2、智谱官方 1）
+  - OpenRouter 新增 `qwen3-8-max-0902`（下架模型 qwen3-8-max 的官方快照替代版，
+    价格与原版一致：14.4 / 43.2 / 1.8 CNY，已来源复核）
 - 待核验：1（`openrouter-qwen3-8-max-credit`，源站已下架——**待产品决策**：挂着等回归还是移除）
 - 样例：9（其中 `siliconflow-kimi-k3` 对应模型已在源站下架，同为待决策项）
 - 孤儿价格：0；重复 ID：0

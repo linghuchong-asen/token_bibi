@@ -57,7 +57,7 @@ npm run lighthouse
 - 数据新鲜度：首页与比价页顶部横幅；价格表超 7 天未复核就地标红
 - 价格变动记录：`npm run changelog:prices` 对比基线快照生成 `data/price-changes.json`
 - 数据快照：`npm run snapshot`
-- 当前价格：24 条记录，其中 14 条已完成公开来源复核（OpenRouter 9 条、SiliconFlow 2 条、Anthropic 官方 2 条、智谱官方 1 条）、1 条待核验（源站已下架，等待人工处理）、9 条仍为样例数据
+- 当前价格：25 条记录，其中 15 条已完成公开来源复核（OpenRouter 10 条、SiliconFlow 2 条、Anthropic 官方 2 条、智谱官方 1 条）、1 条待核验（源站已下架，等待人工处理）、9 条仍为样例数据
 - 来源复核 CLI 会重新抓取 OpenRouter、SiliconFlow、Claude 官方和智谱官方定价源并逐字段比对；只有完全一致的价格才会标记为已核验
 - 幽灵核验防线：`npm run review:demote-stale` 把源站已不认可（改价/下架）的已核验价格自动降回待核验
 - 每日导入会保留价格未变化记录的已核验状态，避免采集任务把核验结果重置为待核验
