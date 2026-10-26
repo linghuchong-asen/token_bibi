@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-label="订阅套餐页 低保真桌面端线框图">
+  <rect x="0" y="0" width="1440" height="900" fill="#ffffff"/>
+  <rect x="24" y="24" width="1392" height="852" fill="none" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="48" y="52" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#18181b">订阅套餐页</text>
+  <text x="48" y="74" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" fill="#71717a">Desktop 1440×900 · Low-fidelity wireframe</text>
+  <rect x="48" y="96" width="1344" height="72" rx="14" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="76" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="16" font-weight="700" fill="#18181b">token比比</text>
+  <text x="220" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">模型比价</text>
+  <text x="310" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">平台比价</text>
+  <text x="400" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">订阅</text>
+  <text x="470" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">积分 / 充值</text>
+  <text x="580" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">卡密 / 兑换码</text>
+  <text x="700" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">计算器</text>
+  <rect x="790" y="114" width="300" height="38" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="812" y="139" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">搜索模型、平台、计费方式…</text>
+  <rect x="1120" y="114" width="90" height="38" rx="8" fill="#18181b" stroke="#18181b" stroke-width="1"/>
+  <text x="1140" y="139" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#ffffff">登录</text>
+  <rect x="1220" y="114" width="120" height="38" rx="8" fill="#ffffff" stroke="#18181b" stroke-width="1"/>
+  <text x="1245" y="139" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#18181b">开始计算</text>
+  <rect x="48" y="190" width="1344" height="80" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="64" y="220" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">订阅套餐比价</text>
+  <text x="80" y="240" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">按月 / 按年 / 按额度 / 按模型范围</text>
+  <rect x="48" y="300" width="640" height="220" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="64" y="330" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">套餐卡片 1：OpenRouter Standard</text>
+  <text x="80" y="350" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">月费：$20</text>
+  <text x="240" y="350" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">额度：50M tokens</text>
+  <text x="400" y="350" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">周期：月</text>
+  <text x="80" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">模型范围：全部模型</text>
+  <text x="240" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">重置周期：每月</text>
+  <text x="400" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">超额：按量</text>
+  <rect x="748" y="300" width="644" height="220" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="764" y="330" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">套餐卡片 2：New API Pro</text>
+  <text x="780" y="350" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">月费：￥99</text>
+  <text x="940" y="350" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">额度：100M credits</text>
+  <text x="1100" y="350" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">周期：月</text>
+  <text x="780" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">模型范围：GPT / Claude / Gemini</text>
+  <text x="940" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">重置周期：每月</text>
+  <text x="1100" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">超额：禁用</text>
+  <rect x="48" y="550" width="640" height="240" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="64" y="580" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">订阅 vs 按量破局点</text>
+  <text x="80" y="600" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#3f3f46">当月用量 &gt; 42M tokens 时，订阅更划算</text>
+  <rect x="80" y="620" width="500" height="30" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <rect x="80" y="620" width="250" height="30" rx="8" fill="#18181b" stroke="#18181b" stroke-width="1"/>
+  <text x="100" y="640" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="11" font-weight="400" fill="#ffffff">订阅更优区</text>
+  <rect x="748" y="550" width="644" height="240" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="764" y="580" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">订阅规则与限制</text>
+  <text x="780" y="600" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">总额度：500M / 月</text>
+  <text x="1000" y="600" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">重置：每月 1 日</text>
+  <text x="780" y="630" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">模型范围：全部主流模型</text>
+  <text x="1000" y="630" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">超额：按量 1.2x</text>
+  <text x="780" y="660" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">发票：支持</text>
+  <text x="1000" y="660" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#52525b">退款：不支持</text>
+  <line x1="48" y1="848" x2="1392" y2="848" stroke="#e4e4e7" stroke-width="1"/>
+  <text x="48" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">© 2026 token比比</text>
+  <text x="140" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">数据来源</text>
+  <text x="230" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">免责声明</text>
+  <text x="320" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">商业合作</text>
+  <text x="1220" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#a1a1aa">Low-fi wireframe v0.1</text>
+
+</svg>

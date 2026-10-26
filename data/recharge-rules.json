@@ -1,0 +1,84 @@
+[
+  {
+    "id": "openrouter-credit",
+    "providerId": "openrouter",
+    "currency": "CNY",
+    "rechargeRatio": "1 CNY = 1.0 credits",
+    "minimumTopUp": 10,
+    "discount": null,
+    "balanceExpiry": null,
+    "refundable": false,
+    "allowedModels": [
+      "*"
+    ],
+    "sourceUrl": "https://openrouter.ai/pricing",
+    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
+    "dataStatus": "sample"
+  },
+  {
+    "id": "siliconflow-credit",
+    "providerId": "siliconflow",
+    "currency": "CNY",
+    "rechargeRatio": "1 CNY = 1.0 credits",
+    "minimumTopUp": 1,
+    "discount": null,
+    "balanceExpiry": null,
+    "refundable": false,
+    "allowedModels": [
+      "*"
+    ],
+    "sourceUrl": "https://www.siliconflow.cn/pricing",
+    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
+    "dataStatus": "sample"
+  },
+  {
+    "id": "302ai-credit",
+    "providerId": "302ai",
+    "currency": "CNY",
+    "rechargeRatio": "1 CNY = 1.0 credits",
+    "minimumTopUp": 10,
+    "discount": 0.95,
+    "balanceExpiry": null,
+    "refundable": false,
+    "allowedModels": [
+      "*"
+    ],
+    "sourceUrl": "https://302.ai/pricing",
+    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
+    "dataStatus": "sample"
+  },
+  {
+    "id": "aihubmix-credit",
+    "providerId": "aihubmix",
+    "currency": "CNY",
+    "rechargeRatio": "1 CNY = 1.0 credits",
+    "minimumTopUp": 5,
+    "discount": null,
+    "balanceExpiry": null,
+    "refundable": false,
+    "allowedModels": [
+      "*"
+    ],
+    "sourceUrl": "https://aihubmix.com/models",
+    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
+    "dataStatus": "sample"
+  },
+  {
+    "id": "newapi-credit",
+    "providerId": "newapi-demo",
+    "currency": "CNY",
+    "rechargeRatio": "1 CNY = 1.2 credits",
+    "minimumTopUp": 10,
+    "discount": null,
+    "balanceExpiry": "365 天",
+    "refundable": false,
+    "allowedModels": [
+      "gpt-5-6-sol",
+      "claude-sonnet-5",
+      "gemini-3-8-flash"
+    ],
+    "sourceUrl": "https://docs.newapi.ai/zh/docs/guide/feature-guide/user/wallet",
+    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
+    "dataStatus": "sample"
+  }
+]

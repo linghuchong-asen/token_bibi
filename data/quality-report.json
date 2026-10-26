@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-10-25T19:45:06.439Z",
+  "summary": {
+    "models": 10,
+    "providers": 8,
+    "prices": 24,
+    "plans": 5,
+    "rechargeRules": 5,
+    "cardKeyRules": 5,
+    "pendingReview": 3,
+    "stalePrices": 0,
+    "modelsWithoutPrices": 0,
+    "providersWithoutPrices": 0
+  },
+  "issues": {
+    "duplicatePriceIds": [],
+    "pendingReviewPrices": [
+      "openrouter-glm-5-3-flash-credit",
+      "openrouter-kimi-k3-credit",
+      "openrouter-deepseek-v4-1-flash-credit"
+    ],
+    "stalePrices": [],
+    "modelsWithoutPrices": [],
+    "providersWithoutPrices": [],
+    "orphanPrices": [],
+    "invalidPlans": [],
+    "invalidRechargeRules": [],
+    "invalidCardKeyRules": []
+  }
+}

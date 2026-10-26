@@ -1,0 +1,35 @@
+[
+  {
+    "id": "home-cloud-stack",
+    "placement": "home",
+    "title": "云服务器 / 网络线路",
+    "description": "适合 VPS、轻量云、CDN 和开发者基础设施服务。",
+    "sponsorName": "示例赞助位",
+    "targetUrl": "/advertise",
+    "label": "广告",
+    "tone": "green",
+    "enabled": true
+  },
+  {
+    "id": "models-api-gateway",
+    "placement": "models",
+    "title": "API Gateway / 中转站",
+    "description": "公开价格、监测页和优惠入口可放这里，不影响自然排序。",
+    "sponsorName": "示例赞助位",
+    "targetUrl": "/advertise",
+    "label": "赞助",
+    "tone": "blue",
+    "enabled": true
+  },
+  {
+    "id": "footer-risk-check",
+    "placement": "footer",
+    "title": "购买前检测工具",
+    "description": "IP 纯净度、支付环境、账号安全和风控检测工具。",
+    "sponsorName": "示例赞助位",
+    "targetUrl": "/advertise",
+    "label": "广告",
+    "tone": "amber",
+    "enabled": true
+  }
+]

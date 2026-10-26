@@ -1,0 +1,10 @@
+[Unit]
+Description=Run token比比 automation runner every 15 minutes
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+Unit=token-bibi-automation.service
+
+[Install]
+WantedBy=timers.target

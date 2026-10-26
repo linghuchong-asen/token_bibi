@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-label="首页 低保真桌面端线框图">
+  <rect x="0" y="0" width="1440" height="900" fill="#ffffff"/>
+  <rect x="24" y="24" width="1392" height="852" fill="none" stroke="#a1a1aa" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="48" y="52" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="20" font-weight="700" fill="#18181b">首页</text>
+  <text x="48" y="74" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" fill="#71717a">Desktop 1440×900 · Low-fidelity wireframe</text>
+  <rect x="48" y="96" width="1344" height="72" rx="14" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="76" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="16" font-weight="700" fill="#18181b">token比比</text>
+  <text x="220" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">模型比价</text>
+  <text x="310" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">平台比价</text>
+  <text x="400" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">订阅</text>
+  <text x="470" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">积分 / 充值</text>
+  <text x="580" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">卡密 / 兑换码</text>
+  <text x="700" y="140" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#52525b">计算器</text>
+  <rect x="790" y="114" width="300" height="38" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="812" y="139" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">搜索模型、平台、计费方式…</text>
+  <rect x="1120" y="114" width="90" height="38" rx="8" fill="#18181b" stroke="#18181b" stroke-width="1"/>
+  <text x="1140" y="139" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#ffffff">登录</text>
+  <rect x="1220" y="114" width="120" height="38" rx="8" fill="#ffffff" stroke="#18181b" stroke-width="1"/>
+  <text x="1245" y="139" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#18181b">开始计算</text>
+  <rect x="48" y="190" width="700" height="130" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="64" y="220" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">Hero：不要只看 token 单价</text>
+  <text x="80" y="240" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="13" font-weight="400" fill="#71717a">副标题：按量 / 订阅 / 积分 / 卡密，统一折算成可比较成本</text>
+  <rect x="80" y="270" width="140" height="40" rx="8" fill="#18181b" stroke="#18181b" stroke-width="1"/>
+  <text x="100" y="296" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#ffffff">开始计算</text>
+  <rect x="240" y="270" width="140" height="40" rx="8" fill="#ffffff" stroke="#18181b" stroke-width="1"/>
+  <text x="260" y="296" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#18181b">查看模型比价</text>
+  <rect x="788" y="190" width="604" height="130" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="804" y="220" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">四类购买路径</text>
+  <rect x="808" y="240" width="128" height="60" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="826" y="267" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#3f3f46">按量计费</text>
+  <rect x="946" y="240" width="128" height="60" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="964" y="267" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#3f3f46">订阅套餐</text>
+  <rect x="1084" y="240" width="128" height="60" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="1102" y="267" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#3f3f46">积分 / 额度</text>
+  <rect x="1222" y="240" width="128" height="60" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="1240" y="267" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#3f3f46">卡密 / 兑换码</text>
+  <rect x="48" y="350" width="1344" height="360" rx="12" fill="#ffffff" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="64" y="380" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">真实成本对比表</text>
+  <rect x="80" y="400" width="1280" height="34" rx="8" fill="#f4f4f5" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="90" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">模型</text>
+  <text x="270" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">平台</text>
+  <text x="450" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">标价</text>
+  <text x="590" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">充值汇率</text>
+  <text x="730" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">倍率</text>
+  <text x="850" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">有效成本</text>
+  <text x="1000" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">更新时间</text>
+  <text x="1180" y="422" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="600" fill="#52525b">操作</text>
+  <rect x="80" y="434" width="1280" height="34" rx="0" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="260" y1="434" x2="260" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="440" y1="434" x2="440" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="580" y1="434" x2="580" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="720" y1="434" x2="720" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="840" y1="434" x2="840" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="990" y1="434" x2="990" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="1170" y1="434" x2="1170" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="80" y1="468" x2="1360" y2="468" stroke="#e4e4e7" stroke-width="1"/>
+  <rect x="80" y="468" width="1280" height="34" rx="0" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="260" y1="468" x2="260" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="440" y1="468" x2="440" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="580" y1="468" x2="580" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="720" y1="468" x2="720" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="840" y1="468" x2="840" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="990" y1="468" x2="990" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="1170" y1="468" x2="1170" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="80" y1="502" x2="1360" y2="502" stroke="#e4e4e7" stroke-width="1"/>
+  <rect x="80" y="502" width="1280" height="34" rx="0" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="260" y1="502" x2="260" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="440" y1="502" x2="440" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="580" y1="502" x2="580" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="720" y1="502" x2="720" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="840" y1="502" x2="840" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="990" y1="502" x2="990" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="1170" y1="502" x2="1170" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="80" y1="536" x2="1360" y2="536" stroke="#e4e4e7" stroke-width="1"/>
+  <rect x="80" y="536" width="1280" height="34" rx="0" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="260" y1="536" x2="260" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="440" y1="536" x2="440" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="580" y1="536" x2="580" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="720" y1="536" x2="720" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="840" y1="536" x2="840" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="990" y1="536" x2="990" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="1170" y1="536" x2="1170" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="80" y1="570" x2="1360" y2="570" stroke="#e4e4e7" stroke-width="1"/>
+  <rect x="80" y="570" width="1280" height="34" rx="0" fill="#ffffff" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="260" y1="570" x2="260" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="440" y1="570" x2="440" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="580" y1="570" x2="580" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="720" y1="570" x2="720" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="840" y1="570" x2="840" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="990" y1="570" x2="990" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="1170" y1="570" x2="1170" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <line x1="80" y1="604" x2="1360" y2="604" stroke="#e4e4e7" stroke-width="1"/>
+  <rect x="48" y="730" width="1344" height="90" rx="12" fill="#f8fafc" stroke="#d4d4d8" stroke-width="1"/>
+  <text x="64" y="760" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" font-weight="700" fill="#18181b">分享区：生成分享卡片 / 复制链接 / 嵌入组件</text>
+  <line x1="48" y1="848" x2="1392" y2="848" stroke="#e4e4e7" stroke-width="1"/>
+  <text x="48" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">© 2026 token比比</text>
+  <text x="140" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">数据来源</text>
+  <text x="230" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">免责声明</text>
+  <text x="320" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#71717a">商业合作</text>
+  <text x="1220" y="874" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" font-weight="400" fill="#a1a1aa">Low-fi wireframe v0.1</text>
+
+</svg>

@@ -1,0 +1,195 @@
+[
+  {
+    "id": "gpt-5-6-sol",
+    "slug": "gpt-5-6-sol",
+    "name": "GPT-5.6 Sol",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-07-09",
+    "aliases": [
+      "gpt-5.6",
+      "gpt-5.6-sol"
+    ]
+  },
+  {
+    "id": "claude-sonnet-5",
+    "slug": "claude-sonnet-5",
+    "name": "Claude Sonnet 5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-07-01",
+    "aliases": [
+      "claude-sonnet-5"
+    ]
+  },
+  {
+    "id": "gemini-3-8-flash",
+    "slug": "gemini-3-8-flash",
+    "name": "Gemini 3.8 Flash",
+    "vendor": "Google",
+    "family": "gemini",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-02",
+    "aliases": [
+      "gemini-3.8-flash"
+    ]
+  },
+  {
+    "id": "glm-5-3-flash",
+    "slug": "glm-5-3-flash",
+    "name": "GLM-5.3 Flash",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-08-26",
+    "aliases": [
+      "glm-5.3-flash"
+    ]
+  },
+  {
+    "id": "kimi-k3",
+    "slug": "kimi-k3",
+    "name": "Kimi K3",
+    "vendor": "Moonshot",
+    "family": "kimi",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-07-16",
+    "aliases": [
+      "kimi-k3"
+    ]
+  },
+  {
+    "id": "deepseek-v4-1-flash",
+    "slug": "deepseek-v4-1-flash",
+    "name": "DeepSeek V4.1 Flash",
+    "vendor": "DeepSeek",
+    "family": "deepseek",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": false,
+    "releaseDate": "2026-10-19",
+    "aliases": [
+      "deepseek-v4.1-flash"
+    ]
+  },
+  {
+    "id": "qwen3-8-max",
+    "slug": "qwen3-8-max",
+    "name": "Qwen3.8-Max",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-12",
+    "aliases": [
+      "qwen3.8-max"
+    ]
+  },
+  {
+    "id": "grok-4-7",
+    "slug": "grok-4-7",
+    "name": "Grok 4.7",
+    "vendor": "xAI",
+    "family": "grok",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "搜索"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-21",
+    "aliases": [
+      "grok-4.7"
+    ]
+  },
+  {
+    "id": "minimax-m3",
+    "slug": "minimax-m3",
+    "name": "MiniMax M3",
+    "vendor": "MiniMax",
+    "family": "minimax",
+    "capabilities": [
+      "识图",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-18",
+    "aliases": [
+      "minimax-m3"
+    ]
+  },
+  {
+    "id": "claude-opus-5",
+    "slug": "claude-opus-5",
+    "name": "Claude Opus 5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-07-25",
+    "aliases": [
+      "claude-opus-5"
+    ]
+  }
+]

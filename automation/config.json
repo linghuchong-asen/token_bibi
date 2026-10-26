@@ -1,0 +1,10 @@
+{
+  "model": "",
+  "sandbox": "workspace-write",
+  "approveForMe": true,
+  "timeoutMinutes": 20,
+  "maxAttempts": 3,
+  "backoffBaseSeconds": 60,
+  "backoffMaxSeconds": 900,
+  "maxTasksPerRun": 3
+}

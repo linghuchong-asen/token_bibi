@@ -1,0 +1,202 @@
+[
+  {
+    "id": "openrouter",
+    "slug": "openrouter",
+    "name": "OpenRouter",
+    "type": "aggregator",
+    "websiteUrl": "https://openrouter.ai",
+    "pricingUrl": "https://openrouter.ai/pricing",
+    "monitorUrl": "https://openrouter.ai/status",
+    "supportUrl": "https://openrouter.ai/support",
+    "commercialRelation": "none",
+    "summary": "多模型统一 API，购买 credits 后按量扣费。",
+    "upstreamType": "官方 API + 云厂商 + 聚合",
+    "paymentMethods": [
+      "信用卡",
+      "支付宝",
+      "USDC"
+    ],
+    "invoiceSupport": "unsupported",
+    "refundPolicy": "不支持退款",
+    "riskLabels": [
+      "上游混合",
+      "样本数据"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "siliconflow",
+    "slug": "siliconflow",
+    "name": "硅基流动 SiliconFlow",
+    "type": "aggregator",
+    "websiteUrl": "https://www.siliconflow.cn",
+    "pricingUrl": "https://www.siliconflow.cn/pricing",
+    "monitorUrl": null,
+    "supportUrl": "https://www.siliconflow.cn",
+    "commercialRelation": "none",
+    "summary": "国产模型 API 聚合，支持免费模型和按量计费。",
+    "upstreamType": "官方 API + 自建推理",
+    "paymentMethods": [
+      "支付宝",
+      "微信支付",
+      "企业转账"
+    ],
+    "invoiceSupport": "supported",
+    "refundPolicy": "以平台规则为准",
+    "riskLabels": [
+      "官方渠道",
+      "样本数据"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "302ai",
+    "slug": "302ai",
+    "name": "302.AI",
+    "type": "aggregator",
+    "websiteUrl": "https://302.ai",
+    "pricingUrl": "https://302.ai/pricing",
+    "monitorUrl": null,
+    "supportUrl": "https://302.ai",
+    "commercialRelation": "none",
+    "summary": "按用量付费的企业级 AI 资源平台。",
+    "upstreamType": "官方 API + 聚合",
+    "paymentMethods": [
+      "支付宝",
+      "微信支付"
+    ],
+    "invoiceSupport": "supported",
+    "refundPolicy": "以平台规则为准",
+    "riskLabels": [
+      "聚合平台",
+      "样本数据"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "aihubmix",
+    "slug": "aihubmix",
+    "name": "AIHubMix",
+    "type": "relay",
+    "websiteUrl": "https://aihubmix.com",
+    "pricingUrl": "https://aihubmix.com/models",
+    "monitorUrl": null,
+    "supportUrl": "https://docs.aihubmix.com",
+    "commercialRelation": "none",
+    "summary": "统一 OpenAI 兼容接口，按量计费。",
+    "upstreamType": "官方 API + 中转",
+    "paymentMethods": [
+      "支付宝",
+      "微信支付",
+      "信用卡"
+    ],
+    "invoiceSupport": "supported",
+    "refundPolicy": "以平台规则为准",
+    "riskLabels": [
+      "中转平台",
+      "上游需核实"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "newapi-demo",
+    "slug": "newapi-demo",
+    "name": "New API 示例站",
+    "type": "new_api_instance",
+    "websiteUrl": "https://newapi.pro",
+    "pricingUrl": "https://docs.newapi.ai/zh/docs/guide/feature-guide/user/wallet",
+    "monitorUrl": null,
+    "supportUrl": "https://docs.newapi.ai/zh/docs",
+    "commercialRelation": "none",
+    "summary": "基于 New API 的网关示例，支持余额、充值、兑换码和订阅。",
+    "upstreamType": "自部署网关 + 上游 API",
+    "paymentMethods": [
+      "易支付",
+      "Stripe",
+      "兑换码"
+    ],
+    "invoiceSupport": "unknown",
+    "refundPolicy": "由站点配置",
+    "riskLabels": [
+      "自部署实例",
+      "规则差异大"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "official-openai",
+    "slug": "official-openai",
+    "name": "OpenAI 官方",
+    "type": "official_api",
+    "websiteUrl": "https://platform.openai.com",
+    "pricingUrl": "https://openai.com/api/pricing",
+    "monitorUrl": "https://status.openai.com",
+    "supportUrl": "https://help.openai.com",
+    "commercialRelation": "none",
+    "summary": "官方 API，价格和稳定性以官方页面为准。",
+    "upstreamType": "官方 API",
+    "paymentMethods": [
+      "信用卡"
+    ],
+    "invoiceSupport": "supported",
+    "refundPolicy": "以官方条款为准",
+    "riskLabels": [
+      "官方渠道"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "official-anthropic",
+    "slug": "official-anthropic",
+    "name": "Anthropic 官方",
+    "type": "official_api",
+    "websiteUrl": "https://www.anthropic.com",
+    "pricingUrl": "https://www.anthropic.com/pricing",
+    "monitorUrl": "https://status.anthropic.com",
+    "supportUrl": "https://support.anthropic.com",
+    "commercialRelation": "none",
+    "summary": "Claude 官方 API。",
+    "upstreamType": "官方 API",
+    "paymentMethods": [
+      "信用卡"
+    ],
+    "invoiceSupport": "supported",
+    "refundPolicy": "以官方条款为准",
+    "riskLabels": [
+      "官方渠道"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  },
+  {
+    "id": "official-zhipu",
+    "slug": "official-zhipu",
+    "name": "智谱 AI 官方",
+    "type": "official_api",
+    "websiteUrl": "https://open.bigmodel.cn",
+    "pricingUrl": "https://open.bigmodel.cn/pricing",
+    "monitorUrl": null,
+    "supportUrl": "https://open.bigmodel.cn",
+    "commercialRelation": "none",
+    "summary": "GLM 系列模型官方 API。",
+    "upstreamType": "官方 API",
+    "paymentMethods": [
+      "支付宝",
+      "微信支付",
+      "企业转账"
+    ],
+    "invoiceSupport": "supported",
+    "refundPolicy": "以官方条款为准",
+    "riskLabels": [
+      "官方渠道"
+    ],
+    "dataStatus": "sample",
+    "updatedAt": "2026-10-21"
+  }
+]

@@ -1,0 +1,13 @@
+[Unit]
+Description=token比比 automation runner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/workspace/token_compare/token-bibi
+EnvironmentFile=-/root/workspace/token_compare/token-bibi/.env.production
+EnvironmentFile=-/root/workspace/token_compare/token-bibi/automation/.env.automation
+ExecStart=/usr/local/bin/npm run automation:run -- --max-tasks 1
+User=root
+TimeoutStartSec=1800

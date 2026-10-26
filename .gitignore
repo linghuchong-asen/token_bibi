@@ -1,0 +1,23 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.log
+.env
+.env.local
+coverage/
+
+*.tsbuildinfo
+
+data/feedback.jsonl
+
+.env.production
+.ai-logs/
+
+# generated/runtime artifacts
+data/snapshots/
+data/imports/
+data/lighthouse-report*.json
+automation/logs/
+automation/run.lock
+automation/state.json

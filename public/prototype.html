@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>token比比 · HTML 原型</title>
+<style>
+  :root{
+    --bg:#f8fafc;
+    --panel:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --line:#e2e8f0;
+    --blue:#2563eb;
+    --blue-soft:#eff6ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans CJK SC","Inter",system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+  .sidebar{background:var(--panel);border-right:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh;overflow:auto}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+  .brand-logo{width:36px;height:36px;border-radius:10px;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800}
+  .brand-title{font-size:18px;font-weight:800}
+  .nav-group-label{margin:16px 8px 8px;font-size:12px;color:var(--muted);font-weight:700}
+  .nav-item{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:10px;color:#475569;font-size:14px;cursor:pointer;border:1px solid transparent}
+  .nav-item:hover{background:var(--blue-soft);color:#1d4ed8}
+  .nav-item.active{background:var(--blue-soft);border-color:#bfdbfe;color:#1d4ed8;font-weight:700}
+  .nav-item small{font-size:11px;color:var(--muted)}
+  main{padding:28px 36px 80px;max-width:1500px}
+  .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+  .topbar h1{font-size:24px;margin:0}
+  .topbar p{margin:6px 0 0;color:var(--muted);font-size:13px}
+  .controls{display:flex;gap:8px}
+  .btn{border:1px solid var(--line);background:#fff;color:#334155;border-radius:10px;padding:10px 14px;font-size:13px;font-weight:600;cursor:pointer}
+  .btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+  .page-header{display:flex;justify-content:space-between;align-items:end;margin:24px 0 12px}
+  .page-header h2{font-size:20px;margin:0}
+  .page-header p{margin:6px 0 0;color:var(--muted);font-size:13px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:var(--blue-soft);color:#1d4ed8;border:1px solid #bfdbfe;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700}
+  .preview-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start}
+  .preview-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:0 10px 30px rgba(15,23,42,.06)}
+  .preview-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .preview-label strong{font-size:14px}
+  .preview-label span{font-size:11px;color:var(--muted)}
+  .preview-card img{width:100%;height:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .notes{margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .notes h3{margin:0 0 10px;font-size:15px}
+  .notes ul{margin:0;padding-left:18px;color:#475569;font-size:13px;line-height:1.7}
+  footer{margin-top:36px;color:var(--muted);font-size:12px}
+  @media(max-width:1000px){
+    .layout{grid-template-columns:1fr}
+    .sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+    main{padding:24px 18px}
+    .preview-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">比</div>
+      <div class="brand-title">token比比</div>
+    </div>
+    <div class="nav-group-label">页面范围</div>
+    <nav id="nav"></nav>
+  </aside>
+  <main>
+    <div class="topbar">
+      <div>
+        <h1>HTML 原型 · 快速验证版</h1>
+        <p>桌面端优先 · 低保真线框 + 高保真视觉稿 + 页面说明</p>
+      </div>
+      <div class="controls">
+        <button id="showHifi" class="btn active">高保真</button>
+        <button id="showWire" class="btn">低保真</button>
+        <button id="showBoth" class="btn">对比视图</button>
+      </div>
+    </div>
+    <div id="content"></div>
+    <footer>© 2026 token比比 · 本原型仅用于信息架构与关键交互验证，不包含真实数据。</footer>
+  </main>
+</div>
+
+<script>
+const pages=[
+  {id:'01-home',title:'首页',desc:'主入口，先给结论，再给四类购买路径和真实成本对比。',notes:['核心目标：5 秒理解产品价值，30 秒进入计算器。','主按钮必须唯一：开始计算。','首页必须直接展示“标价 vs 有效成本”的差异。','分享区前置，方便用户把结论带回社区。']},
+  {id:'02-models-compare',title:'模型比价页',desc:'模型列表、筛选器、比价表和有效成本排序。',notes:['左侧筛选器保持固定，右侧表格承载主信息。','默认排序必须是有效成本，而不是标价。','表格需要支持键盘排序和状态说明。','移动端会将表格降级为卡片列表。']},
+  {id:'03-model-detail',title:'模型详情页',desc:'单模型的多平台价格、能力标签和风险信息。',notes:['模型基础信息必须在首屏可读。','价格概览使用卡片，而不是长表格。','平台比价表强调有效成本和更新时间。','后续可加入“计算这个模型”按钮。']},
+  {id:'04-provider-detail',title:'平台详情页',desc:'平台计费规则、模型覆盖、支付方式和风险边界。',notes:['充值规则是核心，不只展示模型价格。','风险信息和数据来源必须同级展示。','商业关系必须可见，不能影响排序。','平台详情页是建立信任的关键页面。']},
+  {id:'05-subscriptions',title:'订阅套餐页',desc:'订阅套餐、额度、重置周期和破局点。',notes:['套餐卡片必须展示价格、额度、模型范围、超额规则。','破局点要直接告诉用户何时订阅更划算。','“不限额度”必须标注真实限制。','订阅页需要和计算器联动。']},
+  {id:'06-credits',title:'积分 / 充值页',desc:'内部额度、充值汇率、最低充值和有效成本。',notes:['核心是“标价 -> 有效成本”的换算。','必须显示最低充值和余额有效期。','常见陷阱直接前置，减少用户误判。','积分页需要和平台详情页互相跳转。']},
+  {id:'07-card-keys',title:'卡密 / 兑换码页',desc:'卡密、兑换码、网卡作为购买路径和风险维度。',notes:['卡密不参与价格倍率计算。','重点展示是否支持、使用规则、有效期、售后。','风险提示采用醒目但不恐吓的样式。','收录不等于推荐。']},
+  {id:'08-calculator',title:'成本计算器页',desc:'输入模型与用量，输出按量、订阅、积分和推荐路径。',notes:['左侧输入，右侧结论，保持一一对应。','推荐路径要给出原因，而不是只给价格。','破局点用进度条表达。','必须支持生成分享卡片和链接。']},
+  {id:'09-share-result',title:'分享结果页',desc:'分享卡片预览、分享方式和数据来源。',notes:['分享卡片必须能在不看正文的情况下理解结论。','分享链接要能恢复计算参数。','嵌入组件适合博客和文档。','数据来源和更新时间是信任底线。']},
+  {id:'10-topic-seo',title:'长尾 SEO 页面',desc:'面向具体搜索意图的落点页。',notes:['标题必须直接回答用户搜索问题。','一句话结论优先于正文。','计算器入口必须高于长说明。','更新时间必须可见。']},
+  {id:'11-about-method',title:'数据方法 / 商业边界页',desc:'数据来源、核验方式、计费公式和商业规则。',notes:['公式必须可解释。','商业边界必须公开。','免责声明不能只放在底部。','这页是可信度的补充说明。']}
+];
+const nav=document.getElementById('nav');
+const content=document.getElementById('content');
+const showHifi=document.getElementById('showHifi');
+const showWire=document.getElementById('showWire');
+const showBoth=document.getElementById('showBoth');
+let mode='both';
+pages.forEach((p,index)=>{
+  const item=document.createElement('button');
+  item.className='nav-item'+(index===0?' active':'');
+  item.innerHTML=`<span>${p.title}</span><small>${String(index+1).padStart(2,'0')}</small>`;
+  item.onclick=()=>{
+    document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+    item.classList.add('active');
+    render(p);
+  };
+  nav.appendChild(item);
+});
+function render(p){
+  const hi=`../png/${p.id}.png`;
+  const wire=`../svg/${p.id}.svg`;
+  content.innerHTML=`
+    <section>
+      <div class="page-header">
+        <div>
+          <h2>${p.title}</h2>
+          <p>${p.desc}</p>
+        </div>
+        <div class="badge">Desktop 1440</div>
+      </div>
+      <div class="preview-grid">
+        <div class="preview-card" data-mode="hifi">
+          <div class="preview-label"><strong>高保真视觉稿</strong><span>PNG</span></div>
+          <img src="${hi}" alt="${p.title} 高保真设计稿">
+        </div>
+        <div class="preview-card" data-mode="wire">
+          <div class="preview-label"><strong>低保真线框</strong><span>SVG</span></div>
+          <img src="${wire}" alt="${p.title} 低保真线框图">
+        </div>
+      </div>
+      <div class="notes">
+        <h3>设计说明</h3>
+        <ul>${p.notes.map(x=>`<li>${x}</li>`).join('')}</ul>
+      </div>
+    </section>`;
+  updateMode();
+}
+function updateMode(){
+  content.querySelectorAll('[data-mode]').forEach(x=>{
+    x.style.display=(mode==='both'||x.dataset.mode===mode)?'block':'none';
+  });
+  document.querySelector('.preview-grid').style.gridTemplateColumns=mode==='both'?'1.4fr 1fr':'1fr';
+}
+showHifi.onclick=()=>{mode='hifi';showHifi.classList.add('active');showWire.classList.remove('active');showBoth.classList.remove('active');updateMode()};
+showWire.onclick=()=>{mode='wire';showWire.classList.add('active');showHifi.classList.remove('active');showBoth.classList.remove('active');updateMode()};
+showBoth.onclick=()=>{mode='both';showBoth.classList.add('active');showHifi.classList.remove('active');showWire.classList.remove('active');updateMode()};
+render(pages[0]);
+</script>
+</body>
+</html>
