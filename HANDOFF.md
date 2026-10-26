@@ -46,11 +46,15 @@
 - **模型对比页**：`/compare?models=a,b,c`（已核验最低价/上下文/能力/平台覆盖，
   链接可分享）；比价列表新增"近日降价"绿色徽章
 - **降价动态页**：`/price-drops`（RSS 落地页 + "AI 降价"搜索长尾承接）
+- **首页最新动态**：最近 3 条变动上首页；平台详情页有"近日降价"提示条
+- **API 家族**：`GET /api/prices`（JSON/CSV）+ `GET /api/price-history?model=`
+  （时间序列，仅已变动序列），共用 60 次/分钟限流
 - **SEO/传播**：模型页 generateMetadata + OG 图（分享卡 PNG）+ JSON-LD
-  Product/AggregateOffer（仅已核验）；`/faq` + FAQPage JSON-LD
-- **API 增强**：`GET /api/prices?format=csv`（Sheets IMPORTDATA / Excel 直连）
-- **营销资产**：`marketing/community-posts.md` 新增"实测故事"系列
-  （kimi-k3 单日三次调价）；`launch-plan.md` 全量刷新到新资产
+  Product/AggregateOffer（仅已核验）；`/faq` + FAQPage JSON-LD；
+  两篇事件专题（kimi 降价 / qwen 下架替代）
+- **营销资产**：`marketing/community-posts.md` 实测故事系列、
+  `marketing/blog-drafts.md` 两篇可发布长文、`launch-plan.md` 与
+  `content-calendar.csv` 全量刷新
 - **生产 bug 修复**（见 changelog 10-17 条）：表单成功误报失败
   （React currentTarget 异步陷阱）、限流器内存泄漏、分发面硬编码状态
 
