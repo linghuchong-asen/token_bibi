@@ -1,5 +1,8 @@
 "use client";
 
+// 文件用途：数据纠错表单（所属模块：src/components，客户端组件）
+// 用户提交价格/计费/风险纠错，POST /api/feedback 追加落盘 data/feedback.jsonl。
+// 提交成功后清空表单；错误信息就地展示，不打断填写。
 import { useState } from "react";
 import type { Model, Provider } from "@/data/types";
 
@@ -14,9 +17,13 @@ export function FeedbackForm({ models, providers }: Props) {
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // 先把 DOM 表单元素抓出来：React 的 event.currentTarget 在异步 await 之后
+    // 会变回 null（事件分发已结束），成功回调里再取会抛 TypeError，
+    // 把已经成功的提交误报成失败并诱导用户重复提交。
+    const formEl = event.currentTarget;
     setStatus("submitting");
     setMessage("");
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formEl);
     const payload = {
       modelId: String(form.get("modelId") || ""),
       providerId: String(form.get("providerId") || ""),
@@ -35,7 +42,7 @@ export function FeedbackForm({ models, providers }: Props) {
       if (!response.ok) throw new Error(result.error || "提交失败");
       setStatus("success");
       setMessage("已收到，感谢你的反馈。");
-      event.currentTarget.reset();
+      formEl.reset();
     } catch {
       setStatus("error");
       setMessage("提交失败，请稍后再试。");

@@ -3,7 +3,7 @@
 // AFF 出站链接助手（rel=sponsored 合规）、销售线索校验（/api/leads）。
 // 收入入口的每一块地基都要有回归保护——盈利功能坏了比不赚钱更伤信任。
 import { describe, expect, it } from "vitest";
-import { checkRateLimit, RATE_LIMIT_FREE_PER_MINUTE } from "@/lib/rate-limit";
+import { checkRateLimit, sweepExpiredEntries, RATE_LIMIT_FREE_PER_MINUTE } from "@/lib/rate-limit";
 import { priceFreshness, freshnessSummary, FRESH_DAYS, STALE_DAYS } from "@/lib/freshness";
 import type { Price } from "@/data/types";
 import { hasAffiliateRelation, providerOutboundRel, providerOutboundUrl } from "@/lib/commercial";
@@ -38,6 +38,19 @@ describe("rate limit", () => {
     checkRateLimit(store, "ip-a", 1, start);
     expect(checkRateLimit(store, "ip-b", 1, start).allowed).toBe(true);
     expect(checkRateLimit(store, "ip-a", 1, start).allowed).toBe(false);
+  });
+
+  it("sweeps expired windows so the store cannot grow without bound", () => {
+    // 回归：公开 API 会被扫描器打进来，每个 IP 一条记录，不清理就是内存泄漏
+    const store = new Map();
+    const start = 1_700_000_000_000;
+    for (let i = 0; i < 50; i += 1) {
+      checkRateLimit(store, `ip-${i}`, RATE_LIMIT_FREE_PER_MINUTE, start);
+    }
+    expect(store.size).toBe(50);
+    // 窗口过期后清理应移除全部过期条目
+    expect(sweepExpiredEntries(store, start + 61_000)).toBe(0);
+    expect(store.size).toBe(0);
   });
 });
 

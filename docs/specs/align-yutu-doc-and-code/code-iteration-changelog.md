@@ -137,3 +137,65 @@
      投放位下拉去重（原来显示"首页推荐位 · 首页推荐位"）。
 - **影响范围**：烟测 20 项 → 25 项；/advertise 展示逻辑。
 - **验证方式**：生产构建 + 25 项烟测全过 + 浏览器目检首页/数据状态页/广告位页。
+
+---
+
+## 2026-10-27（凌晨续作）
+
+### 10. 修改：每日管线接入幽灵核验防线
+
+- **类型**：修改（真实性加固补全）
+- **涉及文件**：`scripts/daily-collect.sh`
+- **变更说明**：上一轮新增的 `review:demote-stale` 只在手动跑时生效。现接入每日
+  采集管线，且顺序固定为 导入 → **demote-stale** → changelog → 快照——
+  降级事件发生在 changelog 之前才能被价格变动记录捕获留痕，顺序错了会漏记。
+- **影响范围**：ECS 每日 03:45 定时任务行为（部署后生效）。
+- **验证方式**：顺序经人工推演确认；demote-stale 单测已有覆盖。
+
+### 11. 修复：限流器内存泄漏
+
+- **类型**：修复（生产 bug）
+- **涉及文件**：`src/lib/rate-limit.ts`、`tests/monetize.test.ts`
+- **变更说明**：公开 API 的限流 Map 会为每个访问过的 IP 保留条目且永不清理，
+  长期运行无限增长。新增 `sweepExpiredEntries()`：条目数破万时先清理全表
+  过期窗口，把内存上限压到"一个窗口内真实访问数"量级。
+- **影响范围**：`/api/prices` 运行时行为；限流判定逻辑不变。
+- **验证方式**：新增单测（50 个过期条目清理后归零），90 个测试全过。
+
+### 12. 修复：表单提交成功被误报为失败（React currentTarget 异步陷阱）
+
+- **类型**：修复（生产 bug，影响两条已上线的表单）
+- **涉及文件**：`src/components/LeadForm.tsx`、`src/components/FeedbackForm.tsx`
+- **变更说明**：两个表单都在 `await fetch` 之后调用 `event.currentTarget.reset()`。
+  React 的事件 `currentTarget` 只在同步分发期间有效，await 之后恒为 null，
+  抛出 TypeError 被 catch 捕获——**提交实际已成功落盘，但用户看到"提交失败"**，
+  会诱导重复提交（线索重复）。修复：同步阶段先抓 `const formEl = event.currentTarget`。
+  FeedbackForm 的同一问题自上线以来就存在（此前 E2E 没覆盖浏览器提交路径）。
+- **影响范围**：/advertise、/feedback 两个表单的成功路径。
+- **验证方式**：E2E 真实浏览器提交 → 成功提示出现 → 落盘可查；调试阶段
+  浏览器控制台/network 证据：API 返回 200 而页面显示失败，修复后一致。
+
+### 13. 修改：E2E / Lighthouse 在 Windows 开发机可跑
+
+- **类型**：修改（工程化）
+- **涉及文件**：`scripts/e2e-test.mjs`、`scripts/lighthouse-audit.mjs`
+- **变更说明**：两个脚本原来依赖 `@sparticuz/chromium`（Lambda 专用 Linux 二进制），
+  Windows 上无法启动，E2E 只能在 ECS 跑。现在解析顺序为
+  `E2E_EXECUTABLE_PATH` → Linux 走 @sparticuz → Windows 走本机 Chrome/Edge；
+  Lighthouse 侧同时过滤 `--single-process`/`--no-zygote`（Lambda 内存裁剪
+  flag，会弄死桌面版 Chrome 的 DevTools 握手）并补 `--remote-allow-origins=*`。
+  E2E 新增第 7 个场景：广告位申请表单端到端（真实浏览器提交 → 落盘断言 →
+  测试数据自动剔除，可反复运行不污染数据）。
+- **影响范围**：本地回归能力补齐；ECS 行为不变。
+- **验证方式**：本机 E2E 7 场景全过；Lighthouse 首页 performance 98(simulate)/
+  100(provided)、/advertise 97，无障碍与 SEO 100。
+
+### 14. 数据/文档：302.AI / AIHubMix 连通性定论 + HANDOFF 刷新
+
+- **类型**：数据 + 文档
+- **变更说明**：本机探测 302.ai 与 aihubmix.com 全部连接失败（000），
+  证实阻塞不是 ECS 特有而是网络层面问题，两个采集器继续搁置有了明确依据。
+  `HANDOFF.md` 刷新到 10-27 口径（数据 14 verified / 1 pending / 9 sample、
+  新命令清单、待办与决策项）。
+- **影响范围**：文档；无代码行为变化。
+- **验证方式**：探测命令留痕于本文件；HANDOFF 与实际仓库状态逐项核对。

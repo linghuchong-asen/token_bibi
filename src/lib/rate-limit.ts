@@ -12,12 +12,30 @@ export type RateLimitDecision = {
 
 const windowMs = 60_000;
 
+// 清理阈值：条目数超过该值时触发一次全表过期清理。
+// 为什么需要它：每个访问过的 IP 都会在 Map 里留一条记录，公开 API 会被
+// 扫描器和爬虫打进来，不清理的话 Map 会无限增长（长期运行的内存泄漏）。
+const CLEANUP_THRESHOLD = 10_000;
+
+// 从 Map 里移除窗口已过期的条目；返回清理后的条目数。
+// 导出以便单测直接验证清理行为。
+export function sweepExpiredEntries(store: Map<string, { count: number; windowStart: number }>, now = Date.now()): number {
+  for (const [key, entry] of store) {
+    if (now - entry.windowStart >= windowMs) store.delete(key);
+  }
+  return store.size;
+}
+
 export function checkRateLimit(
   store: Map<string, { count: number; windowStart: number }>,
   key: string,
   limit: number,
   now = Date.now(),
 ): RateLimitDecision {
+  // 达到阈值先清一次过期条目，把内存上限压到"一个窗口内的真实访问数"量级。
+  // 清理是 O(n)，但只在条目破万时触发，摊薄后可忽略；不在每次请求都扫全表。
+  if (store.size >= CLEANUP_THRESHOLD) sweepExpiredEntries(store, now);
+
   const entry = store.get(key);
   // 窗口过期则重开新窗口；未过期且没超限则计数 +1
   if (!entry || now - entry.windowStart >= windowMs) {

@@ -21,9 +21,13 @@ export function LeadForm({ product, placements, title, description, successNote 
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    // 先把 DOM 表单元素抓出来：React 的 event.currentTarget 在异步 await 之后
+    // 会变回 null（事件分发已结束），成功回调里再取会抛 TypeError，
+    // 把已经成功的提交误报成失败并诱导用户重复提交。
+    const formEl = event.currentTarget;
     setStatus("submitting");
     setMessage("");
-    const form = new FormData(event.currentTarget);
+    const form = new FormData(formEl);
     const placement = String(form.get("placement") || "");
     const payload = {
       product,
@@ -44,7 +48,7 @@ export function LeadForm({ product, placements, title, description, successNote 
       if (!response.ok) throw new Error(result.error || "提交失败");
       setStatus("success");
       setMessage(successNote);
-      event.currentTarget.reset();
+      formEl.reset();
     } catch {
       setStatus("error");
       setMessage("提交失败，请稍后再试。");
