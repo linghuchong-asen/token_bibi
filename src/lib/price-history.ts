@@ -4,6 +4,7 @@
 // "价格走势"——用户对实时性最直观的感知是看得见价格曲线。
 import historyJson from "../../data/price-history.json";
 import type { DataStatus } from "@/data/types";
+import type { PriceChangeEntry } from "@/data/types";
 
 export type HistoryTrendPoint = {
   in: number;
@@ -61,4 +62,22 @@ export function modelPriceSeries(priceIds: string[]): ModelPriceSeries[] {
         series.points[0].trend.in !== series.points[series.points.length - 1].trend.in ||
         series.points[0].trend.out !== series.points[series.points.length - 1].trend.out,
     }));
+}
+
+// 从最近变动记录里找出"输入价或输出价出现下调"的模型集合。
+// 降价对买方是好消息，比价列表用绿色"近日降价"徽章突出——实时性的营销钩子。
+// 只认价格字段下调，核验状态/计费方式变化不触发。
+export function recentlyCutModelIds(changes: PriceChangeEntry[]): Set<string> {
+  const cut = new Set<string>();
+  for (const change of changes) {
+    const hasCut = change.changes.some(
+      (diff) =>
+        (diff.field === "inputPricePerMTokens" || diff.field === "outputPricePerMTokens") &&
+        typeof diff.from === "number" &&
+        typeof diff.to === "number" &&
+        diff.to < diff.from,
+    );
+    if (hasCut) cut.add(change.modelId);
+  }
+  return cut;
 }

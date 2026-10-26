@@ -24,7 +24,7 @@ const typeOptions: { value: "all" | ProviderType; label: string }[] = [
   { value: "new_api_instance", label: "New API 实例" },
 ];
 
-export function ModelsExplorer({ rows }: { rows: EnrichedPrice[] }) {
+export function ModelsExplorer({ rows, recentCutModelIds }: { rows: EnrichedPrice[]; recentCutModelIds?: Set<string> }) {
   const [query, setQuery] = useState("");
   const [billing, setBilling] = useState<"all" | BillingMode>("all");
   const [providerType, setProviderType] = useState<"all" | ProviderType>("all");
@@ -118,6 +118,8 @@ export function ModelsExplorer({ rows }: { rows: EnrichedPrice[] }) {
                   <tr key={row.id}>
                     <td>
                       <Link href={`/models/${row.model.slug}`} className="strong">{row.model.name}</Link>
+                      {/* 降价对买方是好消息：来自最近变动记录的绿色钩子，实时性可感知 */}
+                      {recentCutModelIds?.has(row.modelId) && <span className="badge badge-green" style={{ marginLeft: 6 }}>近日降价</span>}
                       <div className="small muted">{row.model.vendor} · {formatTokens(row.model.contextLength)}</div>
                     </td>
                     <td>

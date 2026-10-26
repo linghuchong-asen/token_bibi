@@ -133,6 +133,9 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
             <h2>平台比价</h2>
             <p>有效成本 = 标价 × 充值系数 × 模型倍率 × 分组倍率。</p>
           </div>
+          <div>
+            <Link href={`/compare?models=${model.slug}`} className="button">对比其他模型</Link>
+          </div>
           <Link href={`/calculator?model=${model.id}`} className="button button-primary">计算这个模型</Link>
         </div>
         {samplePriceCount > 0 && (

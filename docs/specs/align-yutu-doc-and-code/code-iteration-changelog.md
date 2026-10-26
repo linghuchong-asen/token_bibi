@@ -282,3 +282,22 @@
 - **验证方式**：104 → 109 个单测（price-history/feed/changelog 基线）；
   烟测 28 项（新增 /faq、/feed.xml、CSV）；浏览器目检走势图渲染正确；
   实测 RSS 输出 4 条真实变动条目。
+
+### 19. 新增：模型对比页 + 比价页"近日降价"高亮
+
+- **类型**：新增（产品功能）
+- **涉及文件**：
+  - `src/app/compare/page.tsx`（新增）：2-3 个模型同口径并排对比
+    （已核验最低有效输入/输出价、上下文、能力、平台覆盖数），最低值绿色高亮；
+    searchParams 驱动 + GET 表单，零客户端状态，对比链接可分享可收藏
+  - `src/lib/price-history.ts`：新增 `recentlyCutModelIds()`——从最近变动记录
+    找出输入/输出价出现下调的模型
+  - `src/components/ModelsExplorer.tsx`：模型名旁新增绿色"近日降价"徽章
+  - `src/app/models/page.tsx`：计算并传入降价模型集合 + "对比模型 →"入口；
+    模型详情页新增"对比其他模型"入口
+  - `src/app/sitemap.ts`、`scripts/smoke-test.mjs`：收录 /compare
+- **变更说明**：两个功能都在把"实时性"变成用户可感知、可传播的产品面：
+  降价徽章让比价表自己会讲故事；对比页承接"选型求助"类外部讨论的直接链接。
+- **影响范围**：模型比价页、模型详情页、新页面 /compare。
+- **验证方式**：烟测 29 项（新增 /compare）；浏览器目检对比页与降价徽章；
+  109 个单测全过；typecheck 通过；生产构建通过。

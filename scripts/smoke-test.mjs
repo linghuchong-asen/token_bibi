@@ -18,6 +18,7 @@ const checks = [
   { path: "/data-status", expect: "数据状态与新鲜度" },
   { path: "/faq", expect: "常见问题" },
   { path: "/feed.xml", expect: "<rss" },
+  { path: "/compare?models=glm-5-3-flash,kimi-k3", expect: "最低有效输入价" },
   { path: "/feedback", expect: "数据纠错" },
   { path: "/admin/prices", expect: "价格核验" },
   { path: "/models/gpt-5-6-sol", expect: "GPT-5.6 Sol" },
