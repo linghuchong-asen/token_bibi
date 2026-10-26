@@ -1,4 +1,8 @@
+// 文件用途：嵌入卡 HTML 生成（所属模块：src/lib，被 /api/embed-card 输出 iframe）
+// 嵌入卡会把比价结论带到第三方站点，必须随卡片携带核验状态与数据日期，
+// 让"真实性承诺"跟着数据走，而不是只留在站内。
 import type { ShareCardData } from "./share-data";
+import { shareDataDate, shareStatusLabel } from "./share-data";
 import { formatCny, formatTokens } from "./format";
 
 export function buildEmbedHtml(data: ShareCardData, origin: string, query: string): string {
@@ -7,6 +11,8 @@ export function buildEmbedHtml(data: ShareCardData, origin: string, query: strin
   const total = formatCny(data.totalCost);
   const effective = formatCny(data.effectiveCostPerMillion);
   const tokens = formatTokens(data.inputTokens + data.outputTokens);
+  const statusLabel = escapeHtml(shareStatusLabel(data));
+  const dataDate = shareDataDate(data);
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -33,6 +39,7 @@ export function buildEmbedHtml(data: ShareCardData, origin: string, query: strin
     <div class="metric"><div class="muted">有效成本 / 1M</div><strong>${effective}</strong></div>
     <div class="metric"><div class="muted">缓存命中率</div><strong>${(data.cacheHitRate * 100).toFixed(0)}%</strong></div>
   </div>
+  <div class="muted" style="margin-top:10px">数据截至 ${dataDate} · ${statusLabel}</div>
   <a href="${escapeHtml(origin)}/share?${escapeHtml(query)}" target="_blank" rel="noreferrer">查看完整对比</a>
 </div>
 </body>

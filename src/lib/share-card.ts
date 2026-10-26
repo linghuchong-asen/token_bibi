@@ -1,4 +1,9 @@
+// 文件用途：分享卡 SVG 生成（所属模块：src/lib，被 /api/share-card 转成 PNG）
+// 分享卡是站外传播的主要载体，卡上的状态徽章与数据日期必须来自真实
+// 核验状态（shareStatusLabel / shareDataDate），不允许硬编码——
+// 此前固定写"样例数据 · 2026-10-22"，把已核验数据也说成了样例。
 import type { ShareCardData } from "./share-data";
+import { shareDataDate, shareStatusLabel } from "./share-data";
 import { formatCny, formatTokens } from "./format";
 
 function escapeXml(value: string): string {
@@ -16,6 +21,8 @@ export function buildShareCardSvg(data: ShareCardData): string {
   const totalCost = formatCny(data.totalCost);
   const effectiveCost = formatCny(data.effectiveCostPerMillion);
   const cache = `${(data.cacheHitRate * 100).toFixed(0)}%`;
+  const statusLabel = escapeXml(shareStatusLabel(data));
+  const dataDate = shareDataDate(data);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
@@ -38,7 +45,7 @@ export function buildShareCardSvg(data: ShareCardData): string {
   <text x="88" y="106" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="24" font-weight="700" fill="#ffffff">token比比</text>
   <text x="208" y="106" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="16" fill="#bfdbfe">真实到手成本</text>
   <rect x="88" y="140" width="176" height="38" rx="19" fill="rgba(56,189,248,0.16)" stroke="#38bdf8"/>
-  <text x="112" y="165" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="15" fill="#bae6fd">样例数据</text>
+  <text x="112" y="165" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="15" fill="#bae6fd">${statusLabel}</text>
   <text x="88" y="248" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="56" font-weight="800" fill="#ffffff">${model}</text>
   <text x="90" y="290" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="22" fill="#cbd5e1">${provider} · ${monthlyTokens} tokens / 月</text>
   <rect x="88" y="342" width="460" height="146" rx="22" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)" filter="url(#shadow)"/>
@@ -52,7 +59,7 @@ export function buildShareCardSvg(data: ShareCardData): string {
   <text x="878" y="438" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="34" font-weight="800" fill="#ffffff">${cache}</text>
   <line x1="88" y1="526" x2="1112" y2="526" stroke="rgba(255,255,255,0.14)"/>
   <text x="88" y="558" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" fill="#93c5fd">不要只看 token 单价，先看真实到手成本。</text>
-  <text x="942" y="558" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" fill="#93c5fd">2026-10-22 · 样例数据</text>
+  <text x="942" y="558" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="14" fill="#93c5fd">${dataDate} · ${statusLabel}</text>
   <text x="88" y="586" font-family="Noto Sans CJK SC, DejaVu Sans, sans-serif" font-size="12" fill="#64748b">实际价格、可用性和售后规则请以平台公示为准。</text>
 </svg>`;
 }

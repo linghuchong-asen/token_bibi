@@ -1,7 +1,10 @@
+// 文件用途：分享结果落地页（所属模块：src/app/share，动态渲染）
+// 分享结论同样遵循"默认只看已核验"：复用 resolveShareData（已核验优先），
+// 并把真实核验状态与数据日期展示在卡片上——与 PNG 卡/嵌入卡同一套口径，
+// 不允许任何分享面出现硬编码的日期或状态。
 import Link from "next/link";
-import { getModelBySlug, getPricesForModel } from "@/data";
-import { enrichPrices } from "@/lib/enrich";
-import { estimateUsageCost } from "@/lib/pricing";
+import { getModelBySlug } from "@/data";
+import { resolveShareData, shareDataDate, shareStatusLabel } from "@/lib/share-data";
 import { formatCny, formatTokens } from "@/lib/format";
 import { CopyButton } from "@/components/CopyButton";
 
@@ -14,14 +17,10 @@ export default async function SharePage({ searchParams }: { searchParams?: Promi
   const output = typeof params.output === "string" ? Number(params.output) : 5_000_000;
   const cache = typeof params.cache === "string" ? Number(params.cache) : 0.2;
   const model = getModelBySlug(slug);
-  const prices = model ? enrichPrices(getPricesForModel(model.id)) : [];
-  const cheapest = [...prices].sort((a, b) => {
-    const ac = estimateUsageCost(a, input, output, cache).totalCost;
-    const bc = estimateUsageCost(b, input, output, cache).totalCost;
-    return ac - bc;
-  })[0];
-  const estimate = cheapest ? estimateUsageCost(cheapest, input, output, cache) : null;
+  const share = resolveShareData(slug, input, output, cache);
+  const estimate = share;
   const shareQuery = `model=${encodeURIComponent(slug)}&input=${input}&output=${output}&cache=${cache}`;
+  const statusLabel = share ? shareStatusLabel(share) : "暂无数据";
 
   return (
     <main className="page-shell narrow">
@@ -39,13 +38,15 @@ export default async function SharePage({ searchParams }: { searchParams?: Promi
           <span className="small" style={{ color: "#bfdbfe" }}>真实到手成本</span>
         </div>
         <h2 style={{ fontSize: 34, margin: "18px 0 8px" }}>{model?.name ?? "未知模型"}</h2>
-        <p style={{ color: "#bfdbfe", marginTop: 0 }}>{cheapest?.provider.name ?? "暂无平台数据"} · {formatTokens(input + output)} tokens / 月</p>
+        <p style={{ color: "#bfdbfe", marginTop: 0 }}>{share?.providerName ?? "暂无平台数据"} · {formatTokens(input + output)} tokens / 月</p>
         <div className="stat-row" style={{ marginTop: 24 }}>
           <div><div className="small" style={{ color: "#bfdbfe" }}>最低估算成本</div><strong style={{ fontSize: 30 }}>{estimate ? formatCny(estimate.totalCost) : "—"}</strong></div>
           <div><div className="small" style={{ color: "#bfdbfe" }}>有效成本 / 1M</div><strong style={{ fontSize: 30 }}>{estimate ? formatCny(estimate.effectiveCostPerMillion) : "—"}</strong></div>
           <div><div className="small" style={{ color: "#bfdbfe" }}>缓存命中率</div><strong style={{ fontSize: 30 }}>{(cache * 100).toFixed(0)}%</strong></div>
         </div>
-        <p className="small" style={{ color: "#93c5fd", marginBottom: 0 }}>更新于 2026-10-23 · 核验状态以价格表为准，实际价格以平台公示为准</p>
+        <p className="small" style={{ color: "#93c5fd", marginBottom: 0 }}>
+          数据截至 {share ? shareDataDate(share) : "—"} · {statusLabel} · 实际价格以平台公示为准
+        </p>
       </section>
 
       <section className="section card card-pad stack">
