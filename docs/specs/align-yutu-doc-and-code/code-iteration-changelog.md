@@ -301,3 +301,20 @@
 - **影响范围**：模型比价页、模型详情页、新页面 /compare。
 - **验证方式**：烟测 29 项（新增 /compare）；浏览器目检对比页与降价徽章；
   109 个单测全过；typecheck 通过；生产构建通过。
+
+### 20. 新增：降价动态页 /price-drops（RSS 的落地页 + 降价类搜索承接）
+
+- **类型**：新增（产品功能 + 营销长尾）
+- **涉及文件**：`src/app/price-drops/page.tsx`（新增）、`src/app/topics/page.tsx`
+  （索引页新增入口卡片）、`src/app/sitemap.ts`、`scripts/smoke-test.mjs`、
+  `src/app/compare/page.tsx` 与 `src/app/price-drops/page.tsx`（补 OG/Twitter 元数据）
+- **变更说明**：
+  1. /price-drops 从每日变动记录中筛出真实的输入/输出价下调事件（状态/计费方式
+     变化不算降价），按降幅排序展示前后值与检测时间；没有降价时如实说明并引导
+     RSS 订阅。页面同时是 RSS 的落地页和"AI 降价"类搜索的长尾承接页。
+  2. 诚实边界写进页面：不做"预测降价"或"独家渠道价"，只记录已发生的、
+     可复核的价格事实。
+  3. 专题索引页、sitemap、烟测全部收录。
+- **影响范围**：新页面 + 专题索引；无既有行为变化。
+- **验证方式**：烟测 30 项（新增 /price-drops）；实测页面输出 3 条真实下调事件
+  （kimi-k3 输入/缓存、deepseek-v4-1-flash 输出/缓存）；109 单测 / 7 E2E 全过。

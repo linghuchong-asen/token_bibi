@@ -1,3 +1,5 @@
+// 文件用途：长尾专题索引（所属模块：src/app/topics，静态生成）
+// 面向具体搜索意图的专题入口；降价动态是数据驱动的独立页面（/price-drops）。
 import Link from "next/link";
 
 const topics = [
@@ -14,6 +16,12 @@ export default function TopicsPage() {
       <div className="breadcrumbs"><Link href="/">首页</Link><span>/</span><span>长尾专题</span></div>
       <div className="section-heading"><div><h1 style={{ margin: 0, fontSize: 34 }}>长尾专题</h1><p>面向具体搜索意图的比价与成本解释。</p></div></div>
       <div className="grid-3">
+        <article className="card card-pad stack">
+          <div className="badge-row"><span className="badge badge-green">数据驱动</span></div>
+          <h2 style={{ margin: 0 }}>AI 模型降价动态</h2>
+          <p className="muted">每日检测到的真实价格下调：哪家平台、哪个模型、降了多少。</p>
+          <Link href="/price-drops" className="button">查看降价动态</Link>
+        </article>
         {topics.map((topic) => (
           <article className="card card-pad stack" key={topic.slug}>
             <h2 style={{ margin: 0 }}>{topic.title}</h2>

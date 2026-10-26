@@ -97,10 +97,10 @@ tests/                Vitest 自动化测试
 
 ## 当前验证
 
-- 28 个测试文件通过
-- 90 个自动化测试通过
+- 32 个测试文件通过
+- 109 个自动化测试通过
 - Lighthouse mobile：simulated 98 / provided 100（首页）、97（广告位页）
-- 25 项 HTTP 页面烟测通过
+- 30 项 HTTP 页面烟测通过
 - 7 个浏览器 E2E 场景通过（含广告位申请表单端到端）
 - `npm run typecheck` 通过
 - `npm run build` 通过

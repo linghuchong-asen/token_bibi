@@ -10,6 +10,11 @@ import { formatCny, formatTokens } from "@/lib/format";
 export const metadata = {
   title: "模型对比",
   description: "把 2-3 个 AI 模型放在同一口径里对比：已核验最低有效价、上下文长度、能力与平台覆盖。",
+  openGraph: {
+    title: "AI 模型对比 · token比比",
+    description: "已核验最低有效价、上下文、能力、平台覆盖，同一口径并排比，链接可直接分享。",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 const MAX_MODELS = 3;
