@@ -131,6 +131,12 @@ async function main() {
   assert.ok(layout.scrollWidth <= layout.innerWidth + 1, `mobile overflow: ${JSON.stringify(layout)}`);
   console.log("PASS mobile layout");
 
+  // 新页面的移动端不溢出：对比页是宽表格，最容易被挤爆
+  await page.goto(`${base}/compare?models=glm-5-3-flash,kimi-k3`, { waitUntil: "networkidle0" });
+  const compareLayout = await page.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth }));
+  assert.ok(compareLayout.scrollWidth <= compareLayout.innerWidth + 1, `compare mobile overflow: ${JSON.stringify(compareLayout)}`);
+  console.log("PASS compare mobile layout");
+
   await page.close();
 }
 
