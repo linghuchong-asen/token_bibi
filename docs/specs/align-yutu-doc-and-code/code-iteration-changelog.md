@@ -215,3 +215,19 @@
   模型详情页、/api/prices、sitemap 自动收录新模型。
 - **验证方式**：`review:sources` 全量 MATCH；API `?model=qwen3-8-max-0902`
   返回已核验数据；详情页渲染正常；25 项烟测通过。
+
+### 16. 新增：数据状态页与 LeadForm 的渲染/交互回归
+
+- **类型**：新增（测试）
+- **涉及文件**：`tests/data-status.test.tsx`（新增）、`tests/lead-form.test.tsx`（新增）
+- **变更说明**：
+  1. `/data-status` 页面依赖脚本生成的 `data/price-changes.json`，此前没有任何
+     渲染护栏，生成文件的字段一旦漂移页面会在构建/运行时崩掉。新增渲染断言
+     （三个指标、分平台统计表、核验方法说明、变动列表与计数）+ axe 无障碍检查。
+  2. LeadForm 提交交互回归：mock fetch 断言"成功提示 + 表单清空"——这是
+     currentTarget 生产 bug（见第 12 条）的直接回归测试，修复前该测试会失败。
+  3. 测试基建修正：项目 vitest 未开 globals，RTL 自动清理不生效，两个测试文件
+     显式 `afterEach(cleanup)`，否则同文件的多次渲染会在 jsdom 里互相污染
+     （axe 的 main landmark 规则与 getByText 重复匹配都会误报）。
+- **影响范围**：仅测试；无产品代码变化。
+- **验证方式**：30 个测试文件 / 97 个测试全过；typecheck 通过。
