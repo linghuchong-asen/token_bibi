@@ -1,17 +1,18 @@
 # token比比 · 新线程交接摘要
 
-> 更新：2026-10-28 凌晨（去 demo 化 / 商业化一轮之后）。上一版描述的 ECS 状态仍然有效；
-> 本版数据口径以本机 10-28 凌晨为准。
+> 更新：2026-10-28 凌晨（去 demo 化 + 跨平台比价两轮之后）。上一版描述的 ECS 状态仍然有效；
+> 本版数据口径以本机 10-28 凌晨第二轮为准。
 
 ## 项目位置
 
 - ECS（线上）：`/root/workspace/token_compare/token-bibi`，服务 `http://100.125.251.103:8090/`
-- 本机工作副本：`D:\userProjects\token_bibi`（去 demo 化轮在此完成，待推送到 ECS）
+- 本机工作副本：`D:\userProjects\token_bibi`（10-28 凌晨两轮在此完成，已本地提交
+  `7c9e0cf` / `95704cb`，**待推送到 ECS**）
 
 ## 当前状态
 
 - Next.js 16 + React 19 + TypeScript + 静态 JSON 数据
-- 最新提交：见 git log（本机已领先 ECS 若干轮，推送后需在 ECS 重跑
+- 最新提交：`95704cb feat: 跨平台比价成网`（本机已领先 ECS 若干轮，推送后需在 ECS 重跑
   `node scripts/expand-openrouter-catalog.mjs` 重建映射，再跑每日管线）
 
 ## 2026-10-28 凌晨两轮（去 demo 化 + 跨平台成网，详见 changelog 27–36 条）
@@ -50,8 +51,10 @@
 - Anthropic / 智谱官方：`npm run collect:official`
 - 导入：`npm run import:prices -- --file <csv>`
 - 每日 03:45：`token-bibi-collect.timer`（ECS）执行完整管线
-- **注意**：映射文件由采集器生成、不进版本库；新环境先跑一次采集器再跑复核。
-  OpenRouter 模型 ID 为点分命名（如 `openai/gpt-5.6-sol`），重建映射用实时 API 比对。
+- **注意**：映射文件由采集器生成、不进版本库。OpenRouter 目录与映射用
+  `node scripts/expand-openrouter-catalog.mjs` 重建（幂等，含 67 个精选模型）；
+  SiliconFlow 映射目前只在本机（16 条），ECS 首次部署需手动同步或照
+  changelog 35 条重建。OpenRouter 模型 ID 为点分命名（如 `openai/gpt-5.6-sol`）。
 
 ## 当前数据（2026-10-28 凌晨第二轮口径）
 
@@ -82,7 +85,9 @@ npm run build
 npm run test:smoke        # SMOKE_BASE_URL 可覆盖目标
 npm run test:e2e
 npm run lighthouse
+node scripts/expand-openrouter-catalog.mjs   # 扩容/重建 OpenRouter 目录与映射（幂等，ECS 部署后先跑一次）
 npm run collect:openrouter && npm run import:prices -- --file data/imports/openrouter-collected.csv
+npm run collect:siliconflow && npm run import:prices -- --file data/imports/siliconflow-collected.csv
 npm run quality:report
 npm run snapshot
 npm run changelog:prices

@@ -1,7 +1,8 @@
-// 文件用途：OpenRouter 收录目录扩容工具（所属模块：数据采集与核验管线 scripts/）
-// 做两件事：
+// 文件用途：收录目录与采集映射重建工具（所属模块：数据采集与核验管线 scripts/）
+// 做三件事：
 //   1) 把精选清单里的 OpenRouter 模型合并进 data/models.json（已存在的不动）
 //   2) 同步合并 data/imports/openrouter-map.json（本站模型 id → OpenRouter 模型 id）
+//   3) 同步合并 data/imports/siliconflow-map.json（SiliconFlow 定价页上的同款模型）
 // 映射文件不进版本库，因此在 ECS 等新环境部署后需重跑本脚本重建映射，
 // 之后每日管线（collect → import → verify-sources）即可覆盖全部收录模型。
 // 所有模型条目的元数据（上下文长度、多模态能力、发布日期）都取自 OpenRouter
@@ -94,6 +95,28 @@ const CAP_ORDER = ["识图", "深度思考", "编码", "长文本", "多模态",
 // 上下文 ≥160k 记为"长文本"：覆盖 200k 档（o3/Claude），不把 128k 档（GPT-4o）算进去
 const LONG_CONTEXT_THRESHOLD = 160_000;
 
+// SiliconFlow 采集映射种子：定价页上的同款模型（title 精确匹配）。
+// 只映射"确认同版本"的型号；版本不明的近似款（如 DeepSeek-V4-Flash 与
+// V4-Flash-0731）不映射，避免把不同版本当同款比价。
+const SILICONFLOW_SEED = {
+  "glm-5-3-flash": "zai-org/GLM-5.3-Flash",
+  "deepseek-v4-1-flash": "deepseek-ai/DeepSeek-V4.1-Flash",
+  "kimi-k3": "moonshotai/Kimi-K3",
+  "deepseek-v3-2": "deepseek-ai/DeepSeek-V3.2",
+  "glm-5-2": "zai-org/GLM-5.2",
+  "glm-5-3": "zai-org/GLM-5.3",
+  "kimi-k2-6": "Pro/moonshotai/Kimi-K2.6",
+  "kimi-k2-7-code": "moonshotai/Kimi-K2.7-Code",
+  "qwen3-5-122b-a10b": "Qwen/Qwen3.5-122B-A10B",
+  "qwen3-5-27b": "Qwen/Qwen3.5-27B",
+  "qwen3-5-35b-a3b": "Qwen/Qwen3.5-35B-A3B",
+  "qwen3-6-27b": "Qwen/Qwen3.6-27B",
+  "qwen3-6-35b-a3b": "Qwen/Qwen3.6-35B-A3B",
+  "qwen3-8-27b": "Qwen/Qwen3.8-27B",
+  "glm-4-5-air": "zai-org/GLM-4.5-Air",
+  "glm-4-5v": "zai-org/GLM-4.5V",
+};
+
 function deriveCapabilities(source, extraCaps = []) {
   const modalities = source?.architecture?.input_modalities ?? [];
   const supported = source?.supported_parameters ?? [];
@@ -160,7 +183,25 @@ async function main() {
   // 保持既有排序风格：按加入顺序追加即可（页面有自己的排序逻辑）
   await writeFile(modelsPath, `${JSON.stringify(models, null, 2)}\n`, "utf8");
   await writeFile(mapPath, `${JSON.stringify(map, null, 2)}\n`, "utf8");
-  console.log(`目录扩容完成：新增模型 ${addedModels} 个，模型总数 ${models.length}，映射总数 ${Object.keys(map).length}`);
+
+  // SiliconFlow 映射：种子无条件合并（缺失才补，不覆盖既有条目的人工修正）
+  const sfMapPath = path.join(root, "data", "imports", "siliconflow-map.json");
+  let sfMap = {};
+  try {
+    sfMap = JSON.parse(await readFile(sfMapPath, "utf8"));
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+  let sfAdded = 0;
+  for (const [slug, title] of Object.entries(SILICONFLOW_SEED)) {
+    if (sfMap[slug] !== title) {
+      sfMap[slug] = title;
+      sfAdded += 1;
+    }
+  }
+  await writeFile(sfMapPath, `${JSON.stringify(sfMap, null, 2)}\n`, "utf8");
+
+  console.log(`目录重建完成：新增模型 ${addedModels} 个，模型总数 ${models.length}，OpenRouter 映射 ${Object.keys(map).length}，SiliconFlow 映射 ${Object.keys(sfMap).length}（本轮补 ${sfAdded}）`);
 }
 
 main().catch((error) => {
