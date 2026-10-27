@@ -23,10 +23,19 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+// 首页 JSON-LD 在各页面内各自输出；这里用 head 函数为全站补充 WebSite 实体
+// （帮助搜索引擎把站名与站点关联）。app router 下通过 layout 内嵌脚本实现。
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "token比比",
+    description: "AI 模型 API 真实成本比价：按量、订阅、积分、卡密同一口径。",
+  };
   return (
     <html lang="zh-CN">
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <SiteHeader />
         {children}
         <SiteFooter />
