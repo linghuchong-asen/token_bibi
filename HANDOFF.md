@@ -53,8 +53,13 @@
   Product/AggregateOffer（仅已核验）；`/faq` + FAQPage JSON-LD；
   两篇事件专题（kimi 降价 / qwen 下架替代）
 - **营销资产**：`marketing/community-posts.md` 实测故事系列、
-  `marketing/blog-drafts.md` 两篇可发布长文、`launch-plan.md` 与
+  `marketing/blog-drafts.md` 两篇可发布长文、`marketing/video-scripts.md`
+  （60 秒口播稿 + 7 推 X Thread + 15 秒极短版）、`launch-plan.md` 与
   `content-calendar.csv` 全量刷新
+- **运营后台**：`/admin/leads`（线索查看，ADMIN_TOKEN 鉴权）；
+  管理后台互链已加
+- **SEO 收尾**：sitemap lastModified 改为真实数据日期；全站 WebSite JSON-LD；
+  依赖 npm audit 0 漏洞
 - **生产 bug 修复**（见 changelog 10-17 条）：表单成功误报失败
   （React currentTarget 异步陷阱）、限流器内存泄漏、分发面硬编码状态
 

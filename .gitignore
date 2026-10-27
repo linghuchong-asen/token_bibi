@@ -21,3 +21,4 @@ data/lighthouse-report*.json
 automation/logs/
 automation/run.lock
 automation/state.json
+.git-commit-msg.txt
