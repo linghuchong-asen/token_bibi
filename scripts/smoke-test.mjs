@@ -22,6 +22,7 @@ const checks = [
   { path: "/price-drops", expect: "降价动态" },
   { path: "/feedback", expect: "数据纠错" },
   { path: "/admin/prices", expect: "价格核验" },
+  { path: "/admin/leads", expect: "销售线索" },
   { path: "/models/gpt-5-6-sol", expect: "GPT-5.6 Sol" },
   { path: "/providers/openrouter", expect: "上游类型" },
   { path: "/sitemap.xml", expect: "<urlset" },
@@ -77,6 +78,13 @@ const adminData = await admin.json();
 const adminOk = admin.status === 401 || admin.status === 503;
 console.log(`${adminOk ? "PASS" : "FAIL"} POST /api/admin/prices/verify auth (${admin.status}, ${adminData.error ?? ""})`);
 if (!adminOk) failed += 1;
+
+// 线索后台 API 同一套鉴权（商业敏感数据，无令牌不可见）
+total += 1;
+const adminLeads = await fetch(`${base}/api/admin/leads`, { headers: { "x-admin-token": "wrong" } });
+const adminLeadsOk = adminLeads.status === 401 || adminLeads.status === 503;
+console.log(`${adminLeadsOk ? "PASS" : "FAIL"} GET /api/admin/leads auth (${adminLeads.status})`);
+if (!adminLeadsOk) failed += 1;
 
 // 公开数据 API（盈利入口②的免费层）：默认只出已核验价格，meta 需带数据水位
 total += 1;

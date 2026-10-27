@@ -370,3 +370,20 @@
   分平台统计撞车）。
 - **影响范围**：数据面；首页动态、/price-drops、RSS、历史序列随构建自动更新。
 - **验证方式**：review:sources 全量 MATCH；112 单测 / 32 烟测 / 8 E2E 全过。
+
+### 24. 新增：销售线索管理后台（盈利闭环的运营端）
+
+- **类型**：新增（商业化运营功能）
+- **涉及文件**：`src/app/api/admin/leads/route.ts`（新增）、
+  `src/app/admin/leads/page.tsx`（新增）、`src/components/AdminLeadsClient.tsx`（新增）、
+  `tests/admin-leads.test.ts`（新增）、`scripts/smoke-test.mjs`
+- **变更说明**：此前线索落盘 `data/sponsor-leads.jsonl` 后没有任何查看入口，
+  运营者要手动开文件。新增 `/admin/leads`：ADMIN_TOKEN 鉴权（与价格核验后台
+  同一套 admin-auth），加载全部线索按时间倒序展示（产品/位次/公司/联系人/
+  邮箱/预算/状态），并附跟进约定。鉴权细节：
+  - 未配置 ADMIN_TOKEN → 503；令牌错误 → 401；
+  - JSONL 单行损坏只跳过该行，不能让整个后台 500；
+  - 空线索返回空列表而不是错误。
+- **影响范围**：新增管理页面与 API；公开页面无变化。
+- **验证方式**：3 个新单测（503/401/200 空列表）；烟测 34 项（新增 /admin/leads
+  页面锚点 + API 鉴权检查）；115 单测 / 8 E2E 全过。
