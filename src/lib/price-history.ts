@@ -16,7 +16,9 @@ export type HistoryTrendPoint = {
 export type HistoryPoint = {
   snapshot: string;
   capturedAt: string;
-  prices: Record<string, HistoryTrendPoint>;
+  // 不同快照点的键集不同（价格被移除后新快照不再包含该键），
+  // 读取方必须用 seriesForPrice 的存在性守卫，不能直接假设每个键都有值
+  prices: Record<string, HistoryTrendPoint | undefined>;
 };
 
 export type PriceHistoryReport = {

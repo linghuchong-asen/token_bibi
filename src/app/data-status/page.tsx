@@ -144,7 +144,7 @@ export default function DataStatusPage() {
           <div className="note">来源复核（source_check）：脚本重新抓取平台公开定价页 / API，输入价、输出价、缓存价逐字段一致才标记已核验。每日自动执行。</div>
           <div className="note">人工核验（manual）：运营在管理后台逐条确认，记录核验人与时间。</div>
           <div className="warning">已核验不等于永久有效：源站价格随时可能调整，系统发现源站与库内不一致时会自动撤销核验徽章（降级为待核验）。</div>
-          <div className="danger">样例数据（sample）只是演示结构，不构成价格参考；比价页默认不展示样例。</div>
+          <div className="note">收录以可核验数据为准：平台官方不再提供的价格（如下架模型）会被移除或降级并留痕，不保留任何无来源的演示数据。</div>
         </div>
       </section>
     </main>

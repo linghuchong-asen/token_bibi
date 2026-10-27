@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-27T00:10:54.820Z",
-  "baseline": "2026-10-26T23-40-35",
+  "generatedAt": "2026-10-27T23:09:40.357Z",
+  "baseline": "2026-10-26T23-41-08",
   "comparedFields": [
     "inputPricePerMTokens",
     "outputPricePerMTokens",
@@ -18,17 +18,12 @@
         {
           "field": "inputPricePerMTokens",
           "from": 1.2168,
-          "to": 1.1448
+          "to": 1.08
         },
         {
           "field": "cacheReadPricePerMTokens",
           "from": 1.1448,
-          "to": 1.0728
-        },
-        {
-          "field": "dataStatus",
-          "from": "pending_review",
-          "to": "verified"
+          "to": 1.008
         }
       ]
     },
@@ -51,11 +46,6 @@
           "field": "cacheReadPricePerMTokens",
           "from": 0.244814,
           "to": 0.03024
-        },
-        {
-          "field": "dataStatus",
-          "from": "pending_review",
-          "to": "verified"
         }
       ]
     }

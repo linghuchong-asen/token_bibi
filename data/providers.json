@@ -23,7 +23,7 @@
       "上游混合",
       "样本数据"
     ],
-    "dataStatus": "sample",
+    "dataStatus": "verified",
     "updatedAt": "2026-10-21"
   },
   {
@@ -50,7 +50,7 @@
       "官方渠道",
       "样本数据"
     ],
-    "dataStatus": "sample",
+    "dataStatus": "verified",
     "updatedAt": "2026-10-21"
   },
   {
@@ -76,7 +76,7 @@
       "聚合平台",
       "样本数据"
     ],
-    "dataStatus": "sample",
+    "dataStatus": "pending_review",
     "updatedAt": "2026-10-21"
   },
   {
@@ -103,34 +103,7 @@
       "中转平台",
       "上游需核实"
     ],
-    "dataStatus": "sample",
-    "updatedAt": "2026-10-21"
-  },
-  {
-    "affiliateUrl": null,
-    "id": "newapi-demo",
-    "slug": "newapi-demo",
-    "name": "New API 示例站",
-    "type": "new_api_instance",
-    "websiteUrl": "https://newapi.pro",
-    "pricingUrl": "https://docs.newapi.ai/zh/docs/guide/feature-guide/user/wallet",
-    "monitorUrl": null,
-    "supportUrl": "https://docs.newapi.ai/zh/docs",
-    "commercialRelation": "none",
-    "summary": "基于 New API 的网关示例，支持余额、充值、兑换码和订阅。",
-    "upstreamType": "自部署网关 + 上游 API",
-    "paymentMethods": [
-      "易支付",
-      "Stripe",
-      "兑换码"
-    ],
-    "invoiceSupport": "unknown",
-    "refundPolicy": "由站点配置",
-    "riskLabels": [
-      "自部署实例",
-      "规则差异大"
-    ],
-    "dataStatus": "sample",
+    "dataStatus": "pending_review",
     "updatedAt": "2026-10-21"
   },
   {
@@ -154,7 +127,7 @@
     "riskLabels": [
       "官方渠道"
     ],
-    "dataStatus": "sample",
+    "dataStatus": "pending_review",
     "updatedAt": "2026-10-21"
   },
   {
@@ -178,7 +151,7 @@
     "riskLabels": [
       "官方渠道"
     ],
-    "dataStatus": "sample",
+    "dataStatus": "verified",
     "updatedAt": "2026-10-21"
   },
   {
@@ -204,7 +177,7 @@
     "riskLabels": [
       "官方渠道"
     ],
-    "dataStatus": "sample",
+    "dataStatus": "verified",
     "updatedAt": "2026-10-21"
   }
 ]

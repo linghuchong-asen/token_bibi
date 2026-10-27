@@ -2,10 +2,10 @@
 // 结构：数据新鲜度横幅 → 三个核心数字 → 最新价格动态 → 精选比价表 → 赞助位 → 方法说明与分享入口。
 // 首页只展示已核验价格（verifiedFeatured），核验不足时才回退到全量并如实标注。
 // "最新价格动态"来自每日管线的变动记录——让首屏就有"数据在动"的活证据。
-import { getModelById, models, plans, priceChanges, prices, providers } from "@/data";
+// 三个核心数字全部来自真实数据（最低已核验价 / 已核验价格数 / 收录规模），不使用任何样例数据。
+import { getModelById, models, priceChanges, prices, providers } from "@/data";
 import { enrichPrices } from "@/lib/enrich";
-import { formatCny, formatTokens } from "@/lib/format";
-import { estimateSubscriptionPlan } from "@/lib/pricing";
+import { formatCny } from "@/lib/format";
 import { priceStatusNote } from "@/lib/data-status";
 import { PriceTable } from "@/components/PriceTable";
 import { SponsorSlot } from "@/components/SponsorSlot";
@@ -33,8 +33,6 @@ export default function HomePage() {
   const verifiedFeatured = featuredRows.filter((price) => price.dataStatus === "verified");
   const featured = (verifiedFeatured.length > 0 ? verifiedFeatured : featuredRows).slice(0, 8);
   const cheapest = [...featured].sort((a, b) => a.effectiveInputPrice - b.effectiveInputPrice)[0];
-  const samplePlan = plans[1];
-  const samplePlanEstimate = estimateSubscriptionPlan(samplePlan, cheapest?.effectiveInputPrice);
   const verifiedPriceCount = prices.filter((price) => price.dataStatus === "verified").length;
   // 首页只展示最近 3 条变动：证明数据在动，完整列表交给 /data-status 和 /price-drops
   const latestChanges = priceChanges.changes.slice(0, 3);
@@ -86,14 +84,14 @@ export default function HomePage() {
             <div className="metric-note">{cheapest ? `${cheapest.model.name} · ${cheapest.provider.name} · 来源复核` : "暂无数据"}</div>
           </div>
           <div className="metric">
-            <div className="metric-label">样例套餐额度折算</div>
-            <div className="metric-value">{samplePlanEstimate.effectivePerMillion ? formatCny(samplePlanEstimate.effectivePerMillion, 2) : "不限"}</div>
-            <div className="metric-note">{samplePlan.name} · 套餐仍为样例数据</div>
+            <div className="metric-label">已核验价格</div>
+            <div className="metric-value">{verifiedPriceCount}<span className="small muted"> / {prices.length} 条</span></div>
+            <div className="metric-note">每条都与平台实时来源逐字段比对过</div>
           </div>
           <div className="metric">
-            <div className="metric-label">订阅破局点</div>
-            <div className="metric-value">{samplePlanEstimate.breakEvenTokens ? formatTokens(samplePlanEstimate.breakEvenTokens) : "—"}</div>
-            <div className="metric-note">按样例套餐估算；低于该用量时按量可能更划算</div>
+            <div className="metric-label">收录规模</div>
+            <div className="metric-value">{models.length}<span className="small muted"> 模型 · {providers.length} 平台</span></div>
+            <div className="metric-note">每日 03:45 自动采集与复核，变动即留痕</div>
           </div>
         </div>
       </section>

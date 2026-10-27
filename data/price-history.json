@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-27T00:10:55.697Z",
-  "pointCount": 5,
+  "generatedAt": "2026-10-27T23:09:41.548Z",
+  "pointCount": 6,
   "points": [
     {
       "snapshot": "2026-10-26T15-27-50",
@@ -621,8 +621,8 @@
       }
     },
     {
-      "snapshot": "current",
-      "capturedAt": "2026-10-27T00:10:55.696Z",
+      "snapshot": "2026-10-27T00-10-56",
+      "capturedAt": "2026-10-27T00:10:56.597Z",
       "prices": {
         "openrouter-gpt-5-6-sol-credit": {
           "in": 28.8,
@@ -772,6 +772,390 @@
           "in": 14.4,
           "out": 43.2,
           "cache": 1.8,
+          "status": "verified"
+        }
+      }
+    },
+    {
+      "snapshot": "current",
+      "capturedAt": "2026-10-27T23:09:41.546Z",
+      "prices": {
+        "openrouter-gpt-5-6-sol-credit": {
+          "in": 28.8,
+          "out": 144,
+          "cache": 2.88,
+          "status": "verified"
+        },
+        "openrouter-claude-sonnet-5-credit": {
+          "in": 14.4,
+          "out": 72,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-gemini-3-8-flash-credit": {
+          "in": 5.94,
+          "out": 29.7,
+          "cache": 0.594,
+          "status": "verified"
+        },
+        "openrouter-glm-5-3-flash-credit": {
+          "in": 1.08,
+          "out": 3.6,
+          "cache": 0.216,
+          "status": "verified"
+        },
+        "siliconflow-glm-5-3-flash-pay_as_you_go": {
+          "in": 0.8,
+          "out": 2.8,
+          "cache": 0.23,
+          "status": "verified"
+        },
+        "siliconflow-deepseek-v4-1-flash-pay_as_you_go": {
+          "in": 2,
+          "out": 8,
+          "cache": 0.04,
+          "status": "verified"
+        },
+        "official-anthropic-claude-sonnet-5-pay_as_you_go": {
+          "in": 14.4,
+          "out": 72,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "official-anthropic-claude-opus-5-pay_as_you_go": {
+          "in": 36,
+          "out": 180,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "official-zhipu-glm-5-3-flash-pay_as_you_go": {
+          "in": 0.8,
+          "out": 2.8,
+          "cache": 0.23,
+          "status": "verified"
+        },
+        "openrouter-kimi-k3-credit": {
+          "in": 1.08,
+          "out": 144,
+          "cache": 1.008,
+          "status": "verified"
+        },
+        "openrouter-deepseek-v4-1-flash-credit": {
+          "in": 1.008,
+          "out": 3.024,
+          "cache": 0.03024,
+          "status": "verified"
+        },
+        "openrouter-grok-4-7-credit": {
+          "in": 14.4,
+          "out": 43.2,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-minimax-m3-credit": {
+          "in": 2.16,
+          "out": 8.64,
+          "cache": 0.432,
+          "status": "verified"
+        },
+        "openrouter-claude-opus-5-credit": {
+          "in": 36,
+          "out": 180,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-qwen3-8-max-0902-credit": {
+          "in": 14.4,
+          "out": 43.2,
+          "cache": 1.8,
+          "status": "verified"
+        },
+        "openrouter-gpt-5-5-credit": {
+          "in": 36,
+          "out": 216,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-gpt-5-4-credit": {
+          "in": 18,
+          "out": 108,
+          "cache": 1.8,
+          "status": "verified"
+        },
+        "openrouter-gpt-5-4-mini-credit": {
+          "in": 5.4,
+          "out": 32.4,
+          "cache": 0.54,
+          "status": "verified"
+        },
+        "openrouter-gpt-5-2-credit": {
+          "in": 12.6,
+          "out": 100.8,
+          "cache": 1.26,
+          "status": "verified"
+        },
+        "openrouter-gpt-5-1-credit": {
+          "in": 9,
+          "out": 72,
+          "cache": 0.9,
+          "status": "verified"
+        },
+        "openrouter-gpt-5-credit": {
+          "in": 9,
+          "out": 72,
+          "cache": 0.9,
+          "status": "verified"
+        },
+        "openrouter-gpt-4-1-credit": {
+          "in": 14.4,
+          "out": 57.6,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-gpt-4o-credit": {
+          "in": 18,
+          "out": 72,
+          "cache": 9,
+          "status": "verified"
+        },
+        "openrouter-gpt-4o-mini-credit": {
+          "in": 1.08,
+          "out": 4.32,
+          "cache": 0.54,
+          "status": "verified"
+        },
+        "openrouter-o3-credit": {
+          "in": 14.4,
+          "out": 57.6,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-o4-mini-credit": {
+          "in": 7.92,
+          "out": 31.68,
+          "cache": 1.98,
+          "status": "verified"
+        },
+        "openrouter-gpt-oss-120b-credit": {
+          "in": 1.08,
+          "out": 4.32,
+          "cache": 0.54,
+          "status": "verified"
+        },
+        "openrouter-claude-opus-5-5-credit": {
+          "in": 28.8,
+          "out": 144,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-claude-sonnet-5-5-credit": {
+          "in": 14.4,
+          "out": 72,
+          "cache": 0.72,
+          "status": "verified"
+        },
+        "openrouter-claude-haiku-5-5-credit": {
+          "in": 0.72,
+          "out": 3.6,
+          "cache": 0.072,
+          "status": "verified"
+        },
+        "openrouter-claude-opus-4-5-credit": {
+          "in": 36,
+          "out": 180,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-claude-sonnet-4-5-credit": {
+          "in": 21.6,
+          "out": 108,
+          "cache": 2.16,
+          "status": "verified"
+        },
+        "openrouter-claude-haiku-4-5-credit": {
+          "in": 7.2,
+          "out": 36,
+          "cache": 0.72,
+          "status": "verified"
+        },
+        "openrouter-gemini-3-5-flash-credit": {
+          "in": 10.8,
+          "out": 64.8,
+          "cache": 1.08,
+          "status": "verified"
+        },
+        "openrouter-gemini-3-1-pro-preview-credit": {
+          "in": 14.4,
+          "out": 86.4,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-gemini-2-5-pro-credit": {
+          "in": 9,
+          "out": 72,
+          "cache": 0.9,
+          "status": "verified"
+        },
+        "openrouter-gemini-2-5-flash-credit": {
+          "in": 2.16,
+          "out": 18,
+          "cache": 0.216,
+          "status": "verified"
+        },
+        "openrouter-deepseek-v4-pro-0813-credit": {
+          "in": 4.752,
+          "out": 14.256,
+          "cache": 0.1584,
+          "status": "verified"
+        },
+        "openrouter-deepseek-v4-flash-0731-credit": {
+          "in": 0.8568,
+          "out": 1.7136,
+          "cache": 0.17136,
+          "status": "verified"
+        },
+        "openrouter-deepseek-v3-2-credit": {
+          "in": 2.016,
+          "out": 3.024,
+          "cache": 0.2016,
+          "status": "verified"
+        },
+        "openrouter-deepseek-r1-0528-credit": {
+          "in": 3.6,
+          "out": 15.48,
+          "cache": 2.52,
+          "status": "verified"
+        },
+        "openrouter-qwen3-7-max-credit": {
+          "in": 10.62,
+          "out": 31.86,
+          "cache": 2.124,
+          "status": "verified"
+        },
+        "openrouter-qwen3-6-plus-credit": {
+          "in": 2.34,
+          "out": 14.04,
+          "cache": null,
+          "status": "verified"
+        },
+        "openrouter-qwen3-5-plus-20260420-credit": {
+          "in": 2.16,
+          "out": 12.96,
+          "cache": null,
+          "status": "verified"
+        },
+        "openrouter-qwen3-coder-credit": {
+          "in": 2.16,
+          "out": 7.2,
+          "cache": 0.72,
+          "status": "verified"
+        },
+        "openrouter-qwen3-8-max-prime-credit": {
+          "in": 28.8,
+          "out": 86.4,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-kimi-k3-1-pro-credit": {
+          "in": 14.4,
+          "out": 72,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-kimi-k2-6-credit": {
+          "in": 4.68,
+          "out": 24.552,
+          "cache": 1.08,
+          "status": "verified"
+        },
+        "openrouter-kimi-k2-thinking-credit": {
+          "in": 4.32,
+          "out": 18,
+          "cache": 1.08,
+          "status": "verified"
+        },
+        "openrouter-glm-5-3-credit": {
+          "in": 0.50328,
+          "out": 10.08,
+          "cache": 0.49608,
+          "status": "verified"
+        },
+        "openrouter-glm-5-2-credit": {
+          "in": 0.24552,
+          "out": 50.4,
+          "cache": 0.2376,
+          "status": "verified"
+        },
+        "openrouter-glm-5-credit": {
+          "in": 7.2,
+          "out": 23.04,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-glm-4-7-credit": {
+          "in": 3.888,
+          "out": 14.256,
+          "cache": 0.7128,
+          "status": "verified"
+        },
+        "openrouter-minimax-m3-1-flash-credit": {
+          "in": 1.08,
+          "out": 4.32,
+          "cache": 0.108,
+          "status": "verified"
+        },
+        "openrouter-minimax-m2-7-credit": {
+          "in": 2.16,
+          "out": 8.64,
+          "cache": 0.432,
+          "status": "verified"
+        },
+        "openrouter-grok-4-20-credit": {
+          "in": 9,
+          "out": 18,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-grok-4-6-credit": {
+          "in": 14.4,
+          "out": 43.2,
+          "cache": 3.6,
+          "status": "verified"
+        },
+        "openrouter-grok-4-3-credit": {
+          "in": 9,
+          "out": 18,
+          "cache": 1.44,
+          "status": "verified"
+        },
+        "openrouter-llama-4-maverick-credit": {
+          "in": 1.35,
+          "out": 4.698,
+          "cache": 0.36,
+          "status": "verified"
+        },
+        "openrouter-llama-4-scout-credit": {
+          "in": 0.72,
+          "out": 2.16,
+          "cache": null,
+          "status": "verified"
+        },
+        "openrouter-mistral-large-4-0-credit": {
+          "in": 9.792,
+          "out": 30.096,
+          "cache": 1.008,
+          "status": "verified"
+        },
+        "openrouter-mistral-medium-3-5-credit": {
+          "in": 10.8,
+          "out": 54,
+          "cache": null,
+          "status": "verified"
+        },
+        "openrouter-nova-pro-v1-credit": {
+          "in": 5.76,
+          "out": 23.04,
+          "cache": null,
           "status": "verified"
         }
       }

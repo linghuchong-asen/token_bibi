@@ -1,25 +1,27 @@
 {
-  "generatedAt": "2026-10-27T00:10:57.493Z",
+  "generatedAt": "2026-10-27T23:09:43.978Z",
   "summary": {
-    "models": 11,
-    "providers": 8,
-    "prices": 25,
-    "plans": 5,
-    "rechargeRules": 5,
-    "cardKeyRules": 5,
-    "pendingReview": 1,
+    "models": 58,
+    "providers": 7,
+    "prices": 63,
+    "plans": 0,
+    "rechargeRules": 4,
+    "cardKeyRules": 0,
+    "pendingReview": 0,
     "stalePrices": 0,
     "modelsWithoutPrices": 0,
-    "providersWithoutPrices": 0
+    "providersWithoutPrices": 3
   },
   "issues": {
     "duplicatePriceIds": [],
-    "pendingReviewPrices": [
-      "openrouter-qwen3-8-max-credit"
-    ],
+    "pendingReviewPrices": [],
     "stalePrices": [],
     "modelsWithoutPrices": [],
-    "providersWithoutPrices": [],
+    "providersWithoutPrices": [
+      "302ai",
+      "aihubmix",
+      "official-openai"
+    ],
     "orphanPrices": [],
     "invalidPlans": [],
     "invalidRechargeRules": [],

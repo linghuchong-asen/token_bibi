@@ -32,7 +32,8 @@ describe("model filtering and sorting", () => {
     expect(verified.length).toBeGreaterThan(0);
     expect(verified.every((row) => row.dataStatus === "verified")).toBe(true);
     const all = filterPrices(rows, { query: "", billing: "all", providerType: "all", dataStatus: "all" });
-    expect(all.length).toBeGreaterThan(verified.length);
+    // 全量 >= 已核验：样例/待核验清零后两者相等，但"已核验是全量子集"这一不变量始终成立
+    expect(all.length).toBeGreaterThanOrEqual(verified.length);
   });
 
   it("sorts by effective input price", () => {

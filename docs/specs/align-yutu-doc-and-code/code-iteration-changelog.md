@@ -413,3 +413,118 @@
      是同一运营者的两个工作台，不应当互相藏起来。
 - **影响范围**：全站 head；管理页导航。
 - **验证方式**：115 单测 / 34 烟测 / 8 E2E 全过；typecheck 与生产构建通过。
+
+---
+
+## 2026-10-28（凌晨去 demo 化 / 商业化一轮）
+
+> 背景：领导反馈"看起来就是个 demo，信息不全"。逐条排查出的 demo 感来源：
+> ① 全站 10 条样例状态数据（套餐 5 / 充值规则 5 / 卡密规则 5 / 样例价 9），
+> 且页脚、首页、about 页三处自曝"样例数据"；② 收录规模太小（11 模型 / 25 价格）；
+> ③ 商业信任件缺失（无隐私政策/服务条款/联系方式，域名兜底是 example.com）；
+> ④ 名为"New API 示例站"的纯演示平台在线上货架。
+
+### 27. 数据扩容：OpenRouter 收录 9 → 58 个模型，价格 25 → 63 条全核验
+
+- **类型**：数据扩容 + 新增工具
+- **涉及文件**：
+  - `scripts/expand-openrouter-catalog.mjs`（新增）：精选 48 个主流模型
+    （OpenAI / Anthropic / Google / DeepSeek / Qwen / Kimi / GLM / MiniMax / Grok /
+    Llama / Mistral / Nova），从实时 API 校验后合并进 models.json 与采集映射；
+    模型元数据（上下文长度 / 多模态 / 发布日期）全部取自 API，不手写数字。
+    映射文件不进版本库，ECS 部署后需重跑本脚本一次再跑每日管线。
+  - `data/models.json`：11 → 58 条；`data/prices.json`：25 → 63 条（100% verified）
+  - `data/imports/openrouter-map.json`：10 → 58 条映射
+- **变更说明**：走完整真实性管线：collect → import → `review:verify-sources`
+  （与实时源逐字段一致才升"已核验"），48 条新价格全部核验通过。
+- **验证方式**：quality-report：58 模型 / 63 价格 / 0 待核验 / 0 stale / 0 孤儿。
+
+### 28. 删除：全部样例/虚构商业数据（宁缺毋假）
+
+- **类型**：删除（真实性防线）
+- **涉及文件**：`data/plans.json`（5 → 0）、`data/card-key-rules.json`（5 → 0）、
+  `data/recharge-rules.json`（5 条虚构 → 4 条带真实来源的待核验规则）、
+  `data/providers.json`（移除 newapi-demo；openrouter/siliconflow/官方平台状态
+  改为 verified，302ai/aihubmix/official-openai 无价格改为 pending_review）、
+  `data/prices.json`（移除 9 条样例价 + 1 条源站已下架的 pending 价）
+- **变更说明**：HANDOFF 遗留的两个"待领导拍板"项一并处理：下架模型
+  qwen3-8-max 的模型条目与遗留价格移除（官方快照替代版 0902 保留），
+  siliconflow-kimi-k3 样例价移除（kimi-k3 模型保留，走 OpenRouter 已核验价）。
+- **验证方式**：quality-report 0 孤儿 / 0 重复；`modelsWithoutPrices: 0`。
+
+### 29. 页面收编：样例货架改真实指南（订阅/卡密/积分）
+
+- **类型**：修改（信息架构重构）
+- **涉及文件**：
+  - `src/app/subscriptions/page.tsx`：套餐货架 → "订阅怎么算"方法论
+    （折算单价 / 破局点 / 修正项）+ 已核验按量基线表；明确收录口径：
+    未经核验的套餐一律不上架。
+  - `src/app/card-keys/page.tsx`：虚构平台规则表 → 三步避坑指南
+    （认入口 / 小钱试单 / 算真实成本）+ 风险信号清单；并说明为什么这页没有平台条目。
+  - `src/app/credits/page.tsx` + `src/components/CreditCalculator.tsx`：
+    去掉"样例数据"徽章；下拉框显示平台名而非内部 id；充值规则表只保留
+    有公开来源的 4 条，拿不准的字段如实标"待核验"。
+  - `src/app/providers/page.tsx`：副标题去掉已删除的示例站口径；0 套餐显示
+    "待核验"而非"0 个"。
+  - `src/app/models/[slug]/page.tsx`、`src/components/CalculatorClient.tsx`：
+    空套餐话术改为"暂无已核验的订阅套餐"并引导按量估算。
+  - `src/app/data-status/page.tsx`：核验方法说明更新为当前口径（无样例数据）。
+- **验证方式**：typecheck + 115 单测通过（1 条老断言按新不变量修正，见 30）。
+
+### 30. 修改：全站去"样例"自曝文案 + 首页三数字换真实指标
+
+- **类型**：修改（文案 / 信息设计）
+- **涉及文件**：
+  - `src/app/page.tsx`：三个核心数字改为——已核验最低有效输入价、
+    已核验价格（63/63 条）、收录规模（58 模型 · 7 平台），全部实时取自数据文件；
+    删除对样例套餐的依赖。
+  - `src/components/SiteFooter.tsx`：页脚改四栏（品牌 / 产品 / 数据与信任 /
+    商业与法律），自曝句"套餐与规则部分仍为样例数据"改为
+    "未核验信息一律不上架"。
+  - `src/app/about/page.tsx`：重写——新增"我们是谁"（独立开发者运营、
+    不参与交易）与"联系我们"（反馈表单 / 刊例 / API+RSS）；
+    规模数字从数据文件实时读取。
+  - `src/app/faq/page.tsx`："样例数据"问答改为"已核验 / 待核验"机制说明。
+  - `src/app/globals.css`：新增页脚四栏样式（窄屏单列退化）。
+- **验证方式**：typecheck + 单测 + 构建通过；冒烟覆盖首页与关键页。
+
+### 31. 新增：隐私政策 + 服务条款（商业信任件）
+
+- **类型**：新增（法律合规 / 信任件）
+- **涉及文件**：`src/app/privacy/page.tsx`、`src/app/terms/page.tsx`（均新增）、
+  `src/app/sitemap.ts`（新增 /privacy /terms /feedback 路由）
+- **变更说明**：内容与站点真实行为严格对应——无账号系统、无第三方追踪脚本、
+  表单数据仅存站点数据库供运营处理、API/表单按 IP 限流；
+  服务条款明确信息整理工具性质、数据时效免责与使用规范。
+- **验证方式**：构建后烟测覆盖 /privacy /terms。
+
+### 32. 修复：域名兜底 example.com → 线上实例地址
+
+- **类型**：修改（SEO 正确性）
+- **涉及文件**：`src/app/layout.tsx`、`src/app/sitemap.ts`
+- **变更说明**：NEXT_PUBLIC_SITE_URL 未设置时，canonical/OG/sitemap 会带上
+  `tokenbibi.example.com` 占位域——搜索引擎会把它当成另一个站点。
+  兜底改为线上实例地址 `http://100.125.251.103:8090`；正式域名下来后
+  只需设置环境变量，无需改代码。
+- **验证方式**：构建产物检查 canonical 域名。
+
+### 33. 修复：价格历史类型在"价格被移除"后失效
+
+- **类型**：修改（类型正确性）
+- **涉及文件**：`src/lib/price-history.ts`、`tests/filtering.test.ts`
+- **变更说明**：
+  1. 快照点键集不再一致（删除价格后新快照缺少该键），`HistoryPoint.prices`
+     值类型放宽为可 undefined（`seriesForPrice` 本就有存在性守卫）；
+  2. `filtering.test.ts` 的"全量 > 已核验"断言改为"全量 ≥ 已核验"——
+     样例清零后两者相等，"已核验是全量子集"这一不变量不变。
+- **验证方式**：typecheck 通过；115/115 单测通过。
+
+### 34. 数据管线：全量跑通并抓到 2 条真实变动
+
+- **类型**：数据更新
+- **涉及文件**：`data/price-changes.json`、`data/price-history.json`、快照目录
+- **变更说明**：changelog 基线对比发现 2 条真实变动并留痕：
+  kimi-k3 输入价 1.2168 → 1.08（降价）；deepseek-v4-1-flash 计价重构
+  （输入 0.31 → 1.008、输出 0.072 → 3.024，回到正常倍率区间）。
+  质量报告：58 模型 / 7 平台（4 已核验 + 3 待接入）/ 63 价格全核验 / 0 stale。
+- **验证方式**：`npm run quality:report` + changelog 输出。

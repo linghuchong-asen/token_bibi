@@ -70,9 +70,15 @@ async function main() {
   await page.type("#model-search", "glm");
   await page.waitForFunction(() => document.body.innerText.includes("GLM-5.3 Flash"));
   assert.equal(await page.$$eval("tbody tr", (rows) => rows.some((row) => row.innerText.includes("GPT-5.6 Sol"))), false);
+  // 清空搜索词再切"全部价格"：断言行数等于全库（样例清零后 63/63，容忍 ≥60）
+  // 用 Ctrl+A + Backspace：三连击选区在无头浏览器下不稳定（实测只删掉末位字符）
+  await page.click("#model-search");
+  await page.keyboard.down("Control");
+  await page.keyboard.press("a");
+  await page.keyboard.up("Control");
+  await page.keyboard.press("Backspace");
   await page.select("#status-filter", "all");
-  await page.waitForFunction(() => document.body.innerText.includes("样例数据"));
-  await page.waitForFunction(() => document.body.innerText.includes("不应当作采购报价"));
+  await page.waitForFunction(() => document.querySelectorAll("tbody tr").length >= 60);
   await page.select("#billing-filter", "credit");
   await page.waitForFunction(() => document.querySelectorAll("tbody tr").length > 0);
   assert.match(await page.$eval("tbody", (el) => el.innerText), /积分 \/ 额度/);

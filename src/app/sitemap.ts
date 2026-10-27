@@ -6,13 +6,14 @@
 import type { MetadataRoute } from "next";
 import { models, priceChanges, providers } from "@/data";
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://tokenbibi.example.com";
+// 域名兜底与 layout.tsx 同一口径：线上实例地址，部署时用 NEXT_PUBLIC_SITE_URL 覆盖
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://100.125.251.103:8090";
 
 // 全站数据最后更新时间：变动记录的生成时间（每日管线最后一步之一）
 const dataUpdatedAt = new Date(priceChanges.generatedAt);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/models", "/providers", "/subscriptions", "/credits", "/card-keys", "/calculator", "/topics", "/about", "/share", "/data-status", "/data-api", "/advertise", "/faq", "/compare", "/price-drops"].map((path) => ({
+  const staticRoutes = ["", "/models", "/providers", "/subscriptions", "/credits", "/card-keys", "/calculator", "/topics", "/about", "/feedback", "/privacy", "/terms", "/share", "/data-status", "/data-api", "/advertise", "/faq", "/compare", "/price-drops"].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: dataUpdatedAt,
     changeFrequency: path === "" ? "daily" as const : "weekly" as const,

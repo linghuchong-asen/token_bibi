@@ -131,7 +131,7 @@ export function CalculatorClient({ models, providers, prices, plans, initialMode
           <span className="small muted">推荐路径</span>
           <strong>{recommended}</strong>
           <span className="small muted">
-            按当前用量，{bestPlan ? `最低订阅方案为 ${bestPlan.plan.name}，月费 ${formatCny(bestPlan.estimate.monthlyPriceCny)}。` : "暂无可用订阅方案。"}
+            按当前用量，{bestPlan ? `最低订阅方案为 ${bestPlan.plan.name}，月费 ${formatCny(bestPlan.estimate.monthlyPriceCny)}。` : "暂无已核验的订阅套餐，按量为当前参考路径。"}
           </span>
         </div>
         <div className="stack small">

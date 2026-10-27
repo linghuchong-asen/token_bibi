@@ -6,8 +6,13 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
+// 站点地址兜底用线上实例地址（ECS :8090），绝不能用 example.com 之类的占位域——
+// 它会进入 canonical/OG 元数据，被搜索引擎当成假站点。部署时优先用
+// NEXT_PUBLIC_SITE_URL 环境变量覆盖（例如换成正式域名）。
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://100.125.251.103:8090";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://tokenbibi.example.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "token比比 · AI 模型真实成本比价",
     template: "%s · token比比",

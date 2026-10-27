@@ -1,11 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { RechargeRule } from "@/data/types";
+import type { Provider, RechargeRule } from "@/data/types";
 import { parseRechargeMultiplier } from "@/lib/pricing";
 import { formatCny } from "@/lib/format";
 
-export function CreditCalculator({ rules }: { rules: RechargeRule[] }) {
+export function CreditCalculator({ rules, providers }: { rules: RechargeRule[]; providers?: Provider[] }) {
+  // 下拉里用平台名而不是内部 id：这是面向用户的商业页面，不暴露内部命名
   const [ruleId, setRuleId] = useState(rules[0]?.id ?? "");
   const [amount, setAmount] = useState(100);
   const rule = rules.find((item) => item.id === ruleId) ?? rules[0];
@@ -20,13 +21,13 @@ export function CreditCalculator({ rules }: { rules: RechargeRule[] }) {
           <h2 style={{ margin: 0 }}>积分 / 额度换算</h2>
           <p>把充值金额换算为到手额度和有效折价。</p>
         </div>
-        <span className="badge">样例数据</span>
+        <span className="badge badge-amber">规则待核验</span>
       </div>
       <div className="form-grid">
         <div className="field">
           <label htmlFor="credit-rule">充值规则</label>
           <select id="credit-rule" className="select" value={ruleId} onChange={(event) => setRuleId(event.target.value)}>
-            {rules.map((item) => <option key={item.id} value={item.id}>{item.providerId} · {item.rechargeRatio}</option>)}
+            {rules.map((item) => <option key={item.id} value={item.id}>{providers?.find((p) => p.id === item.providerId)?.name ?? item.providerId} · {item.rechargeRatio}</option>)}
           </select>
         </div>
         <div className="field">

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getProviderById, rechargeRules } from "@/data";
+import { getProviderById, providers, rechargeRules } from "@/data";
 import { CreditCalculator } from "@/components/CreditCalculator";
 import { formatDate } from "@/lib/format";
 
@@ -14,13 +14,13 @@ export default function CreditsPage() {
           <h1 style={{ margin: 0, fontSize: 34 }}>积分 / 点数 / credits</h1>
           <p>把内部额度、充值汇率和有效折扣换算成真实现金成本。</p>
         </div>
-        <span className="badge badge-amber">样例数据</span>
+        <span className="badge badge-amber">规则待核验</span>
       </div>
 
-      <CreditCalculator rules={rechargeRules} />
+      <CreditCalculator rules={rechargeRules} providers={providers} />
 
       <section className="section card card-pad">
-        <div className="section-heading"><div><h2>充值规则表</h2><p>不同平台的内部额度单位并不统一。</p></div></div>
+        <div className="section-heading"><div><h2>充值规则表</h2><p>不同平台的内部额度单位并不统一。只收录有公开来源的规则，拿不准的字段如实标注"待核验"。</p></div></div>
         <div className="table-wrap">
           <table className="table">
             <thead><tr><th>平台</th><th>充值汇率</th><th className="num">最低充值</th><th>余额有效期</th><th>退款</th><th>更新时间</th><th>来源</th></tr></thead>

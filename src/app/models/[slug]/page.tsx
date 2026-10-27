@@ -180,7 +180,7 @@ export default async function ModelDetailPage({ params }: { params: Promise<{ sl
           <Link href="/subscriptions" className="button button-small">查看全部套餐</Link>
         </div>
         <div className="grid-3">
-          {relatedPlans.length === 0 ? <div className="empty">暂无覆盖该模型的订阅套餐。</div> : relatedPlans.map((plan) => {
+          {relatedPlans.length === 0 ? <div className="empty">暂无已核验的订阅套餐；按量价格见上表，也可用计算器按你的用量估算。</div> : relatedPlans.map((plan) => {
             const provider = getProviderById(plan.providerId);
             const estimate = estimateSubscriptionPlan(plan, cheapest?.effectiveInputPrice);
             return (

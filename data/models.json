@@ -116,26 +116,6 @@
     ]
   },
   {
-    "id": "qwen3-8-max",
-    "slug": "qwen3-8-max",
-    "name": "Qwen3.8-Max",
-    "vendor": "Alibaba",
-    "family": "qwen",
-    "capabilities": [
-      "识图",
-      "深度思考",
-      "编码",
-      "长文本",
-      "多模态"
-    ],
-    "contextLength": 1000000,
-    "multimodal": true,
-    "releaseDate": "2026-09-12",
-    "aliases": [
-      "qwen3.8-max"
-    ]
-  },
-  {
     "id": "grok-4-7",
     "slug": "grok-4-7",
     "name": "Grok 4.7",
@@ -211,6 +191,907 @@
     "aliases": [
       "qwen3.8-max-0902",
       "qwen3.8-max-20260902"
+    ]
+  },
+  {
+    "id": "gpt-5-5",
+    "slug": "gpt-5-5",
+    "name": "GPT-5.5",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1050000,
+    "multimodal": true,
+    "releaseDate": "2026-04-24",
+    "aliases": [
+      "gpt-5.5"
+    ]
+  },
+  {
+    "id": "gpt-5-4",
+    "slug": "gpt-5-4",
+    "name": "GPT-5.4",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1050000,
+    "multimodal": true,
+    "releaseDate": "2026-03-05",
+    "aliases": [
+      "gpt-5.4"
+    ]
+  },
+  {
+    "id": "gpt-5-4-mini",
+    "slug": "gpt-5-4-mini",
+    "name": "GPT-5.4 Mini",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 400000,
+    "multimodal": true,
+    "releaseDate": "2026-03-17",
+    "aliases": [
+      "gpt-5.4-mini"
+    ]
+  },
+  {
+    "id": "gpt-5-2",
+    "slug": "gpt-5-2",
+    "name": "GPT-5.2",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 400000,
+    "multimodal": true,
+    "releaseDate": "2025-12-10",
+    "aliases": [
+      "gpt-5.2"
+    ]
+  },
+  {
+    "id": "gpt-5-1",
+    "slug": "gpt-5-1",
+    "name": "GPT-5.1",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 400000,
+    "multimodal": true,
+    "releaseDate": "2025-11-13",
+    "aliases": [
+      "gpt-5.1"
+    ]
+  },
+  {
+    "id": "gpt-5",
+    "slug": "gpt-5",
+    "name": "GPT-5",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 400000,
+    "multimodal": true,
+    "releaseDate": "2025-08-07",
+    "aliases": [
+      "gpt-5"
+    ]
+  },
+  {
+    "id": "gpt-4-1",
+    "slug": "gpt-4-1",
+    "name": "GPT-4.1",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1047576,
+    "multimodal": true,
+    "releaseDate": "2025-04-14",
+    "aliases": [
+      "gpt-4.1"
+    ]
+  },
+  {
+    "id": "gpt-4o",
+    "slug": "gpt-4o",
+    "name": "GPT-4o",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "编码"
+    ],
+    "contextLength": 128000,
+    "multimodal": true,
+    "releaseDate": "2024-05-13",
+    "aliases": [
+      "gpt-4o"
+    ]
+  },
+  {
+    "id": "gpt-4o-mini",
+    "slug": "gpt-4o-mini",
+    "name": "GPT-4o Mini",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "编码"
+    ],
+    "contextLength": 128000,
+    "multimodal": true,
+    "releaseDate": "2024-07-18",
+    "aliases": [
+      "gpt-4o-mini"
+    ]
+  },
+  {
+    "id": "o3",
+    "slug": "o3",
+    "name": "o3",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 200000,
+    "multimodal": true,
+    "releaseDate": "2025-04-16",
+    "aliases": [
+      "o3"
+    ]
+  },
+  {
+    "id": "o4-mini",
+    "slug": "o4-mini",
+    "name": "o4-mini",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 200000,
+    "multimodal": true,
+    "releaseDate": "2025-04-16",
+    "aliases": [
+      "o4-mini"
+    ]
+  },
+  {
+    "id": "gpt-oss-120b",
+    "slug": "gpt-oss-120b",
+    "name": "gpt-oss-120b",
+    "vendor": "OpenAI",
+    "family": "gpt",
+    "capabilities": [
+      "深度思考",
+      "编码"
+    ],
+    "contextLength": 131072,
+    "multimodal": false,
+    "releaseDate": "2025-08-05",
+    "aliases": [
+      "gpt-oss-120b"
+    ]
+  },
+  {
+    "id": "claude-opus-5-5",
+    "slug": "claude-opus-5-5",
+    "name": "Claude Opus 5.5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-22",
+    "aliases": [
+      "claude-opus-5.5"
+    ]
+  },
+  {
+    "id": "claude-sonnet-5-5",
+    "slug": "claude-sonnet-5-5",
+    "name": "Claude Sonnet 5.5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-28",
+    "aliases": [
+      "claude-sonnet-5.5"
+    ]
+  },
+  {
+    "id": "claude-haiku-5-5",
+    "slug": "claude-haiku-5-5",
+    "name": "Claude Haiku 5.5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-10-07",
+    "aliases": [
+      "claude-haiku-5.5"
+    ]
+  },
+  {
+    "id": "claude-opus-4-5",
+    "slug": "claude-opus-4-5",
+    "name": "Claude Opus 4.5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 200000,
+    "multimodal": true,
+    "releaseDate": "2025-11-24",
+    "aliases": [
+      "claude-opus-4.5"
+    ]
+  },
+  {
+    "id": "claude-sonnet-4-5",
+    "slug": "claude-sonnet-4-5",
+    "name": "Claude Sonnet 4.5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2025-09-29",
+    "aliases": [
+      "claude-sonnet-4.5"
+    ]
+  },
+  {
+    "id": "claude-haiku-4-5",
+    "slug": "claude-haiku-4-5",
+    "name": "Claude Haiku 4.5",
+    "vendor": "Anthropic",
+    "family": "claude",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 200000,
+    "multimodal": true,
+    "releaseDate": "2025-10-15",
+    "aliases": [
+      "claude-haiku-4.5"
+    ]
+  },
+  {
+    "id": "gemini-3-5-flash",
+    "slug": "gemini-3-5-flash",
+    "name": "Gemini 3.5 Flash",
+    "vendor": "Google",
+    "family": "gemini",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2026-05-19",
+    "aliases": [
+      "gemini-3.5-flash"
+    ]
+  },
+  {
+    "id": "gemini-3-1-pro-preview",
+    "slug": "gemini-3-1-pro-preview",
+    "name": "Gemini 3.1 Pro Preview",
+    "vendor": "Google",
+    "family": "gemini",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2026-02-19",
+    "aliases": [
+      "gemini-3.1-pro-preview"
+    ]
+  },
+  {
+    "id": "gemini-2-5-pro",
+    "slug": "gemini-2-5-pro",
+    "name": "Gemini 2.5 Pro",
+    "vendor": "Google",
+    "family": "gemini",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2025-06-17",
+    "aliases": [
+      "gemini-2.5-pro"
+    ]
+  },
+  {
+    "id": "gemini-2-5-flash",
+    "slug": "gemini-2-5-flash",
+    "name": "Gemini 2.5 Flash",
+    "vendor": "Google",
+    "family": "gemini",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2025-06-17",
+    "aliases": [
+      "gemini-2.5-flash"
+    ]
+  },
+  {
+    "id": "deepseek-v4-pro-0813",
+    "slug": "deepseek-v4-pro-0813",
+    "name": "DeepSeek V4 Pro 0813",
+    "vendor": "DeepSeek",
+    "family": "deepseek",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1048576,
+    "multimodal": false,
+    "releaseDate": "2026-08-12",
+    "aliases": [
+      "deepseek-v4-pro-0813"
+    ]
+  },
+  {
+    "id": "deepseek-v4-flash-0731",
+    "slug": "deepseek-v4-flash-0731",
+    "name": "DeepSeek V4 Flash 0731",
+    "vendor": "DeepSeek",
+    "family": "deepseek",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1048576,
+    "multimodal": false,
+    "releaseDate": "2026-07-31",
+    "aliases": [
+      "deepseek-v4-flash-0731"
+    ]
+  },
+  {
+    "id": "deepseek-v3-2",
+    "slug": "deepseek-v3-2",
+    "name": "DeepSeek V3.2",
+    "vendor": "DeepSeek",
+    "family": "deepseek",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 163840,
+    "multimodal": false,
+    "releaseDate": "2025-12-01",
+    "aliases": [
+      "deepseek-v3.2"
+    ]
+  },
+  {
+    "id": "deepseek-r1-0528",
+    "slug": "deepseek-r1-0528",
+    "name": "DeepSeek R1 0528",
+    "vendor": "DeepSeek",
+    "family": "deepseek",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 163840,
+    "multimodal": false,
+    "releaseDate": "2025-05-28",
+    "aliases": [
+      "deepseek-r1-0528"
+    ]
+  },
+  {
+    "id": "qwen3-7-max",
+    "slug": "qwen3-7-max",
+    "name": "Qwen3.7-Max",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1000000,
+    "multimodal": false,
+    "releaseDate": "2026-05-21",
+    "aliases": [
+      "qwen3.7-max"
+    ]
+  },
+  {
+    "id": "qwen3-6-plus",
+    "slug": "qwen3-6-plus",
+    "name": "Qwen3.6-Plus",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-04-02",
+    "aliases": [
+      "qwen3.6-plus"
+    ]
+  },
+  {
+    "id": "qwen3-5-plus-20260420",
+    "slug": "qwen3-5-plus-20260420",
+    "name": "Qwen3.5-Plus 0420",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-04-27",
+    "aliases": [
+      "qwen3.5-plus-20260420"
+    ]
+  },
+  {
+    "id": "qwen3-coder",
+    "slug": "qwen3-coder",
+    "name": "Qwen3 Coder",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 262144,
+    "multimodal": false,
+    "releaseDate": "2025-07-23",
+    "aliases": [
+      "qwen3-coder"
+    ]
+  },
+  {
+    "id": "qwen3-8-max-prime",
+    "slug": "qwen3-8-max-prime",
+    "name": "Qwen3.8-Max Prime",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-09-23",
+    "aliases": [
+      "qwen3.8-max-prime"
+    ]
+  },
+  {
+    "id": "kimi-k3-1-pro",
+    "slug": "kimi-k3-1-pro",
+    "name": "Kimi K3.1 Pro",
+    "vendor": "Moonshot",
+    "family": "kimi",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2026-10-23",
+    "aliases": [
+      "kimi-k3.1-pro"
+    ]
+  },
+  {
+    "id": "kimi-k2-6",
+    "slug": "kimi-k2-6",
+    "name": "Kimi K2.6",
+    "vendor": "Moonshot",
+    "family": "kimi",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-04-20",
+    "aliases": [
+      "kimi-k2.6"
+    ]
+  },
+  {
+    "id": "kimi-k2-thinking",
+    "slug": "kimi-k2-thinking",
+    "name": "Kimi K2 Thinking",
+    "vendor": "Moonshot",
+    "family": "kimi",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 262144,
+    "multimodal": false,
+    "releaseDate": "2025-11-06",
+    "aliases": [
+      "kimi-k2-thinking"
+    ]
+  },
+  {
+    "id": "glm-5-3",
+    "slug": "glm-5-3",
+    "name": "GLM-5.3",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1048576,
+    "multimodal": false,
+    "releaseDate": "2026-08-18",
+    "aliases": [
+      "glm-5.3"
+    ]
+  },
+  {
+    "id": "glm-5-2",
+    "slug": "glm-5-2",
+    "name": "GLM-5.2",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1048576,
+    "multimodal": false,
+    "releaseDate": "2026-06-16",
+    "aliases": [
+      "glm-5.2"
+    ]
+  },
+  {
+    "id": "glm-5",
+    "slug": "glm-5",
+    "name": "GLM-5",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 204800,
+    "multimodal": false,
+    "releaseDate": "2026-02-11",
+    "aliases": [
+      "glm-5"
+    ]
+  },
+  {
+    "id": "glm-4-7",
+    "slug": "glm-4-7",
+    "name": "GLM-4.7",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 204800,
+    "multimodal": false,
+    "releaseDate": "2025-12-22",
+    "aliases": [
+      "glm-4.7"
+    ]
+  },
+  {
+    "id": "minimax-m3-1-flash",
+    "slug": "minimax-m3-1-flash",
+    "name": "MiniMax M3.1 Flash",
+    "vendor": "MiniMax",
+    "family": "minimax",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2026-10-19",
+    "aliases": [
+      "minimax-m3.1-flash"
+    ]
+  },
+  {
+    "id": "minimax-m2-7",
+    "slug": "minimax-m2-7",
+    "name": "MiniMax M2.7",
+    "vendor": "MiniMax",
+    "family": "minimax",
+    "capabilities": [
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 204800,
+    "multimodal": false,
+    "releaseDate": "2026-03-18",
+    "aliases": [
+      "minimax-m2.7"
+    ]
+  },
+  {
+    "id": "grok-4-20",
+    "slug": "grok-4-20",
+    "name": "Grok 4.20",
+    "vendor": "xAI",
+    "family": "grok",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "搜索"
+    ],
+    "contextLength": 2000000,
+    "multimodal": true,
+    "releaseDate": "2026-03-31",
+    "aliases": [
+      "grok-4.20"
+    ]
+  },
+  {
+    "id": "grok-4-6",
+    "slug": "grok-4-6",
+    "name": "Grok 4.6",
+    "vendor": "xAI",
+    "family": "grok",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "搜索"
+    ],
+    "contextLength": 500000,
+    "multimodal": true,
+    "releaseDate": "2026-08-12",
+    "aliases": [
+      "grok-4.6"
+    ]
+  },
+  {
+    "id": "grok-4-3",
+    "slug": "grok-4-3",
+    "name": "Grok 4.3",
+    "vendor": "xAI",
+    "family": "grok",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "搜索"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-04-30",
+    "aliases": [
+      "grok-4.3"
+    ]
+  },
+  {
+    "id": "llama-4-maverick",
+    "slug": "llama-4-maverick",
+    "name": "Llama 4 Maverick",
+    "vendor": "Meta",
+    "family": "llama",
+    "capabilities": [
+      "识图",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 524288,
+    "multimodal": true,
+    "releaseDate": "2025-04-05",
+    "aliases": [
+      "llama-4-maverick"
+    ]
+  },
+  {
+    "id": "llama-4-scout",
+    "slug": "llama-4-scout",
+    "name": "Llama 4 Scout",
+    "vendor": "Meta",
+    "family": "llama",
+    "capabilities": [
+      "识图",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1310720,
+    "multimodal": true,
+    "releaseDate": "2025-04-05",
+    "aliases": [
+      "llama-4-scout"
+    ]
+  },
+  {
+    "id": "mistral-large-4-0",
+    "slug": "mistral-large-4-0",
+    "name": "Mistral Large 4",
+    "vendor": "Mistral AI",
+    "family": "mistral",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 1048576,
+    "multimodal": true,
+    "releaseDate": "2026-10-06",
+    "aliases": [
+      "mistral-large-4-0"
+    ]
+  },
+  {
+    "id": "mistral-medium-3-5",
+    "slug": "mistral-medium-3-5",
+    "name": "Mistral Medium 3.5",
+    "vendor": "Mistral AI",
+    "family": "mistral",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-04-30",
+    "aliases": [
+      "mistral-medium-3-5"
+    ]
+  },
+  {
+    "id": "nova-pro-v1",
+    "slug": "nova-pro-v1",
+    "name": "Nova Pro 1.0",
+    "vendor": "Amazon",
+    "family": "nova",
+    "capabilities": [
+      "识图",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 300000,
+    "multimodal": true,
+    "releaseDate": "2024-12-05",
+    "aliases": [
+      "nova-pro-v1"
     ]
   }
 ]

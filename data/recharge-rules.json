@@ -2,83 +2,65 @@
   {
     "id": "openrouter-credit",
     "providerId": "openrouter",
-    "currency": "CNY",
-    "rechargeRatio": "1 CNY = 1.0 credits",
-    "minimumTopUp": 10,
+    "currency": "USD",
+    "rechargeRatio": "$1 = 1 credit（USD 计价）",
+    "minimumTopUp": null,
     "discount": null,
     "balanceExpiry": null,
-    "refundable": false,
+    "refundable": null,
     "allowedModels": [
       "*"
     ],
-    "sourceUrl": "https://openrouter.ai/pricing",
-    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
-    "dataStatus": "sample"
+    "sourceUrl": "https://openrouter.ai/docs/credits",
+    "lastVerifiedAt": "2026-10-27T09:00:00+08:00",
+    "dataStatus": "pending_review"
   },
   {
-    "id": "siliconflow-credit",
+    "id": "siliconflow-cny",
     "providerId": "siliconflow",
     "currency": "CNY",
-    "rechargeRatio": "1 CNY = 1.0 credits",
-    "minimumTopUp": 1,
+    "rechargeRatio": "人民币计价，充值后按 token 扣费",
+    "minimumTopUp": null,
     "discount": null,
     "balanceExpiry": null,
-    "refundable": false,
+    "refundable": null,
     "allowedModels": [
       "*"
     ],
     "sourceUrl": "https://www.siliconflow.cn/pricing",
-    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
-    "dataStatus": "sample"
+    "lastVerifiedAt": "2026-10-27T09:00:00+08:00",
+    "dataStatus": "pending_review"
   },
   {
-    "id": "302ai-credit",
-    "providerId": "302ai",
-    "currency": "CNY",
-    "rechargeRatio": "1 CNY = 1.0 credits",
-    "minimumTopUp": 10,
-    "discount": 0.95,
+    "id": "official-anthropic-credits",
+    "providerId": "official-anthropic",
+    "currency": "USD",
+    "rechargeRatio": "预付 credits（USD 计价）",
+    "minimumTopUp": null,
+    "discount": null,
     "balanceExpiry": null,
-    "refundable": false,
+    "refundable": null,
     "allowedModels": [
       "*"
     ],
-    "sourceUrl": "https://302.ai/pricing",
-    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
-    "dataStatus": "sample"
+    "sourceUrl": "https://docs.anthropic.com",
+    "lastVerifiedAt": "2026-10-27T09:00:00+08:00",
+    "dataStatus": "pending_review"
   },
   {
-    "id": "aihubmix-credit",
-    "providerId": "aihubmix",
+    "id": "official-zhipu-cny",
+    "providerId": "official-zhipu",
     "currency": "CNY",
-    "rechargeRatio": "1 CNY = 1.0 credits",
-    "minimumTopUp": 5,
+    "rechargeRatio": "人民币预充值，按量扣费",
+    "minimumTopUp": null,
     "discount": null,
     "balanceExpiry": null,
-    "refundable": false,
+    "refundable": null,
     "allowedModels": [
       "*"
     ],
-    "sourceUrl": "https://aihubmix.com/models",
-    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
-    "dataStatus": "sample"
-  },
-  {
-    "id": "newapi-credit",
-    "providerId": "newapi-demo",
-    "currency": "CNY",
-    "rechargeRatio": "1 CNY = 1.2 credits",
-    "minimumTopUp": 10,
-    "discount": null,
-    "balanceExpiry": "365 天",
-    "refundable": false,
-    "allowedModels": [
-      "gpt-5-6-sol",
-      "claude-sonnet-5",
-      "gemini-3-8-flash"
-    ],
-    "sourceUrl": "https://docs.newapi.ai/zh/docs/guide/feature-guide/user/wallet",
-    "lastVerifiedAt": "2026-10-21T10:00:00+08:00",
-    "dataStatus": "sample"
+    "sourceUrl": "https://open.bigmodel.cn/pricing",
+    "lastVerifiedAt": "2026-10-27T09:00:00+08:00",
+    "dataStatus": "pending_review"
   }
 ]

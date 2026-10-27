@@ -135,8 +135,13 @@ button { cursor: pointer; }
 .danger { border: 1px solid #fecaca; background: var(--red-soft); color: #991b1b; border-radius: 12px; padding: 12px 14px; font-size: 13px; }
 .kbd { border: 1px solid #cbd5e1; border-bottom-width: 2px; border-radius: 6px; padding: 1px 6px; background: #f8fafc; font-size: 11px; }
 .footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
-.footer-inner { max-width: 1320px; margin: 0 auto; padding: 26px 24px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.footer-inner { max-width: 1320px; margin: 0 auto; padding: 26px 24px; display: flex; flex-direction: column; gap: 18px; }
 .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+/* 四栏页脚：品牌区占双列宽度，链接列纵向排列，窄屏退化为单列 */
+.footer-cols { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 24px; }
+.footer-col { display: flex; flex-direction: column; gap: 8px; }
+.footer-col a:hover { color: var(--blue); }
+@media (max-width: 760px) { .footer-cols { grid-template-columns: 1fr; gap: 18px; } }
 .empty { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 14px; padding: 32px; text-align: center; color: var(--muted); }
 .breadcrumbs { display: flex; gap: 8px; color: var(--muted); font-size: 12px; margin-bottom: 14px; }
 .breadcrumbs a:hover { color: var(--blue); }

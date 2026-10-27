@@ -7,7 +7,7 @@ const checks = [
   { path: "/", expect: "不要只看 token 单价" },
   { path: "/models", expect: "模型比价" },
   { path: "/providers", expect: "平台比价" },
-  { path: "/subscriptions", expect: "OpenRouter Standard" },
+  { path: "/subscriptions", expect: "破局点" },
   { path: "/credits", expect: "积分" },
   { path: "/card-keys", expect: "卡密" },
   { path: "/calculator", expect: "成本计算器" },
