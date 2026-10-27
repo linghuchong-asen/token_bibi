@@ -528,3 +528,35 @@
   （输入 0.31 → 1.008、输出 0.072 → 3.024，回到正常倍率区间）。
   质量报告：58 模型 / 7 平台（4 已核验 + 3 待接入）/ 63 价格全核验 / 0 stale。
 - **验证方式**：`npm run quality:report` + changelog 输出。
+
+---
+
+## 2026-10-28（凌晨第二轮：跨平台比价成网）
+
+### 35. 数据扩容：SiliconFlow 2 → 15 条价格，跨平台可比模型 3 → 17 个
+
+- **类型**：数据扩容
+- **涉及文件**：`scripts/expand-openrouter-catalog.mjs`（CATOLOG 追加 9 个双平台
+  同款模型）、`data/imports/siliconflow-map.json`（3 → 16 条映射）、
+  `data/models.json`（58 → 67）、`data/prices.json`（63 → 85 条，100% verified）
+- **变更说明**：比价站的核心价值是"同款模型不同平台的价差"。此前 67 个模型里只有
+  3 个有多平台价格。本轮：
+  1. 直接同款补映射：deepseek-v3-2 / glm-5-2 / glm-5-3（SiliconFlow 定价页有）；
+  2. 新收录 9 个 OpenRouter×SiliconFlow 双平台模型（Kimi K2.6 / K2.7 Code、
+     GLM-4.5 Air / 4.5V、Qwen3.5/3.6/3.8 系列开源型号），映射与目录一次到位；
+  3. 版本不明确的近似款（如 DeepSeek-V4-Flash vs V4-Flash-0731）**不映射**，
+     避免把不同版本当同款比价。
+- **结果**：85 条价格 100% 已核验；17 个模型可跨平台比价；质量报告 0 孤儿 / 0 stale。
+- **连通性记录**：302.AI 与 AIHubMix 本机 curl 全部 000（网络层阻塞），
+  与 ECS 侧结论一致，两平台维持"待接入"。
+- **验证方式**：`review:verify-sources` 全量 MATCH；quality-report。
+
+### 36. 修复：变动/降价页空态缺检测时间
+
+- **类型**：修改（诚实呈现）
+- **涉及文件**：`src/app/data-status/page.tsx`、`src/app/price-drops/page.tsx`
+- **变更说明**：两页在"本次未发现变动"时把检测时间与基线说明一起藏掉了。
+  何时不吻合恰恰是空态下最有价值的新鲜度信号——空态同样展示
+  "检测时间 + 基线：上一个快照"。同时两个渲染回归测试从依赖线上数据有变动
+  变为对空态/有变动态都成立。
+- **验证方式**：115/115 单测通过；34/34 烟测；8/8 E2E。

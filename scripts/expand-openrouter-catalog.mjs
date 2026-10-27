@@ -52,15 +52,26 @@ const CATALOG = [
   { or: "qwen/qwen3.5-plus-20260420", slug: "qwen3-5-plus-20260420", name: "Qwen3.5-Plus 0420", vendor: "Alibaba", family: "qwen" },
   { or: "qwen/qwen3-coder", slug: "qwen3-coder", name: "Qwen3 Coder", vendor: "Alibaba", family: "qwen" },
   { or: "qwen/qwen3.8-max-prime", slug: "qwen3-8-max-prime", name: "Qwen3.8-Max Prime", vendor: "Alibaba", family: "qwen" },
+  // 以下 7 个 Qwen 开源型号在 OpenRouter 与 SiliconFlow 双平台上架，
+  // 是跨平台比价的主力样本（同型号不同平台的真实价差）
+  { or: "qwen/qwen3.5-122b-a10b", slug: "qwen3-5-122b-a10b", name: "Qwen3.5-122B-A10B", vendor: "Alibaba", family: "qwen" },
+  { or: "qwen/qwen3.5-27b", slug: "qwen3-5-27b", name: "Qwen3.5-27B", vendor: "Alibaba", family: "qwen" },
+  { or: "qwen/qwen3.5-35b-a3b", slug: "qwen3-5-35b-a3b", name: "Qwen3.5-35B-A3B", vendor: "Alibaba", family: "qwen" },
+  { or: "qwen/qwen3.6-27b", slug: "qwen3-6-27b", name: "Qwen3.6 27B", vendor: "Alibaba", family: "qwen" },
+  { or: "qwen/qwen3.6-35b-a3b", slug: "qwen3-6-35b-a3b", name: "Qwen3.6 35B A3B", vendor: "Alibaba", family: "qwen" },
+  { or: "qwen/qwen3.8-27b", slug: "qwen3-8-27b", name: "Qwen3.8 27B", vendor: "Alibaba", family: "qwen" },
   // 月之暗面
   { or: "moonshotai/kimi-k3.1-pro", slug: "kimi-k3-1-pro", name: "Kimi K3.1 Pro", vendor: "Moonshot", family: "kimi" },
   { or: "moonshotai/kimi-k2.6", slug: "kimi-k2-6", name: "Kimi K2.6", vendor: "Moonshot", family: "kimi" },
   { or: "moonshotai/kimi-k2-thinking", slug: "kimi-k2-thinking", name: "Kimi K2 Thinking", vendor: "Moonshot", family: "kimi" },
+  { or: "moonshotai/kimi-k2.7-code", slug: "kimi-k2-7-code", name: "Kimi K2.7 Code", vendor: "Moonshot", family: "kimi" },
   // 智谱
   { or: "z-ai/glm-5.3", slug: "glm-5-3", name: "GLM-5.3", vendor: "Zhipu AI", family: "glm" },
   { or: "z-ai/glm-5.2", slug: "glm-5-2", name: "GLM-5.2", vendor: "Zhipu AI", family: "glm" },
   { or: "z-ai/glm-5", slug: "glm-5", name: "GLM-5", vendor: "Zhipu AI", family: "glm" },
   { or: "z-ai/glm-4.7", slug: "glm-4-7", name: "GLM-4.7", vendor: "Zhipu AI", family: "glm" },
+  { or: "z-ai/glm-4.5-air", slug: "glm-4-5-air", name: "GLM-4.5 Air", vendor: "Zhipu AI", family: "glm" },
+  { or: "z-ai/glm-4.5v", slug: "glm-4-5v", name: "GLM-4.5V", vendor: "Zhipu AI", family: "glm" },
   // MiniMax
   { or: "minimax/minimax-m3.1-flash", slug: "minimax-m3-1-flash", name: "MiniMax M3.1 Flash", vendor: "MiniMax", family: "minimax" },
   { or: "minimax/minimax-m2.7", slug: "minimax-m2-7", name: "MiniMax M2.7", vendor: "MiniMax", family: "minimax" },

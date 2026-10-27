@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-27T23:09:40.357Z",
-  "baseline": "2026-10-26T23-41-08",
+  "generatedAt": "2026-10-27T23:26:01.146Z",
+  "baseline": "2026-10-27T00-10-56",
   "comparedFields": [
     "inputPricePerMTokens",
     "outputPricePerMTokens",
@@ -8,46 +8,6 @@
     "billingMode",
     "dataStatus"
   ],
-  "changedCount": 2,
-  "changes": [
-    {
-      "priceId": "openrouter-kimi-k3-credit",
-      "providerId": "openrouter",
-      "modelId": "kimi-k3",
-      "changes": [
-        {
-          "field": "inputPricePerMTokens",
-          "from": 1.2168,
-          "to": 1.08
-        },
-        {
-          "field": "cacheReadPricePerMTokens",
-          "from": 1.1448,
-          "to": 1.008
-        }
-      ]
-    },
-    {
-      "priceId": "openrouter-deepseek-v4-1-flash-credit",
-      "providerId": "openrouter",
-      "modelId": "deepseek-v4-1-flash",
-      "changes": [
-        {
-          "field": "inputPricePerMTokens",
-          "from": 0.310723,
-          "to": 1.008
-        },
-        {
-          "field": "outputPricePerMTokens",
-          "from": 0.072,
-          "to": 3.024
-        },
-        {
-          "field": "cacheReadPricePerMTokens",
-          "from": 0.244814,
-          "to": 0.03024
-        }
-      ]
-    }
-  ]
+  "changedCount": 0,
+  "changes": []
 }

@@ -79,7 +79,13 @@ export default function DataStatusPage() {
           </div>
         </div>
         {priceChanges.changes.length === 0 ? (
-          <div className="empty">本次对比未发现价格变动。</div>
+          // 空态同样展示检测时间与基线：何时核对过本身就是新鲜度证据
+          <div className="empty">
+            本次对比未发现价格变动。
+            <div className="small muted" style={{ marginTop: 6 }}>
+              检测时间：{formatDate(priceChanges.generatedAt)} · 基线：上一个快照
+            </div>
+          </div>
         ) : (
           <div className="card card-pad stack">
             {priceChanges.changes.map((entry) => (

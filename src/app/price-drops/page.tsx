@@ -71,7 +71,13 @@ export default function PriceDropsPage() {
 
       {cuts.length === 0 ? (
         <section className="section">
-          <div className="note">最近一轮对比没有发现降价。采集每日进行，订阅 RSS 可在价格下调时第一时间收到通知。</div>
+          {/* 空态同样给出检测时间与基线：没有降价也要说明"什么时候查的" */}
+          <div className="note">
+            最近一轮对比没有发现降价。采集每日进行，订阅 RSS 可在价格下调时第一时间收到通知。
+            <div className="small muted" style={{ marginTop: 6 }}>
+              检测时间：{formatDate(priceChanges.generatedAt)} · 基线：上一个快照 · 完整变动记录见<Link href="/data-status" className="strong">数据状态页</Link>
+            </div>
+          </div>
         </section>
       ) : (
         <section className="section">

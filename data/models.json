@@ -1093,5 +1093,179 @@
     "aliases": [
       "nova-pro-v1"
     ]
+  },
+  {
+    "id": "qwen3-5-122b-a10b",
+    "slug": "qwen3-5-122b-a10b",
+    "name": "Qwen3.5-122B-A10B",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-02-25",
+    "aliases": [
+      "qwen3.5-122b-a10b"
+    ]
+  },
+  {
+    "id": "qwen3-5-27b",
+    "slug": "qwen3-5-27b",
+    "name": "Qwen3.5-27B",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-02-25",
+    "aliases": [
+      "qwen3.5-27b"
+    ]
+  },
+  {
+    "id": "qwen3-5-35b-a3b",
+    "slug": "qwen3-5-35b-a3b",
+    "name": "Qwen3.5-35B-A3B",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-02-25",
+    "aliases": [
+      "qwen3.5-35b-a3b"
+    ]
+  },
+  {
+    "id": "qwen3-6-27b",
+    "slug": "qwen3-6-27b",
+    "name": "Qwen3.6 27B",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-04-27",
+    "aliases": [
+      "qwen3.6-27b"
+    ]
+  },
+  {
+    "id": "qwen3-6-35b-a3b",
+    "slug": "qwen3-6-35b-a3b",
+    "name": "Qwen3.6 35B A3B",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-04-27",
+    "aliases": [
+      "qwen3.6-35b-a3b"
+    ]
+  },
+  {
+    "id": "qwen3-8-27b",
+    "slug": "qwen3-8-27b",
+    "name": "Qwen3.8 27B",
+    "vendor": "Alibaba",
+    "family": "qwen",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本",
+      "多模态"
+    ],
+    "contextLength": 1000000,
+    "multimodal": true,
+    "releaseDate": "2026-08-14",
+    "aliases": [
+      "qwen3.8-27b"
+    ]
+  },
+  {
+    "id": "kimi-k2-7-code",
+    "slug": "kimi-k2-7-code",
+    "name": "Kimi K2.7 Code",
+    "vendor": "Moonshot",
+    "family": "kimi",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码",
+      "长文本"
+    ],
+    "contextLength": 262144,
+    "multimodal": true,
+    "releaseDate": "2026-06-12",
+    "aliases": [
+      "kimi-k2.7-code"
+    ]
+  },
+  {
+    "id": "glm-4-5-air",
+    "slug": "glm-4-5-air",
+    "name": "GLM-4.5 Air",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "深度思考",
+      "编码"
+    ],
+    "contextLength": 131072,
+    "multimodal": false,
+    "releaseDate": "2025-07-25",
+    "aliases": [
+      "glm-4.5-air"
+    ]
+  },
+  {
+    "id": "glm-4-5v",
+    "slug": "glm-4-5v",
+    "name": "GLM-4.5V",
+    "vendor": "Zhipu AI",
+    "family": "glm",
+    "capabilities": [
+      "识图",
+      "深度思考",
+      "编码"
+    ],
+    "contextLength": 65536,
+    "multimodal": true,
+    "releaseDate": "2025-08-11",
+    "aliases": [
+      "glm-4.5v"
+    ]
   }
 ]
