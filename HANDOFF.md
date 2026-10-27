@@ -94,13 +94,16 @@
 - 样例：9（其中 `siliconflow-kimi-k3` 对应模型已在源站下架，同为待决策项）
 - 孤儿价格：0；重复 ID：0
 
-## 验证结果（本机实测）
+## 验证结果（本机实测，10-27 早 8 点口径）
 
-- Vitest：28 个文件 / 89 个测试通过
-- HTTP 烟测：25 项通过（生产构建实测）
+- Vitest：34 个文件 / 115 个测试通过
+- HTTP 烟测：34 项通过（生产构建实测）
+- 浏览器 E2E：8 个场景通过（含广告表单端到端、对比页移动端）
+- Lighthouse mobile：首页 simulated 98 / provided 100；/advertise 97；/price-drops 98
 - `npm run typecheck`：通过；`npm run build`：通过
-- 浏览器目检：首页、/data-status、/advertise 渲染正确
-- E2E / Lighthouse：本轮未跑（旧结果：6 场景通过、Lighthouse mobile 100）
+- `npm audit`：0 漏洞（官方 registry）
+- 浏览器目检：首页（含最新动态）、/data-status、/advertise、/compare、
+  /price-drops、模型页走势图、分享页脚注均渲染正确
 
 ## 常用命令
 
